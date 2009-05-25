@@ -1,0 +1,73 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="collective.geo.contentlocations">
+
+    <five:registerPackage package="." initialize=".initialize" />
+
+    <include package="plone.app.z3cform" />
+    <include package="zgeo.plone.geographer" />
+
+    <include package="collective.geo.settings" />
+    <include package="collective.geo.geopoint" />
+    <include package="collective.geo.openlayers" />
+    
+    
+    <include package=".browser" />
+
+    <include file="profiles.zcml" />
+
+    <adapter
+        for="Products.ATContentTypes.content.base.BaseContent"
+        provides=".interfaces.IGeoManager"
+        factory=".geomanager.GeoManager"
+    />
+
+    <adapter
+        for = "Products.ATContentTypes.content.base.BaseContent
+               zope.publisher.interfaces.browser.IHTTPRequest"
+        provides = ".interfaces.IGeoForm"
+        factory = ".browser.geoform.GeoTypeForm"
+        name = ""
+    />
+
+    <adapter
+        for = "Products.ATContentTypes.content.base.BaseContent
+               zope.publisher.interfaces.browser.IHTTPRequest"
+        provides = ".interfaces.IGeoForm"
+        factory = ".browser.geoform.GeoPointForm"
+        name = "Point"
+    />
+
+    <adapter
+        for = "Products.ATContentTypes.content.base.BaseContent
+               zope.publisher.interfaces.browser.IHTTPRequest"
+        provides = ".interfaces.IGeoForm"
+        factory = ".browser.geoform.GeoLineStringForm"
+        name = "LineString"
+    />
+
+    <adapter
+        for = "Products.ATContentTypes.content.base.BaseContent
+               zope.publisher.interfaces.browser.IHTTPRequest"
+        provides = ".interfaces.IGeoForm"
+        factory = ".browser.geoform.GeoPolygonForm"
+        name = "Polygon"
+    />
+
+<!--    <adapter
+        for = "Products.ATContentTypes.content.base.BaseContent
+               zope.publisher.interfaces.browser.IHTTPRequest"
+        provides = ".interfaces.IGeoForm"
+        factory = ".browser.geoform.GeoMultiPointForm"
+        name = "MultiPoint"
+    />-->
+
+    <adapter
+        for="*
+             .interfaces.IGeoView"
+        provides=".interfaces.IGeoManager"
+        factory=".geomanager.GeoManager"
+    />
+
+</configure>

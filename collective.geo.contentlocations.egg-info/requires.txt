@@ -1,0 +1,4 @@
+setuptools
+plone.app.z3cform
+zgeo.plone.geographer
+collective.geo.settings
