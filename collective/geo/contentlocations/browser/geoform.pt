@@ -26,8 +26,6 @@
       <span tal:replace="structure contents" />
     </div>
 
-    <div>TODO: include openlayers map</div>
-
  </tal:main-macro>
 </metal:main>
 

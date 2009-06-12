@@ -18,6 +18,7 @@ from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 from collective.geo.contentlocations.interfaces import IGeoManager
 from collective.geo.contentlocations.interfaces import IGeoForm
 
+
 class manageCoordinates(BrowserView):
     __call__ = ViewPageTemplateFile('geoform.pt')
 
@@ -100,12 +101,17 @@ class BaseForm(form.Form):
 
 class GeoPointForm(GeopointBaseForm, BaseForm):
     template = viewpagetemplatefile.ViewPageTemplateFile('geopointform.pt')
-    fields = field.Fields(IGeoManager).select('coord_type', 'latitude','longitude')
+    fields = field.Fields(IGeoManager).select('coord_type', 'latitude', 'longitude')
 
     def addCoordinates(self, data):
-        self.geomanager.setCoordinates('Point',  
-                                       (data['latitude'],
-                                        data['longitude']) )
+        """ from zgeo.geographer.README.txt
+            Now set the location geometry to type "Point" and coordinates 105.08 degrees
+            West, 40.59 degrees North using setGeoInterface() 
+            
+            >>> geo.setGeoInterface('Point', (-105.08, 40.59))
+        """
+
+        self.geomanager.setCoordinates('Point', (data['longitude'], data['latitude']))
         return True
 
 

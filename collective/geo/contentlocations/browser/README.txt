@@ -45,15 +45,15 @@ url is the same; we're still here
 
 but there is another form 
 we set values for latitude and longitude and click save
-    >>> browser.getControl('Latitude').value = '0.111'
     >>> browser.getControl('Longitude').value = '0.222'
+    >>> browser.getControl('Latitude').value = '0.111'
     >>> browser.getControl('Save').click()
 
 we check that our data is still there
     >>> from collective.geo.contentlocations.interfaces import IGeoManager
     >>> geo = IGeoManager(self.portal['front-page'])
     >>> geo.getCoordinates()
-    ('Point', (0.111, 0.222))
+    ('Point', (0.222, 0.111))
 
 I might instead click "cancel".
 Let's do it again, first clicking on "coordinates" and choosing a the "point" type

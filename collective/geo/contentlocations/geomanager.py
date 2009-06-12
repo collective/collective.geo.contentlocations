@@ -27,24 +27,24 @@ class GeoManager(object):
       >>> geo.isGeoreferenceable()
       True
       
-      we add coordinates to the object
-      >>> geo.setCoordinates('Point', (0.111,0.222))
+      we add coordinates to the object (type, (lon, lat))
+      >>> geo.setCoordinates('Point', (0.222, 0.111))
       
       we check the coordinates correctness
       >>> geo.getCoordinates()
-      ('Point', (0.111, 0.222))
+      ('Point', (0.222, 0.111))
 
-      being a Point both latitude 
-      >>> geo.latitude
-      0.111
-
-      and longitude
+      being a Point both longitude
       >>> geo.longitude
       0.222
 
+      and latitude
+      >>> geo.latitude
+      0.111
+
       have values
 
-      in the same fashion we can set a LineString
+      in the same fashion we can set a LineString 
       >>> geo.setCoordinates('LineString', ((0.111,0.222),) )
     
       and get its coordinates
@@ -70,14 +70,14 @@ class GeoManager(object):
     def latitude(self):
         type,  coords = self.getCoordinates()
         if type == 'Point':
-            return coords[0]
+            return coords[1]
         return None
 
     @property
     def longitude(self):
         type,  coords = self.getCoordinates() 
         if type == 'Point':
-            return coords[1]
+            return coords[0]
         return None
 
     def __init__(self, context, form = None):

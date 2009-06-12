@@ -7,19 +7,13 @@
 
 
   <div tal:attributes="class view/css_class|nothing">
-
-        <div style="float: right; width: 49%">
-            <div tal:repeat="widget view/widgets/values" >
-                <span tal:replace="widget/name" />
-            </div>
-        </div>
-        <div style="float: left; width: 49%">
+        <div class="point-form">
             <metal:use use-macro="context/@@ploneform-macros/titlelessform" />
         </div>
+
+        <metal:map use-macro="context/@@geopoint-macros/map-widget" />
+
         <div class="visualClear" ><!-- clear floats --></div>
 
   </div>
 </html>
-
-
-

@@ -20,7 +20,7 @@ def setup_product():
 
     fiveconfigure.debug_mode = False
 
-    ztc.installPackage('collective.geo.contentlocations')
+    #ztc.installPackage('collective.geo.contentlocations')
 
 setup_product()
 ptc.setupPloneSite(products=['collective.geo.contentlocations'])
