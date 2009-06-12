@@ -1,10 +1,11 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.geo.contentlocations">
 
-    <five:registerPackage package="." initialize=".initialize" />
-
+    <i18n:registerTranslations directory="locales" />
+    
     <include package="plone.app.z3cform" />
     <include package="zgeo.plone.geographer" />
 
@@ -69,5 +70,12 @@
         provides=".interfaces.IGeoManager"
         factory=".geomanager.GeoManager"
     />
+    
+    
+    <utility
+        factory=".vocabularies.coordsVocab"
+        name="coordsVocab"
+        provides="zope.app.schema.vocabulary.IVocabularyFactory"
+        />
 
 </configure>

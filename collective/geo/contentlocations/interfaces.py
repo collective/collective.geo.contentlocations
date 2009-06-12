@@ -21,7 +21,8 @@ class IGeoManager(IGeoPoint):
     """ interfaccia per la gestione dei punti """
     coord_type = schema.Choice(title=_(u"Type"),
                                description=_(u"Choose type of coordinates."),
-                               values=config.COORDTYPE,
+                               vocabulary = 'coordsVocab',
+                               #values=config.COORDTYPE,
                                required=True )
 
     filecsv = schema.Bytes(title=_(u"File")) 

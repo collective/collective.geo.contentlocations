@@ -9,7 +9,6 @@ from collective.geo.contentlocations.interfaces import IGeoManager
 class GeoManager(object):
     """
       We instanciate a GeoManager on a no georeferenceable context 
-
       >>> geo = GeoManager(None)
       >>> geo.isGeoreferenceable()
       False

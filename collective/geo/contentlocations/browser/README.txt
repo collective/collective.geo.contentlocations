@@ -34,9 +34,9 @@ we are asked the type of coordinates to input
     >>> control.options
     ['Point', 'LineString', 'Polygon']
 
-set type value and click 'Set' button
+set type value and click 'Next' button
     >>> control.value = ['Point',]
-    >>> browser.getControl('Set').click()
+    >>> browser.getControl('Next').click()
 
 second:
 url is the same; we're still here 
@@ -50,6 +50,9 @@ we set values for latitude and longitude and click save
     >>> browser.getControl('Save').click()
 
 we check that our data is still there
+    >>> 'Changes saved.' in browser.contents
+    True
+
     >>> from collective.geo.contentlocations.interfaces import IGeoManager
     >>> geo = IGeoManager(self.portal['front-page'])
     >>> geo.getCoordinates()
@@ -60,7 +63,7 @@ Let's do it again, first clicking on "coordinates" and choosing a the "point" ty
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
     >>> browser.getControl('Type').value = ['Point',]
-    >>> browser.getControl('Set').click()
+    >>> browser.getControl('Next').click()
 
 we're in the coordinates input form
     >>> browser.getControl('Latitude')
@@ -69,12 +72,12 @@ we're in the coordinates input form
 clicking on cancel leads me to the first form without saving the data
     >>> browser.getControl('Cancel').click()
     >>> control = browser.getControl('Type')
-    >>> control
-    <ListControl name='form.widgets.coord_type:list' type='select'>
+    >>> 'No changes made.' in browser.contents
+    True
 
 let's choose "polygon"
     >>> control.value = ['Polygon',]
-    >>> browser.getControl('Set').click()
+    >>> browser.getControl('Next').click()
 
 we get a different form
     >>> file_control = browser.getControl('File')

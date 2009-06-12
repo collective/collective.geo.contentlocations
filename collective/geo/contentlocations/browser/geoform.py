@@ -22,8 +22,8 @@ from collective.geo.contentlocations.interfaces import IGeoForm
 class manageCoordinates(BrowserView):
     __call__ = ViewPageTemplateFile('geoform.pt')
 
-    label = _(u'Modifica Coordinate')
-    description = _(u"Modifica i dati coordinate...")
+    label = _(u'Coordinates')
+    description = _(u"Modify geographical data for this content")
 
     def contents(self):
         z2.switch_on(self)
@@ -43,7 +43,7 @@ class GeoTypeForm(form.Form):
     def __init__(self, context, request):
         super(GeoTypeForm,self).__init__(context,request)
 
-    @button.buttonAndHandler(_(u'Set'))
+    @button.buttonAndHandler(_(u'Next'))
     def handleApply(self, action):
         data, errors = self.extractData()
         if (errors or data['coord_type'] == None):
@@ -52,9 +52,9 @@ class GeoTypeForm(form.Form):
 
 class BaseForm(form.Form):
     interface.implements(IGeoForm)
-    message_ok = _(u'Modifiche memorizzate')
-    message_cancel = _(u'Azione annullata')
-    message_error_csv = _(u'File csv non corretto, verificare il file e riprovare')
+    message_ok = _(u'Changes saved.')
+    message_cancel = _(u'No changes made.')
+    message_error_csv = _(u'CSV File not correct. Verify file format.')
 
     def __init__(self, context,  request):
         super(BaseForm,  self).__init__(context,  request)

@@ -3,5 +3,8 @@ import config
 
 ContentLocationsMessageFactory = MessageFactory(config.PROJECTNAME)
 
-def initialize(context):
-    """Initializer called when used as a Zope 2 product."""
+_ = ContentLocationsMessageFactory
+COORDTYPE = [('Point', _('Point')), 
+             ('LineString', _('LineString')), 
+             ('Polygon',_('Polygon'))
+            ]
