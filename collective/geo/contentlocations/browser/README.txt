@@ -1,5 +1,5 @@
 collective.geo.contentlocations.browser
-==============================
+=======================================
 
 we start the tests with the usual boilerplate
     >>> from Products.Five.testbrowser import Browser

@@ -1,6 +1,6 @@
 TODO
 ====
 
-- provide a geocoders features
-- provide a link to geocoder and 'Location' property of content types to set Coordinates
-- integrate a styles from collective.geo.kml
+* provide a geocoders features
+* provide a link to geocoder and 'Location' property of content types to set Coordinates
+* integrate a styles from collective.geo.kml
