@@ -6,19 +6,19 @@ from collective.geo.geopoint.interfaces import IGeoPoint
 from zope import schema
 
 class IGeoView(Interface):
-    """ vista coordinate """
+    """ View to access coordinates """
     def isGeoreferenceable():
         """Returns True if an object is Georeferenceable"""
 
     def getCoordinates(self):
-        """ public functions to get object coordinates """
+        """ Public function to get object coordinates """
 
 
 class IGeoForm(Interface):
-    """ interfaccia per le form di gestione coordinate """
+    """ Interface for coordinates management forms """
 
 class IGeoManager(IGeoPoint):
-    """ interfaccia per la gestione dei punti """
+    """ Interface for point management """
     coord_type = schema.Choice(title=_(u"Type"),
                                description=_(u"Choose type of coordinates."),
                                vocabulary = 'coordsVocab',

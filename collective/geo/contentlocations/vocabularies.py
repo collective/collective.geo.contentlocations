@@ -1,9 +1,8 @@
-from zope.interface import implements
-from zope.app.schema.vocabulary import IVocabularyFactory
-from zope.schema import vocabulary
-
-from collective.geo.contentlocations import COORDTYPE
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
+from collective.geo.contentlocations import COORDTYPE
+from zope.app.schema.vocabulary import IVocabularyFactory
+from zope.interface import implements
+from zope.schema import vocabulary
 
 class baseVocabulary(object):
     implements(IVocabularyFactory)

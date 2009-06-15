@@ -1,11 +1,9 @@
-# zope imports
-from zope.interface import implements
-from zope.component import getMultiAdapter
-from Products.Five.browser import BrowserView
-
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
-from collective.geo.contentlocations.interfaces import IGeoView
 from collective.geo.contentlocations.interfaces import IGeoManager
+from collective.geo.contentlocations.interfaces import IGeoView
+from Products.Five.browser import BrowserView
+from zope.component import getMultiAdapter
+from zope.interface import implements
 
 class GeoView(BrowserView):
     implements(IGeoView)

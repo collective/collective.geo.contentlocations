@@ -8,7 +8,7 @@ from zope.app.pagetemplate import viewpagetemplatefile
 from Products.CMFPlone.utils import getToolByName
 
 from plone.z3cform import z2
-from z3c.form import form, field, button, subform
+from z3c.form import form, field, button
 from z3c.form.interfaces import HIDDEN_MODE
 
 from zope.component import getMultiAdapter
@@ -39,7 +39,7 @@ class GeoTypeForm(form.Form):
 
 
     fields = field.Fields(IGeoManager).select('coord_type')
-    
+
     def __init__(self, context, request):
         super(GeoTypeForm,self).__init__(context,request)
 
@@ -86,7 +86,7 @@ class BaseForm(form.Form):
         if not self.addCoordinates(data):
             self.status = self.message_error_csv
             return
-        
+
         self.setStatusMessage(self.message_ok)
         self.redirectAction()
 
@@ -106,8 +106,8 @@ class GeoPointForm(GeopointBaseForm, BaseForm):
     def addCoordinates(self, data):
         """ from zgeo.geographer.README.txt
             Now set the location geometry to type "Point" and coordinates 105.08 degrees
-            West, 40.59 degrees North using setGeoInterface() 
-            
+            West, 40.59 degrees North using setGeoInterface()
+
             >>> geo.setGeoInterface('Point', (-105.08, 40.59))
         """
 
@@ -118,24 +118,25 @@ class GeoPointForm(GeopointBaseForm, BaseForm):
 class GeoMultiPointForm(BaseForm):
     fields = field.Fields(IGeoManager).select('coord_type', 'filecsv')
     ignoreContext=True
-    
+
     def verifyCsv(self,filecsv):
         reader = csv.reader(cStringIO.StringIO(filecsv), delimiter=',')
         coords = []
         for row in reader:
-            # verifico che ci sia una riga ??? problemi se riga in fondo è vuota...???
+            # check for row existence ???
+            # are there any problems if the row is empty ???
             if row:
-                # verifico che ci siano delle coppie di valori
+                # verify pairs of values are there
                 try:
                     latitude = row[0]
                     longitude = row[1]
                 except:
                     return False
 
-                # verifico che latitude e longitude non siano vuoti o uguali a zero
+                # verify that latitude and longitude are non-empty and non-zero
                 if latitude != '' and longitude != '':
                     try:
-                        # verifico che ci sia una coppia di numeri
+                        # check for float convertible values
                         coords.append((float(latitude),float(longitude)))
                     except:
                         return False
@@ -147,14 +148,6 @@ class GeoMultiPointForm(BaseForm):
         if csv_data != False:
             return tuple(csv_data)
         return False
-
-    #def addCoordinates(self, data):
-        #coords = self.csv2coordinates(data['filecsv'])
-        #if coords:
-            #self.geomanager.setCoordinates('MultiPoint', coords)
-            #return True
-
-        #return False
 
 
 class GeoLineStringForm(GeoMultiPointForm):

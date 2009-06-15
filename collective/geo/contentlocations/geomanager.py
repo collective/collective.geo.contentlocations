@@ -1,23 +1,21 @@
-from zope import interface
-
+from collective.geo.contentlocations.interfaces import IGeoManager
 from zgeo.geographer.interfaces import IGeoreferenceable
 from zgeo.geographer.interfaces import IGeoreferenced
 from zgeo.geographer.interfaces import IWriteGeoreferenced
-
-from collective.geo.contentlocations.interfaces import IGeoManager
+from zope import interface
 
 class GeoManager(object):
     """
-      We instanciate a GeoManager on a no georeferenceable context 
+      We instanciate a GeoManager on a non georeferenceable context
       >>> geo = GeoManager(None)
       >>> geo.isGeoreferenceable()
       False
-      
+
       coordinates will be None
       >>> geo.getCoordinates()
       (None, None)
 
-      now we create a georeferenceable object 
+      now we create a georeferenceable object
       >>> from zope.annotation.interfaces import IAttributeAnnotatable
       >>> class TestContent(object):
       ...     interface.implements(IGeoreferenceable, IAttributeAnnotatable)
@@ -25,10 +23,10 @@ class GeoManager(object):
       >>> geo = GeoManager(geofoo)
       >>> geo.isGeoreferenceable()
       True
-      
+
       we add coordinates to the object (type, (lon, lat))
       >>> geo.setCoordinates('Point', (0.222, 0.111))
-      
+
       we check the coordinates correctness
       >>> geo.getCoordinates()
       ('Point', (0.222, 0.111))
@@ -43,13 +41,13 @@ class GeoManager(object):
 
       have values
 
-      in the same fashion we can set a LineString 
+      in the same fashion we can set a LineString
       >>> geo.setCoordinates('LineString', ((0.111,0.222),) )
-    
+
       and get its coordinates
       >>> geo.getCoordinates()
       ('LineString', ((0.111, 0.222),))
-    
+
       latitude and longitude will be None
       >>> geo.latitude is None
       True
@@ -74,7 +72,7 @@ class GeoManager(object):
 
     @property
     def longitude(self):
-        type,  coords = self.getCoordinates() 
+        type,  coords = self.getCoordinates()
         if type == 'Point':
             return coords[0]
         return None
