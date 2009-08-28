@@ -27,7 +27,7 @@ setup(name='collective.geo.contentlocations',
           'setuptools',
           # -*- Extra requirements: -*-
           'plone.app.z3cform',
-          'zgeo.plone.geographer',
+          'collective.geo.geographer',
           'collective.geo.settings',
       ],
       entry_points="""

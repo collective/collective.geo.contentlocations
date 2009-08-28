@@ -7,7 +7,7 @@
     <i18n:registerTranslations directory="locales" />
     
     <include package="plone.app.z3cform" />
-    <include package="zgeo.plone.geographer" />
+    <include package="collective.geo.geographer" />
 
     <include package="collective.geo.settings" />
     <include package="collective.geo.geopoint" />

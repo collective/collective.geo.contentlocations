@@ -1,7 +1,7 @@
 Introduction
 ============
 
-collective.geo.contentlocations is a GUI for zgeo.plone.geographer.
+collective.geo.contentlocations is a GUI for collective.geo.geographer.
 
 It provides some simple forms to add geographical coordinates to Plone content types.
 
@@ -9,7 +9,7 @@ Requirements
 ------------
  * plone >= 3.2.1
  * plone.app.z3cform
- * zgeo.plone.geographer
+ * collective.geo.geographer
  * collective.geo.settings
 
 Installation

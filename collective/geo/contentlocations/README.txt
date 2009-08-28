@@ -3,7 +3,7 @@ collective.geo.contentlocations Package Readme
 
 Overview
 --------
-collective.geo.contentlocations provides graphical interface based on z3c.form for zgeo.plone.geographer package
+collective.geo.contentlocations provides graphical interface based on z3c.form for collective.geo.geographer package
 
 Tests
 -----

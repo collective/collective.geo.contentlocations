@@ -2,7 +2,7 @@
 <metadata>
   <version>1.0</version>
   <dependencies>
-    <dependency>profile-zgeo.plone.geographer:default</dependency>
+    <dependency>profile-collective.geo.geographer:default</dependency>
     <dependency>profile-collective.geo.openlayers:default</dependency>
     <dependency>profile-collective.geo.settings:default</dependency>
   </dependencies>  
