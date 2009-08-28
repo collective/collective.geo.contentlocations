@@ -143,8 +143,8 @@ class GeoMultiPointForm(BaseForm):
 
         return coords
 
-    def csv2coordinates(self,filecsv):
-        csv_data = self.verifyCsv(filecsv)
+    def csv2coordinates(self, csv):
+        csv_data = self.verifyCsv(csv)
         if csv_data != False:
             return tuple(csv_data)
         return False
@@ -152,7 +152,7 @@ class GeoMultiPointForm(BaseForm):
 
 class GeoLineStringForm(GeoMultiPointForm):
     def addCoordinates(self, data):
-        coords = self.csv2coordinates(data['filecsv'])
+        coords = self.csv2coordinates(self.widgets['filecsv'].extract().read())
         if coords:
             self.geomanager.setCoordinates('LineString', coords)
             return True
@@ -162,7 +162,7 @@ class GeoLineStringForm(GeoMultiPointForm):
 
 class GeoPolygonForm(GeoMultiPointForm):
     def addCoordinates(self, data):
-        coords = self.csv2coordinates(data['filecsv'])
+        coords = self.csv2coordinates(self.widgets['filecsv'].extract().read())
         if coords:
             self.geomanager.setCoordinates('Polygon', (coords,) )
             return True
