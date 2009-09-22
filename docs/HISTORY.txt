@@ -4,8 +4,10 @@ Changelog
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+* use single form instead of two-step form for editing shapes
+* register manage-coordinates for CMF PortalContent (not just
+  Archetypes)
+* use generic WKT-editing field.
 
 0.1 (2009-06-19)
 ----------------

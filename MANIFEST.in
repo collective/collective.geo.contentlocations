@@ -1,0 +1,13 @@
+include README.txt
+recursive-include docs *.txt
+recursive-include docs *.GPL
+recursive-include collective *.zcml
+recursive-include collective *.xml
+recursive-include collective *.txt
+recursive-include collective *.py
+recursive-include collective *.pt
+recursive-include collective *.pot
+recursive-include collective *.mo
+recursive-include collective *.po
+recursive-include collective *.sh
+recursive-include collective *.csv
