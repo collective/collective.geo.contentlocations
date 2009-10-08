@@ -48,12 +48,12 @@ class GeoManager(object):
       >>> geo.getCoordinates()
       ('LineString', ((0.111, 0.222),))
 
-      latitude and longitude will be None
-      >>> geo.latitude is None
+      longitude and latitude will be None
+      >>> geo.longitude is None
       True
 
-      and longitude
-      >>> geo.longitude is None
+      and latitude
+      >>> geo.latitude is None
       True
 
     """
@@ -64,17 +64,17 @@ class GeoManager(object):
         return self.getCoordinates()[0]
 
     @property
-    def latitude(self):
-        type,  coords = self.getCoordinates()
-        if type == 'Point':
-            return coords[1]
-        return None
-
-    @property
     def longitude(self):
         type,  coords = self.getCoordinates()
         if type == 'Point':
             return coords[0]
+        return None
+
+    @property
+    def latitude(self):
+        type,  coords = self.getCoordinates()
+        if type == 'Point':
+            return coords[1]
         return None
 
     def __init__(self, context, form = None):

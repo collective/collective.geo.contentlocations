@@ -25,8 +25,8 @@ let's try it!
     >>> browser.url == '%s/front-page/@@manage-coordinates' % portal_url
     True
 
-It is a two steps form:
-Firts:
+It is a two-step form:
+First:
 we are asked the type of coordinates to input
     >>> control = browser.getControl('Type')
     >>> control
@@ -44,7 +44,7 @@ url is the same; we're still here
     True
 
 but there is another form 
-we set values for latitude and longitude and click save
+we set values for longitude and latitude and click save
     >>> browser.getControl('Longitude').value = '0.222'
     >>> browser.getControl('Latitude').value = '0.111'
     >>> browser.getControl('Save').click()
@@ -62,7 +62,15 @@ I might instead click "cancel".
 Let's do it again, first clicking on "coordinates" and choosing a the "point" type
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> browser.getControl('Type').value = ['Point',]
+
+Check to see that the coordinate 'type' drop-down is present
+
+    >>> browser.getControl('Type')
+    <ListControl name='form.widgets.coord_type:list' type='select'>
+
+Select 'Point' from the drop-down menu and click Next
+
+    >>> browser.getControl('Type').value = ['Point']
     >>> browser.getControl('Next').click()
 
 we're in the coordinates input form
@@ -71,12 +79,11 @@ we're in the coordinates input form
 
 clicking on cancel leads me to the first form without saving the data
     >>> browser.getControl('Cancel').click()
-    >>> control = browser.getControl('Type')
     >>> 'No changes made.' in browser.contents
     True
 
 let's choose "polygon"
-    >>> control.value = ['Polygon',]
+    >>> browser.getControl('Type').value = ['Polygon']
     >>> browser.getControl('Next').click()
 
 we get a different form
@@ -90,8 +97,14 @@ we load a coordinates csv file and verify saved data
     >>> file_control.add_file(file,
     ...                       'text/csv', 'coordinates.csv')
     >>> browser.getControl('Save').click()
+
+Check there wasn't an error message
+  
+    >>> 'CSV File not correct. Verify file format.' in browser.contents
+    False    
+
     >>> geo.getCoordinates()
     ('Polygon', (((0.111, 0.222), (0.33300000000000002, 0.44400000000000001)),))
 
 
-XXX Everyfing should work for LineString as well
+XXX Everything should work for LineString as well

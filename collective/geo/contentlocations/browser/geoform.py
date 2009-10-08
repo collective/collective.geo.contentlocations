@@ -101,7 +101,7 @@ class BaseForm(form.Form):
 
 class GeoPointForm(GeopointBaseForm, BaseForm):
     template = viewpagetemplatefile.ViewPageTemplateFile('geopointform.pt')
-    fields = field.Fields(IGeoManager).select('coord_type', 'latitude', 'longitude')
+    fields = field.Fields(IGeoManager).select('coord_type', 'longitude', 'latitude')
 
     def addCoordinates(self, data):
         """ from zgeo.geographer.README.txt
@@ -119,6 +119,8 @@ class GeoMultiPointForm(BaseForm):
     fields = field.Fields(IGeoManager).select('coord_type', 'filecsv')
     ignoreContext=True
 
+    #Verify the incoming CSV file and read coordinates as per the
+    #WGS 1984 reference system (longitude, latitude)
     def verifyCsv(self,filecsv):
         reader = csv.reader(cStringIO.StringIO(filecsv), delimiter=',')
         coords = []
@@ -128,16 +130,16 @@ class GeoMultiPointForm(BaseForm):
             if row:
                 # verify pairs of values are there
                 try:
-                    latitude = row[0]
-                    longitude = row[1]
+                    longitude = row[0]
+                    latitude = row[1]
                 except:
                     return False
 
-                # verify that latitude and longitude are non-empty and non-zero
-                if latitude != '' and longitude != '':
+                # verify that longitude and latitude are non-empty and non-zero
+                if longitude != '' and latitude != '':
                     try:
                         # check for float convertible values
-                        coords.append((float(latitude),float(longitude)))
+                        coords.append((float(longitude),float(latitude)))
                     except:
                         return False
 
