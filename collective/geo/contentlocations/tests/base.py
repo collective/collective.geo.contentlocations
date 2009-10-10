@@ -8,11 +8,10 @@ from Testing import ZopeTestCase as ztc
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
 
-
 @onsetup
 def setup_product():
     """Set up the package and its dependencies."""
-    
+
     fiveconfigure.debug_mode = True
     import collective.geo.contentlocations
 

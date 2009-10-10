@@ -3,7 +3,9 @@ collective.geo.contentlocations Package Readme
 
 Overview
 --------
-collective.geo.contentlocations provides graphical interface based on z3c.form for collective.geo.geographer package
+
+collective.geo.contentlocations provides graphical interface based on
+z3c.form for collective.geo.geographer package
 
 Tests
 -----
@@ -32,31 +34,34 @@ we set the coordinates and verify
     >>> geo.getCoordinates()
     ('Point', (0.111, 0.222))
 
-Georeferenceable objects have another tab (Coordinates), registered in portal_action 
-This is the condition to enable them
+Georeferenceable objects have another tab (Coordinates), registered in
+portal_action This is the condition to enable them
 
     >>> document.restrictedTraverse('@@geoview').isGeoreferenceable()
     True
-    
-Based on the type of geo objects (points, polygons or linestrings) we want different forms
 
-Points:
+Try browsing the geo-shape edit view:
+-------------------------------------
 
-    >>> import zope.component
-    >>> from zope.publisher.browser import TestRequest
-    >>> from collective.geo.contentlocations.interfaces import IGeoForm
-    >>> zope.component.getMultiAdapter((document, TestRequest()), IGeoForm, 'Point')
-    <collective.geo.contentlocations.browser.geoform.GeoPointForm object ...>
+    >>> from Products.Five.testbrowser import Browser
+    >>> browser = Browser()
+    >>> portal_url = self.portal.absolute_url()
+    >>> self.portal.error_log._ignored_exceptions = ()
 
-LineString:
+The edit view is protected so we need to log in
+    >>> from Products.PloneTestCase.setup import (portal_owner,
+    ...                                          default_password)
+    >>> browser.addHeader('Authorization',
+    ...                   'Basic %s:%s' % (portal_owner, default_password))
+    >>> browser.open(portal_url)
 
-    >>> zope.component.getMultiAdapter((document, TestRequest()), IGeoForm, 'LineString')
-    <collective.geo.contentlocations.browser.geoform.GeoLineStringForm object ...>
-    
-Polygons:
+Create the url and open it
 
-    >>> zope.component.getMultiAdapter((document, TestRequest()), IGeoForm, 'Polygon')
-    <collective.geo.contentlocations.browser.geoform.GeoPolygonForm object ...>
+    >>> view_url = '%s/@@manage-coordinates' % document.absolute_url()
+    >>> browser.open(view_url)
+    >>> '<div id="map" ' in browser.contents
+    True
+    >>> 'POINT (0.1110000000000000 0.2220000000000000)' in browser.contents
+    True
 
 That's all folks
-

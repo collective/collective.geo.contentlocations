@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="collective.geo.contentlocations"
+      tal:omit-tag="">
+
+
+  <div tal:attributes="class view/css_class|nothing">
+        <div class="linestring-form">
+            <metal:use use-macro="context/@@ploneform-macros/titlelessform" />
+        </div>
+
+        <metal:map use-macro="context/@@geopoint-macros/map-widget" />
+        <script type="text/javascript">
+          var editlayer = new OpenLayers.Layer.Vector("Edit");
+          map.addLayer(editlayer);
+
+          function onEditBeforeFeaturesAdded(evt)
+          {
+            // TODO: maybe check editingpanel.multi (custom attribute) allowing multiple shapes at once. evt object should hold a reference to control to check this attribute (or I need to add this attribute to the editinglayer?
+            evt.object.destroyFeatures();
+          }
+
+          editlayer.events.register("beforefeaturesadded", editlayer, onEditBeforeFeaturesAdded);
+
+          var editingpanel = new OpenLayers.Control.EditingToolbar(editlayer, {});
+          editingpanel.addControls([ new OpenLayers.Control.ModifyFeature(editlayer, {}) ]);
+
+          map.addControl(editingpanel);
+          editingpanel.activate();
+
+          function olupdateWidget(evt) {
+            out_options = {
+                internalProjection: evt.object.map.projection,
+                externalProjection: evt.object.map.displayProjection };
+            var format = new OpenLayers.Format.WKT(out_options);
+            document.getElementById(wkt_widget_id).value = format.write(evt.feature);
+            format.destroy();
+          }
+
+          editlayer.events.register("featureadded", editlayer, olupdateWidget);
+          editlayer.events.register("featuremodified", editlayer, olupdateWidget);
+
+          var geomwkt = document.getElementById(wkt_widget_id).value;
+          in_options = {
+              internalProjection: map.projection,
+              externalProjection: map.displayProjection };
+          var format = new OpenLayers.Format.WKT(in_options);
+          var feat = format.read(geomwkt);
+          if (feat) {
+              console.log('feature parsed', feat);
+              editlayer.addFeatures([feat]);
+          } else {
+              console.log('no feature found', geomwkt);
+          }
+
+          // TODO: this needs to be somewhere site-specific...
+          jq(".ui-layout-center").bind("scroll", function(evt) {map.events.clearMouseCache(); });
+        </script>
+
+        <div class="visualClear" ><!-- clear floats --></div>
+
+  </div>
+</html>

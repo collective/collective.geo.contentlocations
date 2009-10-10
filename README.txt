@@ -11,10 +11,13 @@ Requirements
  * plone.app.z3cform
  * collective.geo.geographer
  * collective.geo.settings
+ * Shapely
 
 Installation
 ============
-Just a simple easy_install collective.geo.contentlocations is enough.
+Before install collective.geo.contentolocations you should install Shapely package and its dependencies (see http://pypi.python.org/pypi/Shapely/ for more informations)
+
+After that just a simple easy_install collective.geo.contentlocations is enough.
 
 Alternatively, buildout users can install collective.geo.contentlocations as part of a specific project's buildout, by having a buildout configuration such as: ::
 

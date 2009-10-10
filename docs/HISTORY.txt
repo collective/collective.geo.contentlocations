@@ -4,6 +4,7 @@ Changelog
 0.2 (unreleased)
 ----------------
 
+* added Shapely package in install_requiries
 * Updated CSV reader and other coordinate references to be consistent
   with WGS 1984 reference system.  This involves standardising the
   coordinate order to be [longitude, latitude] rather than [latitude,
@@ -12,6 +13,10 @@ Changelog
 * Updated unit tests to check for error message on CSV upload as well 
   as updated coordinates.
   [rockdj]
+* use single form instead of two-step form for editing shapes
+* register manage-coordinates for CMF PortalContent (not just
+  Archetypes)
+* use generic WKT-editing field.
 
 0.1 (2009-06-19)
 ----------------

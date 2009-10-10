@@ -1,12 +1,14 @@
 <html
-      metal:use-macro="here/main_template/macros/master">
-<body>
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    metal:use-macro="here/main_template/macros/master">
+  <body>
 
-<metal:main fill-slot="main">
+    <metal:main fill-slot="main">
 
-<div tal:content="view/getCoordinates"/>
+      <div tal:content="view/getCoordinates"/>
 
-</metal:main>
+    </metal:main>
 
-</body>
+  </body>
 </html>

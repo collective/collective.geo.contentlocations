@@ -77,6 +77,16 @@ class GeoManager(object):
             return coords[1]
         return None
 
+    @property
+    def wkt(self):
+        from shapely.geometry.geo import asShape
+        try:
+            return asShape(IGeoreferenced(self.context).geo).wkt
+        except ValueError:
+            # context is not a valid shape.
+            pass
+        return u''
+
     def __init__(self, context, form = None):
         self.context = context
         self.form = form
@@ -95,4 +105,3 @@ class GeoManager(object):
         if(self.isGeoreferenceable()):
             geo = IWriteGeoreferenced(self.context)
             geo.setGeoInterface(type, coords)
-

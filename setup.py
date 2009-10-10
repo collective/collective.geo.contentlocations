@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1'
+version = '0.2dev'
 
 setup(name='collective.geo.contentlocations',
       version=version,
@@ -26,9 +26,12 @@ setup(name='collective.geo.contentlocations',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          'plone.app.z3cform',
+          #'Shapely',
+          'plone.z3cform',
+          'collective.geo.openlayers',
           'collective.geo.geographer',
           'collective.geo.settings',
+          'collective.geo.geopoint',
       ],
       entry_points="""
       # -*- Entry points: -*-
