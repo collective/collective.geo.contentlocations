@@ -15,7 +15,7 @@ Requirements
 
 Installation
 ============
-Before install collective.geo.contentolocations you should install Shapely package and its dependencies (see http://pypi.python.org/pypi/Shapely/ for more informations)
+Before installing collective.geo.contentolocations, you should install the Shapely package and its dependencies (see http://pypi.python.org/pypi/Shapely/ for more information).
 
 After that just a simple easy_install collective.geo.contentlocations is enough.
 
