@@ -26,7 +26,7 @@ setup(name='collective.geo.contentlocations',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          #'Shapely',
+          'Shapely',
           'plone.z3cform',
           'collective.geo.openlayers',
           'collective.geo.geographer',
