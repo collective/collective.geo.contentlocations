@@ -81,7 +81,7 @@ class GeoShapeForm(form.Form):
             >>> geo.setGeoInterface('Point', (-105.08, 40.59))
         """
         filecsv = self.widgets['filecsv'].value
-        if filecsv and filecsv.tell():
+        if filecsv:
             filecsv.seek(0)
             coords = self.csv2coordinates(filecsv.read())
             if coords:
