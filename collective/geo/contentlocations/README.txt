@@ -64,4 +64,11 @@ Create the url and open it
     >>> 'POINT (0.1110000000000000 0.2220000000000000)' in browser.contents
     True
 
+We should also see the fieldset/fields for custom properties for this content
+
+    >>> 'Custom styles' in browser.contents
+    True
+    >>> 'Use custom styles' in browser.contents
+    True
+
 That's all folks

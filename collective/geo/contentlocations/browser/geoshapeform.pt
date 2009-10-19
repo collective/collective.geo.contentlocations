@@ -5,12 +5,21 @@
       i18n:domain="collective.geo.contentlocations"
       tal:omit-tag="">
 
-
+ <div class="portalMessage"
+       tal:condition="view/status" tal:content="view/status">
+  </div>
+	
   <div tal:attributes="class view/css_class|nothing">
-        <div class="linestring-form">
-            <metal:use use-macro="context/@@ploneform-macros/titlelessform" />
-        </div>
 
+    <h2 tal:replace="structure view/heading|nothing" />
+   
+    <form action="." method="post" name="edit_geometry"
+          tal:attributes="action request/getURL;
+                          enctype view/enctype;">
+      <fieldset class="subforms">
+       
+        <metal:use use-macro="context/@@ploneform-macros/fields" />
+      
         <metal:map use-macro="context/@@geopoint-macros/map-widget" />
         <script type="text/javascript">
           var editlayer = new OpenLayers.Layer.Vector("Edit");
@@ -61,5 +70,21 @@
 
         <div class="visualClear" ><!-- clear floats --></div>
 
+         <dl class="collapsible collapsedOnLoad" tal:repeat="form view/subforms">
+           <dt class="collapsibleHeader" tal:content="form/label">Title</dt>
+           <dd class="collapsibleContent">
+              <div tal:replace="structure form/render">The form</div>
+           </dd>
+         </dl>
+
+       </fieldset>
+
+
+      <span class="action" tal:repeat="action view/actions/values|nothing">
+        <input type="submit" tal:replace="structure action/render" />
+      </span>
+    </form>
+
   </div>
 </html>
+

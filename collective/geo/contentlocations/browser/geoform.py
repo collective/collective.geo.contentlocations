@@ -1,5 +1,6 @@
 import csv, cStringIO
-from zope import interface
+from zope import interface, component
+from zope.component import getUtility
 
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -9,20 +10,25 @@ from Products.CMFPlone.utils import getToolByName
 
 from plone.z3cform import z2
 from plone.z3cform.layout import wrap_form
-from z3c.form import form, field, button
+from z3c.form import form, field, button, subform, action
 from z3c.form.interfaces import HIDDEN_MODE
 
 from zope.component import getMultiAdapter
 
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
+from collective.geo.contentlocations.browser.geostylesform import EditStylesForm
 from collective.geo.contentlocations.interfaces import IGeoManager
 from collective.geo.contentlocations.interfaces import IGeoForm
+from collective.geo.kml.interfaces import IGeoContentKmlSettings
 
 from shapely.geos import ReadingError
 
 class GeoShapeForm(form.Form):
 
     interface.implements(IGeoForm)
+
+    label = u"Specify the geometry for this content"
+    form_name = u"Geo Shape Form"
 
     template = viewpagetemplatefile.ViewPageTemplateFile('geoshapeform.pt')
     fields = field.Fields(IGeoManager).select('coord_type', 'filecsv', 'wkt')
@@ -37,9 +43,30 @@ class GeoShapeForm(form.Form):
         super(GeoShapeForm,  self).__init__(context,  request)
         self.geomanager = IGeoManager(self.context)
 
+        portal_url = getToolByName(self.context, 'portal_url')
+        portal = portal_url.getPortalObject()
+        props_tool = getToolByName(portal, 'portal_properties')
+        site_props = getattr(props_tool, 'site_properties')
+        self.typesUseViewActionInListings = list(site_props.getProperty('typesUseViewActionInListings'))
+
+    def update(self):
+        self.actions = action.Actions(self, self.request, self.context)
+ 
+        self.subforms = []
+        subform = EditStylesForm(self.context, self.request, self)
+        subform.prefix = 'styles%s.' % len(self.subforms)
+        self.subforms.append(subform)
+        subform.update()
+        super(GeoShapeForm, self).update()
+
     @property
     def next_url(self):
-        return self.context.absolute_url()
+        #Need to send the user to the view url for certain content types.
+        url = self.context.absolute_url()
+        if self.context.portal_type in self.typesUseViewActionInListings:
+            url += '/view'
+
+        return url
 
     def redirectAction(self):
         self.request.response.redirect(self.next_url)
@@ -54,6 +81,12 @@ class GeoShapeForm(form.Form):
 
         if (errors):
             return
+
+        for subform in self.subforms:
+            subform_data, subform_errors = subform.extractData()
+            if (subform_errors):
+                return
+            subform.processData(subform_data)
 
         ok, message = self.addCoordinates(data)
         if not ok:
@@ -81,7 +114,7 @@ class GeoShapeForm(form.Form):
             >>> geo.setGeoInterface('Point', (-105.08, 40.59))
         """
         filecsv = self.widgets['filecsv'].value
-        if filecsv and filecsv.tell():
+        if filecsv:
             filecsv.seek(0)
             coords = self.csv2coordinates(filecsv.read())
             if coords:
@@ -143,3 +176,4 @@ class GeoShapeForm(form.Form):
 # TODO: maybe use geoform.pt as template/index
 manageCoordinates = wrap_form(GeoShapeForm, label=_(u'Coordinates'),
                               description=_(u"Modify geographical data for this content"))
+

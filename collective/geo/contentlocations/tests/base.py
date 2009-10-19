@@ -13,16 +13,17 @@ def setup_product():
     """Set up the package and its dependencies."""
 
     fiveconfigure.debug_mode = True
-    import collective.geo.contentlocations
+    from collective.geo import contentlocations, kml
 
-    zcml.load_config('configure.zcml', collective.geo.contentlocations)
+    zcml.load_config('configure.zcml', kml)
+    zcml.load_config('configure.zcml', contentlocations)
 
     fiveconfigure.debug_mode = False
 
     #ztc.installPackage('collective.geo.contentlocations')
 
 setup_product()
-ptc.setupPloneSite(products=['collective.geo.contentlocations'])
+ptc.setupPloneSite(products=['collective.geo.kml','collective.geo.contentlocations'])
 
 class ContentlocationsTestCase(ptc.PloneTestCase):
     pass
