@@ -91,10 +91,57 @@ we load a coordinates csv file and verify saved data
 Check there wasn't an error message
   
     >>> 'CSV File not correct. Verify file format.' in browser.contents
-    False    
+    False
+    >>> 'Changes saved.' in browser.contents
+    True
 
     >>> geo.getCoordinates()
     (u'Polygon', (((152.78686523438, -27.363230190180001), (152.96264648438, -27.447352944394002), (152.87887573242, -27.522886832325), (152.72506713867, -27.507053374681998), (152.71408081054, -27.430289738862001), (152.78686523438, -27.363230190180001)),))
 
+We can also set a few custom properties on a per-content basis as well
+
+    >>> link = browser.getLink('Coordinates')
+    >>> link.click()
+
+Check to see if our custom style section is present, with our fields
+    >>> 'Custom styles' in browser.contents
+    True
+    >>> browser.getControl('Line color')
+    <Control name='styles0.widgets.linecolor' type='text'>
+    >>> browser.getControl('Line width')
+    <Control name='styles0.widgets.linewidth' type='text'>
+    >>> browser.getControl('Polygon color')
+    <Control name='styles0.widgets.polygoncolor' type='text'>
+    >>> browser.getControl('Marker image size')
+    <Control name='styles0.widgets.marker_image_size' type='text'>
+
+    >>> use_custom_styles_control = browser.getControl(name='styles0.widgets.use_custom_style:list')
+    >>> use_custom_styles_control
+    <ListControl name='styles0.widgets.use_custom_style:list' type='radio'>
+
+We can see the default custom settings on this form
+
+    >>> use_custom_styles_control.value
+    ['false']
+   
+We can set custom settings on this form (per-content)
+
+    >>> use_custom_styles_control.value = ['true']
+    >>> browser.getControl('Save').click()
+
+Check to see that saved successfully
+
+    >>> 'Changes saved.' in browser.contents
+    True
+
+And check to see if the value was saved onto our content
+
+    >>> document = self.portal['front-page']
+    >>> from collective.geo.kml.interfaces import IGeoContentKmlSettings
+    >>> kml_settings = IGeoContentKmlSettings(document)
+    >>> kml_settings.context = document
+
+    >>> kml_settings.get('use_custom_style')
+    True
 
 XXX Everything should work for Point, LineString and Polygon as well

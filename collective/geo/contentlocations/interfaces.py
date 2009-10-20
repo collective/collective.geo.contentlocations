@@ -43,3 +43,4 @@ class IGeoManager(IGeoPoint):
         """ """
     def setCoordinates(self):
         """ """
+

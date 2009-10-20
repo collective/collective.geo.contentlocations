@@ -56,6 +56,14 @@ class GeoManager(object):
       >>> geo.latitude is None
       True
 
+      We can also change the coordinates to represent a Polygon
+      >>> geo.setCoordinates('Polygon', (((0.111,0.222),(0.222,0.222),(0.222,0.111),(0.111,0.111)),) )
+
+      and get its coordinates back accordingly
+      >>> geo.getCoordinates()
+      ('Polygon', (((0.111, 0.222), (0.222, 0.222), (0.222, 0.111), (0.111, 0.111)),))
+
+
     """
     interface.implements(IGeoManager)
 

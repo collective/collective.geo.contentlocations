@@ -32,6 +32,7 @@ setup(name='collective.geo.contentlocations',
           'collective.geo.geographer',
           'collective.geo.settings',
           'collective.geo.geopoint',
+          'collective.geo.kml',
       ],
       entry_points="""
       # -*- Entry points: -*-
