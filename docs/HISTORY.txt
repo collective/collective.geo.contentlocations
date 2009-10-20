@@ -4,6 +4,9 @@ Changelog
 0.2 (unreleased)
 ----------------
 
+* Updated geo shape form to exclude the geopoint Javascript which was
+  causing the old marker actions to be applied to the map widget.
+  [rockdj]
 * Manage coordinates form now redirects to the the View action for
   certain types of content specified in the site properties.  This 
   includes types such as File and Image where redirecting to their normal

@@ -16,7 +16,7 @@
     <form action="." method="post" name="edit_geometry"
           tal:attributes="action request/getURL;
                           enctype view/enctype;">
-      <fieldset class="subforms">
+      <fieldset class="subforms" tal:define="ignore_geopointjs python:True;">
        
         <metal:use use-macro="context/@@ploneform-macros/fields" />
       

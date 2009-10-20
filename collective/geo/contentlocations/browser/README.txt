@@ -33,6 +33,11 @@ First check the type list box:
     >>> control.options
     ['Point', 'LineString', 'Polygon']
 
+There shouldn't be the GeoPoint Javascript in the page, since we implement our
+own WKT-specific widget code
+    >>> '<script type="text/javascript" src="++resource++geo-point.js"></script>' not in browser.contents
+    True
+
 let's try to submit the form with a new LineString in the wkt-field
     >>> browser.getControl('Coordinates').value = u'LINESTRING '\
     ...           '(153.02719116211 -27.352252938064,'\
