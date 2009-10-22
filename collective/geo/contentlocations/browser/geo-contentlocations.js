@@ -1,7 +1,6 @@
 
 
 jq(document).ready(function() {
-                     console.log("Add Edit Layer");
   var map = cgmap.config.geoshapemap.map;
   var editlayer = new OpenLayers.Layer.Vector("Edit");
   map.addLayer(editlayer);
