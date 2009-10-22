@@ -102,9 +102,10 @@ class GeoShapeForm(form.Form):
         self.redirectAction()
 
     @property
-    def geopoint_js(self):
-        widget_id = self.widgets['wkt'].id
-        return u"var wkt_widget_id='%s';\n" % widget_id
+    def map(self):
+        return {'mapid': 'geoshapemap',
+                'mapstyle': 'width: 100%; height: 400px;'
+                'map_js' : "var wkt_widget_id='%s';\n" % self.widgets['wkt'].id }
 
     def addCoordinates(self, data):
         """ from zgeo.geographer.README.txt

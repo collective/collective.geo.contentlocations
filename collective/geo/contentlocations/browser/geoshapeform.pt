@@ -5,79 +5,38 @@
       i18n:domain="collective.geo.contentlocations"
       tal:omit-tag="">
 
- <div class="portalMessage"
+  <metal:use use-macro="context/@@geosettings-macros/openlayers"/>
+
+  <div class="portalMessage"
        tal:condition="view/status" tal:content="view/status">
   </div>
-	
+
   <div tal:attributes="class view/css_class|nothing">
 
     <h2 tal:replace="structure view/heading|nothing" />
-   
+
     <form action="." method="post" name="edit_geometry"
           tal:attributes="action request/getURL;
                           enctype view/enctype;">
       <fieldset class="subforms" tal:define="ignore_geopointjs python:True;">
-       
+
         <metal:use use-macro="context/@@ploneform-macros/fields" />
-      
-        <metal:map use-macro="context/@@geopoint-macros/map-widget" />
-        <script type="text/javascript">
-          var editlayer = new OpenLayers.Layer.Vector("Edit");
-          map.addLayer(editlayer);
 
-          function onEditBeforeFeaturesAdded(evt)
-          {
-            // TODO: maybe check editingpanel.multi (custom attribute) allowing multiple shapes at once. evt object should hold a reference to control to check this attribute (or I need to add this attribute to the editinglayer?
-            evt.object.destroyFeatures();
-          }
-
-          editlayer.events.register("beforefeaturesadded", editlayer, onEditBeforeFeaturesAdded);
-
-          var editingpanel = new OpenLayers.Control.EditingToolbar(editlayer, {});
-          editingpanel.addControls([ new OpenLayers.Control.ModifyFeature(editlayer, {}) ]);
-
-          map.addControl(editingpanel);
-          editingpanel.activate();
-
-          function olupdateWidget(evt) {
-            out_options = {
-                internalProjection: evt.object.map.projection,
-                externalProjection: evt.object.map.displayProjection };
-            var format = new OpenLayers.Format.WKT(out_options);
-            document.getElementById(wkt_widget_id).value = format.write(evt.feature);
-            format.destroy();
-          }
-
-          editlayer.events.register("featureadded", editlayer, olupdateWidget);
-          editlayer.events.register("featuremodified", editlayer, olupdateWidget);
-
-          var geomwkt = document.getElementById(wkt_widget_id).value;
-          in_options = {
-              internalProjection: map.projection,
-              externalProjection: map.displayProjection };
-          var format = new OpenLayers.Format.WKT(in_options);
-          var feat = format.read(geomwkt);
-          if (feat) {
-              console.log('feature parsed', feat);
-              editlayer.addFeatures([feat]);
-          } else {
-              console.log('no feature found', geomwkt);
-          }
-
-          // TODO: this needs to be somewhere site-specific...
-          jq(".ui-layout-center").bind("scroll", function(evt) {map.events.clearMouseCache(); });
-        </script>
-
+        <tal:omit tal:define="map view/map"
+                  tal:omit-tag="">
+          <metal:map use-macro="context/@@geosettings-macros/map-widget" />
+        </tal:omit>
+        <script type="text/javascript" src="++resource++geo-contentlocations.js"></script>
         <div class="visualClear" ><!-- clear floats --></div>
 
-         <dl class="collapsible collapsedOnLoad" tal:repeat="form view/subforms">
-           <dt class="collapsibleHeader" tal:content="form/label">Title</dt>
-           <dd class="collapsibleContent">
-              <div tal:replace="structure form/render">The form</div>
-           </dd>
-         </dl>
+        <dl class="collapsible collapsedOnLoad" tal:repeat="form view/subforms">
+          <dt class="collapsibleHeader" tal:content="form/label">Title</dt>
+          <dd class="collapsibleContent">
+            <div tal:replace="structure form/render">The form</div>
+          </dd>
+        </dl>
 
-       </fieldset>
+      </fieldset>
 
 
       <span class="action" tal:repeat="action view/actions/values|nothing">
