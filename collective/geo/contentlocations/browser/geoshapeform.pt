@@ -16,8 +16,13 @@
     <h2 tal:replace="structure view/heading|nothing" />
 
     <form action="." method="post" name="edit_geometry"
+          tal:define="groups view/groups | nothing;
+                      form_name view/form_name | nothing;
+                      has_groups python:bool(groups);
+                      form_tabbing  python:has_groups and 'enableFormTabbing' or '';"
           tal:attributes="action request/getURL;
-                          enctype view/enctype;">
+                          enctype view/enctype;
+                          class python:'rowlike enableUnloadProtection %s kssattr-formname-%s' % (form_tabbing, request.getURL().split('/')[-1]);">
       <fieldset class="subforms" tal:define="ignore_geopointjs python:True;">
 
         <metal:use use-macro="context/@@ploneform-macros/fields" />
