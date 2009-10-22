@@ -104,8 +104,8 @@ class GeoShapeForm(form.Form):
     @property
     def map(self):
         return {'mapid': 'geoshapemap',
-                'mapstyle': 'width: 100%; height: 400px;'
-                'map_js' : "var wkt_widget_id='%s';\n" % self.widgets['wkt'].id }
+                'mapstyle': 'width: 100%; height: 400px;',
+                'map_js' : "cgmap.wkt_widget_id='%s';" % self.widgets['wkt'].id }
 
     def addCoordinates(self, data):
         """ from zgeo.geographer.README.txt
