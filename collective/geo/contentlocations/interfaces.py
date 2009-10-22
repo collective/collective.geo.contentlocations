@@ -2,7 +2,6 @@ from zope.interface import Interface
 
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 from collective.geo.contentlocations import config
-from collective.geo.geopoint.interfaces import IGeoPoint
 from zope import schema
 
 class IGeoView(Interface):
@@ -16,8 +15,8 @@ class IGeoView(Interface):
 class IGeoForm(Interface):
     """ Interface for coordinates management forms """
 
-class IGeoManager(IGeoPoint):
-    """ Interface for point management """
+class IGeoManager(Interface):
+    """ Interface for shape management """
 
     coord_type = schema.Choice(
         title=_(u"Type"),
@@ -43,4 +42,3 @@ class IGeoManager(IGeoPoint):
         """ """
     def setCoordinates(self):
         """ """
-
