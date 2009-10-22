@@ -15,4 +15,9 @@
       class=".geoform.manageCoordinates"
       permission = "cmf.ModifyPortalContent" />
 
+  <browser:resource
+      name="geo-contentlocations.js"
+      file="geo-contentlocations.js"
+      />
+
 </configure>
