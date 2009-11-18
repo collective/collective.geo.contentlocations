@@ -19,7 +19,6 @@ from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 from collective.geo.contentlocations.browser.geostylesform import EditStylesForm
 from collective.geo.contentlocations.interfaces import IGeoManager
 from collective.geo.contentlocations.interfaces import IGeoForm
-from collective.geo.kml.interfaces import IGeoContentKmlSettings
 
 from shapely.geos import ReadingError
 
