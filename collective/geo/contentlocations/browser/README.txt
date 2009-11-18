@@ -27,7 +27,7 @@ let's try it!
 
 Let's investigate the form a little bit
 First check the type list box:
-    >>> control = browser.getControl('Type')
+    >>> control = browser.getControl('Type', index=0)
     >>> control
     <ListControl name='form.widgets.coord_type:list' type='select'>
     >>> control.options
@@ -60,7 +60,7 @@ Let's do it again, first clicking on "coordinates" and choosing the
 "point" type
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> browser.getControl('Type')
+    >>> browser.getControl('Type', index=0)
     <ListControl name='form.widgets.coord_type:list' type='select'>
 
 we're in the coordinates input form
@@ -75,7 +75,7 @@ clicking on cancel leads me to the default content view
 let's choose "polygon"
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> control = browser.getControl('Type')
+    >>> control = browser.getControl('Type', index=0)
     >>> control.value = ['Polygon',]
     >>> file_control = browser.getControl('File')
     >>> file_control
@@ -142,11 +142,17 @@ Check to see that saved successfully
 And check to see if the value was saved onto our content
 
     >>> document = self.portal['front-page']
-    >>> from collective.geo.kml.interfaces import IGeoContentKmlSettings
-    >>> kml_settings = IGeoContentKmlSettings(document)
+    >>> from collective.geo.kml.geokmlconfig import GeoContentKmlSettings
+    >>> kml_settings = GeoContentKmlSettings(document)
     >>> kml_settings.context = document
+
+    >>> kml_settings.initialiseStyles(document)
 
     >>> kml_settings.get('use_custom_style')
     True
+
+    >>> kml_settings.getStyles(document)
+    {'marker_image_size': 0.69999999999999996, 'use_custom_style': True, 'marker_image': u'img/marker.png', 'linecolor': u'#ff0000', 'linewidth': 2.0, 'display_properties': [], 'polygoncolor': u'#ff0000'}
+
 
 XXX Everything should work for Point, LineString and Polygon as well
