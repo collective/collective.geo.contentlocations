@@ -15,6 +15,8 @@ from z3c.form.interfaces import HIDDEN_MODE
 
 from zope.component import getMultiAdapter
 
+from collective.geo.settings.interfaces import IMapView
+from collective.geo.settings.browser.widget import MapWidget, MapLayer
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 from collective.geo.contentlocations.browser.geostylesform import EditStylesForm
 from collective.geo.contentlocations.interfaces import IGeoManager
@@ -25,13 +27,15 @@ from shapely.geos import ReadingError
 
 class GeoShapeForm(form.Form):
 
-    interface.implements(IGeoForm)
+    interface.implements(IGeoForm, IMapView)
 
     label = u"Specify the geometry for this content"
     form_name = u"Geo Shape Form"
 
     template = viewpagetemplatefile.ViewPageTemplateFile('geoshapeform.pt')
     fields = field.Fields(IGeoManager).select('coord_type', 'filecsv', 'wkt')
+
+    mapfields = ['geoshapemap']
 
     message_ok = _(u'Changes saved.')
     message_cancel = _(u'No changes made.')
@@ -51,7 +55,7 @@ class GeoShapeForm(form.Form):
 
     def update(self):
         self.actions = action.Actions(self, self.request, self.context)
- 
+
         self.subforms = []
         subform = EditStylesForm(self.context, self.request, self)
         subform.prefix = 'styles%s.' % len(self.subforms)
@@ -100,12 +104,6 @@ class GeoShapeForm(form.Form):
     def handleCancel(self, action):
         self.setStatusMessage(self.message_cancel)
         self.redirectAction()
-
-    @property
-    def map(self):
-        return {'mapid': 'geoshapemap',
-                'mapstyle': 'width: 100%; height: 400px;',
-                'map_js' : "cgmap.wkt_widget_id='%s';" % self.widgets['wkt'].id }
 
     def addCoordinates(self, data):
         """ from zgeo.geographer.README.txt
@@ -178,3 +176,30 @@ class GeoShapeForm(form.Form):
 manageCoordinates = wrap_form(GeoShapeForm, label=_(u'Coordinates'),
                               description=_(u"Modify geographical data for this content"))
 
+
+class ShapeMapWidget(MapWidget):
+
+    mapid = 'geoshapemap'
+    style = "height:500px; width:600px;"
+
+    _layers = ['shapeedit']
+
+    @property
+    def js(self):
+        return """
+      jq(function() {
+        var map = cgmap.config['geoshapemap'].map;
+        var layer = map.getLayersByName('Edit')[0];
+        var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%s'});
+        map.addControl(elctl);
+        elctl.activate();
+      });
+        """ % self.view.widgets['wkt'].id
+
+class ShapeEditLayer(MapLayer):
+
+    name = 'shapeedit'
+
+    jsfactory = """
+    function() { return new OpenLayers.Layer.Vector('Edit');}
+    """

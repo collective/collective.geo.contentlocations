@@ -15,6 +15,22 @@
       class=".geoform.manageCoordinates"
       permission = "cmf.ModifyPortalContent" />
 
+  <adapter
+      for="collective.geo.settings.interfaces.IMapView
+           zope.interface.Interface
+           zope.interface.Interface"
+      factory=".geoform.ShapeMapWidget"
+      name="geoshapemap" />
+
+    <adapter
+        for="collective.geo.settings.interfaces.IMapView
+             zope.interface.Interface
+             zope.interface.Interface
+             collective.geo.settings.interfaces.IMapWidget"
+        factory=".geoform.ShapeEditLayer"
+        name="shapeedit"
+        />
+
   <browser:resource
       name="geo-contentlocations.js"
       file="geo-contentlocations.js"

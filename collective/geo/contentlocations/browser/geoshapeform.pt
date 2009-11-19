@@ -27,10 +27,8 @@
 
         <metal:use use-macro="context/@@ploneform-macros/fields" />
 
-        <tal:omit tal:define="map view/map"
-                  tal:omit-tag="">
-          <metal:map use-macro="context/@@geosettings-macros/map-widget" />
-        </tal:omit>
+        <metal:map use-macro="context/@@geosettings-macros/map-widget" />
+
         <script type="text/javascript" src="++resource++geo-contentlocations.js"></script>
         <div class="visualClear" ><!-- clear floats --></div>
 
