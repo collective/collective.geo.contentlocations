@@ -24,6 +24,9 @@ class GeoShapeForm(form.Form):
 
     interface.implements(IGeoForm)
 
+    label = u"Specify the geometry for this content"
+    form_name = u"Geo Shape Form"
+
     template = viewpagetemplatefile.ViewPageTemplateFile('geoshapeform.pt')
     fields = field.Fields(IGeoManager).select('coord_type', 'filecsv', 'wkt')
 
@@ -37,9 +40,17 @@ class GeoShapeForm(form.Form):
         super(GeoShapeForm,  self).__init__(context,  request)
         self.geomanager = IGeoManager(self.context)
 
+        props_tool = getToolByName(self.context, 'portal_properties')
+        site_props = getattr(props_tool, 'site_properties')
+        self.typesUseViewActionInListings = list(site_props.getProperty('typesUseViewActionInListings'))
+
     @property
     def next_url(self):
-        return self.context.absolute_url()
+        #Need to send the user to the view url for certain content types.
+        url = self.context.absolute_url()
+        if self.context.portal_type in self.typesUseViewActionInListings:
+            url += '/view'
+        return url
 
     def redirectAction(self):
         self.request.response.redirect(self.next_url)
@@ -81,7 +92,7 @@ class GeoShapeForm(form.Form):
             >>> geo.setGeoInterface('Point', (-105.08, 40.59))
         """
         filecsv = self.widgets['filecsv'].value
-        if filecsv.tell():
+        if filecsv:
             filecsv.seek(0)
             coords = self.csv2coordinates(filecsv.read())
             if coords:
@@ -103,6 +114,8 @@ class GeoShapeForm(form.Form):
                 return False, self.message_error_wkt
         return False, self.message_error_input
 
+    #Verify the incoming CSV file and read coordinates as per the
+    #WGS 1984 reference system (longitude, latitude)
     def verifyCsv(self,filecsv):
         reader = csv.reader(cStringIO.StringIO(str(filecsv)), delimiter=',')
         coords = []
@@ -112,16 +125,16 @@ class GeoShapeForm(form.Form):
             if row:
                 # verify pairs of values are there
                 try:
-                    latitude = row[0]
-                    longitude = row[1]
+                    longitude = row[0]
+                    latitude = row[1]
                 except:
                     return False
 
-                # verify that latitude and longitude are non-empty and non-zero
-                if latitude != '' and longitude != '':
+                # verify that longitude and latitude are non-empty and non-zero
+                if longitude != '' and latitude != '':
                     try:
                         # check for float convertible values
-                        coords.append((float(latitude),float(longitude)))
+                        coords.append((float(longitude),float(latitude)))
                     except:
                         return False
 
@@ -141,3 +154,4 @@ class GeoShapeForm(form.Form):
 # TODO: maybe use geoform.pt as template/index
 manageCoordinates = wrap_form(GeoShapeForm, label=_(u'Coordinates'),
                               description=_(u"Modify geographical data for this content"))
+

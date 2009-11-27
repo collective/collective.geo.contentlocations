@@ -27,11 +27,16 @@ let's try it!
 
 Let's investigate the form a little bit
 First check the type list box:
-    >>> control = browser.getControl('Type')
+    >>> control = browser.getControl('Type', index=0)
     >>> control
     <ListControl name='form.widgets.coord_type:list' type='select'>
     >>> control.options
     ['Point', 'LineString', 'Polygon']
+
+There shouldn't be the GeoPoint Javascript in the page, since we implement our
+own WKT-specific widget code
+    >>> '<script type="text/javascript" src="++resource++geo-point.js"></script>' not in browser.contents
+    True
 
 let's try to submit the form with a new LineString in the wkt-field
     >>> browser.getControl('Coordinates').value = u'LINESTRING '\
@@ -55,7 +60,7 @@ Let's do it again, first clicking on "coordinates" and choosing the
 "point" type
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> browser.getControl('Type')
+    >>> browser.getControl('Type', index=0)
     <ListControl name='form.widgets.coord_type:list' type='select'>
 
 we're in the coordinates input form
@@ -70,7 +75,7 @@ clicking on cancel leads me to the default content view
 let's choose "polygon"
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> control = browser.getControl('Type')
+    >>> control = browser.getControl('Type', index=0)
     >>> control.value = ['Polygon',]
     >>> file_control = browser.getControl('File')
     >>> file_control
@@ -87,7 +92,80 @@ we load a coordinates csv file and verify saved data
     >>> csvfile = cStringIO.StringIO(csvdata)
     >>> file_control.add_file(csvfile, 'text/csv', 'poly.csv')
     >>> browser.getControl('Save').click()
+
+Check there wasn't an error message
+
+    >>> 'CSV File not correct. Verify file format.' in browser.contents
+    False
+    >>> 'Changes saved.' in browser.contents
+    True
+
     >>> geo.getCoordinates()
     (u'Polygon', (((152.78686523438, -27.363230190180001), (152.96264648438, -27.447352944394002), (152.87887573242, -27.522886832325), (152.72506713867, -27.507053374681998), (152.71408081054, -27.430289738862001), (152.78686523438, -27.363230190180001)),))
 
 XXX Everything should work for Point, LineString and Polygon as well
+
+Let us do also some negative tests:
+
+First we try to submit an invalid wkt:
+    >>> link = browser.getLink('Coordinates')
+    >>> link.click()
+    >>> browser.getControl('Coordinates').value = u'UNKNOWN '\
+    ...           '(153.02719116211 -27.352252938064,'\
+    ...           '153.11370849609 -27.370547753645,'\
+    ...           '153.08624267578 -27.403470801049,'\
+    ...           '153.00933837891 -27.402251603719)'
+    >>> browser.getControl('Save').click()
+
+we check that our data is still there
+    >>> 'WKT expression not correct. Verify input.' in browser.contents
+    True
+
+Let's try a few other things. How about an empty csv?
+    >>> browser.getControl('Type', index=0).value = ['Polygon',]
+    >>> file_control = browser.getControl('File')
+    >>> csvdata = ''
+    >>> import cStringIO
+    >>> csvfile = cStringIO.StringIO(csvdata)
+    >>> file_control.add_file(csvfile, 'text/csv', 'poly.csv')
+    >>> browser.getControl('Save').click()
+
+Check there wasn't an error message
+
+    >>> 'CSV File not correct. Verify file format.' in browser.contents
+    True
+
+What if we pass in a csv which does not contain coordinate pairs?
+    >>> browser.getControl('Type', index=0).value = ['Point',]
+    >>> file_control = browser.getControl('File')
+    >>> csvdata = '152.78686523438, -27.36323019018\n'\
+    ...           '152.96264648438'
+    >>> import cStringIO
+    >>> csvfile = cStringIO.StringIO(csvdata)
+    >>> file_control.add_file(csvfile, 'text/csv', 'poly.csv')
+    >>> browser.getControl('Save').click()
+
+Check there was an error message
+
+    >>> 'CSV File not correct. Verify file format.' in browser.contents
+    True
+
+Or non float values in csv:
+    >>> browser.getControl('Type', index=0).value = ['Point',]
+    >>> file_control = browser.getControl('File')
+    >>> csvdata = 'aaaaaaa, -27.36323019018'\
+    >>> import cStringIO
+    >>> csvfile = cStringIO.StringIO(csvdata)
+    >>> file_control.add_file(csvfile, 'text/csv', 'poly.csv')
+    >>> browser.getControl('Save').click()
+
+Check there was an error message
+
+    >>> 'CSV File not correct. Verify file format.' in browser.contents
+    True
+
+We should still be in the form and the data should be the same as before.
+    >>> from collective.geo.contentlocations.interfaces import IGeoManager
+    >>> geo = IGeoManager(self.portal['front-page'])
+    >>> geo.getCoordinates()
+    (u'Polygon', (((152.78686523438, -27.363230190180001), (152.96264648438, -27.447352944394002), (152.87887573242, -27.522886832325), (152.72506713867, -27.507053374681998), (152.71408081054, -27.430289738862001), (152.78686523438, -27.363230190180001)),))
