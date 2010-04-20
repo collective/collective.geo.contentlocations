@@ -52,3 +52,4 @@ class IGeoManager(Interface):
 
     def setCoordinates(self):
         """ """
+

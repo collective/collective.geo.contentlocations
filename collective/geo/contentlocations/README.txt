@@ -66,8 +66,6 @@ Create the url and open it
 
 We should also see the fieldset/fields for custom properties for this content
     >>> 'Custom styles' in browser.contents
-    False
-    >>> 'Use custom styles' in browser.contents
-    False
+    True
 
 That's all folks

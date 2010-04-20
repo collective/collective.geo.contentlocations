@@ -7,7 +7,6 @@
 
   <include package="plone.z3cform" />
   <include package="collective.geo.geographer" />
-
   <include package="collective.geo.mapwidget" />
 
   <include package=".browser" />
@@ -15,22 +14,33 @@
   <include file="profiles.zcml" />
 
   <adapter
+      factory='.indexer.collective_geo_styles'
+      name='collective_geo_styles' />
+
+  <subscriber
+     handler=".event.reindexDocSubscriber"
+     for="collective.geo.contentlocations.event.IObjectStylesEvent" />
+
+  <adapter
       for="Products.CMFCore.PortalContent.PortalContent"
       provides=".interfaces.IGeoManager"
-      factory=".geomanager.GeoManager"
-      />
+      factory=".geomanager.GeoManager" />
+
+  <adapter
+    for="Products.CMFCore.PortalContent.PortalContent"
+    provides="collective.geo.settings.interfaces.IGeoFeatureStyle"
+    factory=".geostylemanager.GeoStyleManager" />
+
 
   <adapter
       for="*
            .interfaces.IGeoView"
       provides=".interfaces.IGeoManager"
-      factory=".geomanager.GeoManager"
-      />
+      factory=".geomanager.GeoManager" />
 
   <utility
       factory=".vocabularies.coordsVocab"
       name="coordsVocab"
-      provides="zope.app.schema.vocabulary.IVocabularyFactory"
-      />
+      provides="zope.app.schema.vocabulary.IVocabularyFactory" />
 
 </configure>

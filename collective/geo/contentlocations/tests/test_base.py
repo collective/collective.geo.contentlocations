@@ -14,5 +14,9 @@ def test_suite():
             'README.txt', package='collective.geo.contentlocations',
             test_class=base.FunctionalTestCase,
             ),
+        ztc.ZopeDocFileSuite(
+            'geostylemanager.txt', package='collective.geo.contentlocations',
+            test_class=base.FunctionalTestCase,
+            ),
 
         ])

@@ -13,9 +13,12 @@ from plone.z3cform.fieldsets import extensible, group
 from collective.geo.mapwidget.interfaces import IMapView
 from collective.geo.mapwidget.browser.widget import MapWidget
 from collective.geo.mapwidget.maplayers import MapLayer
+
+from collective.geo.settings.interfaces import IGeoFeatureStyle
+
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
-# from collective.geo.contentlocations.browser.geostylesform \
-#                                                   import EditStylesForm
+from collective.geo.contentlocations.browser.geostylesform \
+                                                  import GeoStylesForm
 from collective.geo.contentlocations.interfaces import IGeoManager
 
 from shapely.geos import ReadingError
@@ -35,10 +38,13 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     fields = field.Fields(IGeoManager).select('wkt')
     mapfields = ['geoshapemap']
 
-    groups = (CsvGroup, )
+    groups = (CsvGroup, GeoStylesForm)
 
     message_ok = _(u'Changes saved.')
     message_cancel = _(u'No changes made.')
+    message_coordinates_null = _(u"No coordinate has been set. Please, set "
+                                  "coordinates on the map, fill in the WKT "
+                                  "field or import a csv file.")
     message_error_csv = _(u'CSV File not correct. Verify file format.')
     message_error_wkt = _(u'WKT expression not correct. Verify input.')
     message_error_input = _(u'No valid input given.')
@@ -77,7 +83,23 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         if (errors):
             return
 
-        ok, message = self.addCoordinates(data)
+        csv_group = [group for group in self.groups \
+                    if group.__class__.__name__ == 'CsvGroup']
+        filecsv = csv_group[0].widgets['filecsv'].value
+
+        #we need wkt value or csv file to set coordinates
+        if not data['wkt'] and not filecsv:
+            self.status = self.message_coordinates_null
+            return
+
+        # set content geo style
+        geostylesgroup = [group for group in self.groups \
+                    if group.__class__.__name__ == 'GeoStylesForm']
+        if geostylesgroup:
+            stylemanager = IGeoFeatureStyle(self.context)
+            stylemanager.setStyles([(field_name, data[field_name]) for field_name in geostylesgroup[0].fields])
+
+        ok, message = self.addCoordinates(data, filecsv)
         if not ok:
             self.status = message
             return
@@ -90,7 +112,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         self.setStatusMessage(self.message_cancel)
         self.redirectAction()
 
-    def addCoordinates(self, data):
+    def addCoordinates(self, data, filecsv):
         """ from zgeo.geographer.README.txt
             Now set the location geometry to type "Point"
             and coordinates 105.08 degrees West,
@@ -98,7 +120,6 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
 
             >>> geo.setGeoInterface('Point', (-105.08, 40.59))
         """
-        filecsv = self.groups[0].widgets['filecsv'].value
         if filecsv:
             filecsv.seek(0)
             coords = self.csv2coordinates(filecsv.read())

@@ -107,3 +107,31 @@ We can also set a few custom properties on a per-content basis as well
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
 
+Check to see if our custom style section is present, with our fields
+    >>> 'Custom styles' in browser.contents
+    True
+
+    >>> browser.getControl('Line color')
+    <Control name='form.widgets.linecolor' type='text'>
+
+    >>> browser.getControl('Line width')
+    <Control name='form.widgets.linewidth' type='text'>
+
+    >>> browser.getControl('Polygon color')
+    <Control name='form.widgets.polygoncolor' type='text'>
+
+    >>> browser.getControl('Marker image size')
+    <Control name='form.widgets.marker_image_size' type='text'>
+
+We can set custom settings on this form (per-content)
+    >>> browser.getControl('Line width').value = "2.1"
+    >>> browser.getControl('Save').click()
+
+Check to see that saved successfully
+    >>> 'Changes saved.' in browser.contents
+    True
+
+    >>> from collective.geo.settings.interfaces import IGeoFeatureStyle
+    >>> style_config = IGeoFeatureStyle(self.portal['front-page'])
+    >>> style_config.linewidth  == 2.1
+    True
