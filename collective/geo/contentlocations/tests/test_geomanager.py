@@ -1,6 +1,5 @@
 import unittest
-from zope.testing import doctest, doctestunit
-from collective.geo.contentlocations.tests import base
+from zope.testing import doctest
 import collective.geo.contentlocations.geomanager
 
 import zope.component

@@ -3,30 +3,29 @@
 from Products.Five import zcml
 from Products.Five import fiveconfigure
 
-from Testing import ZopeTestCase as ztc
-
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
+
 
 @onsetup
 def setup_product():
     """Set up the package and its dependencies."""
 
     fiveconfigure.debug_mode = True
-    from collective.geo import contentlocations, kml
+    from collective.geo import contentlocations
 
-    zcml.load_config('configure.zcml', kml)
     zcml.load_config('configure.zcml', contentlocations)
 
     fiveconfigure.debug_mode = False
 
-    #ztc.installPackage('collective.geo.contentlocations')
 
 setup_product()
-ptc.setupPloneSite(products=['collective.geo.kml','collective.geo.contentlocations'])
+ptc.setupPloneSite(products=['collective.geo.contentlocations', ])
 
-class ContentlocationsTestCase(ptc.PloneTestCase):
+
+class TestCase(ptc.PloneTestCase):
     pass
 
-class ContentlocationsFunctionalTestCase(ptc.FunctionalTestCase):
+
+class FunctionalTestCase(ptc.FunctionalTestCase):
     pass

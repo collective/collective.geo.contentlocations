@@ -12,7 +12,23 @@
   <browser:page
       name="manage-coordinates"
       for="*"
-      class=".geoform.manageCoordinates"
+      class=".geoshapeform.manageCoordinates"
       permission = "cmf.ModifyPortalContent" />
+
+  <adapter
+      for="collective.geo.mapwidget.interfaces.IMapView
+           zope.interface.Interface
+           zope.interface.Interface"
+      factory=".geoshapeform.ShapeMapWidget"
+      name="geoshapemap" />
+
+    <adapter
+        for="collective.geo.mapwidget.interfaces.IMapView
+             zope.interface.Interface
+             zope.interface.Interface
+             collective.geo.mapwidget.interfaces.IMapWidget"
+        factory=".geoshapeform.ShapeEditLayer"
+        name="shapeedit"
+        />
 
 </configure>

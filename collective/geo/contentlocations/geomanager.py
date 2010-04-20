@@ -1,8 +1,11 @@
+from zope import interface
+
 from collective.geo.contentlocations.interfaces import IGeoManager
+
 from zgeo.geographer.interfaces import IGeoreferenceable
 from zgeo.geographer.interfaces import IGeoreferenced
 from zgeo.geographer.interfaces import IWriteGeoreferenced
-from zope import interface
+
 
 class GeoManager(object):
     """
@@ -57,12 +60,11 @@ class GeoManager(object):
       True
 
       We can also change the coordinates to represent a Polygon
-      >>> geo.setCoordinates('Polygon', (((0.111,0.222),(0.222,0.222),(0.222,0.111),(0.111,0.111)),) )
+      >>> geo.setCoordinates('Polygon', (((0.111,0.222),(0.222,0.222), (0.222,0.111),(0.111,0.111)),) )
 
       and get its coordinates back accordingly
       >>> geo.getCoordinates()
       ('Polygon', (((0.111, 0.222), (0.222, 0.222), (0.222, 0.111), (0.111, 0.111)),))
-
 
     """
     interface.implements(IGeoManager)
@@ -73,14 +75,14 @@ class GeoManager(object):
 
     @property
     def longitude(self):
-        type,  coords = self.getCoordinates()
+        type, coords = self.getCoordinates()
         if type == 'Point':
             return coords[0]
         return None
 
     @property
     def latitude(self):
-        type,  coords = self.getCoordinates()
+        type, coords = self.getCoordinates()
         if type == 'Point':
             return coords[1]
         return None
@@ -109,7 +111,7 @@ class GeoManager(object):
         else:
             return None, None
 
-    def setCoordinates(self, type,  coords):
+    def setCoordinates(self, type, coords):
         if(self.isGeoreferenceable()):
             geo = IWriteGeoreferenced(self.context)
             geo.setGeoInterface(type, coords)

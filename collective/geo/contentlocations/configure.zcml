@@ -8,9 +8,7 @@
   <include package="plone.z3cform" />
   <include package="collective.geo.geographer" />
 
-  <include package="collective.geo.settings" />
-  <include package="collective.geo.geopoint" />
-  <include package="collective.geo.openlayers" />
+  <include package="collective.geo.mapwidget" />
 
   <include package=".browser" />
 

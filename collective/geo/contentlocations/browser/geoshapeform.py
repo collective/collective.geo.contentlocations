@@ -1,36 +1,41 @@
-import csv, cStringIO
-from zope import interface, component
-from zope.component import getUtility
+import csv
+import cStringIO
+from zope.interface import implements
 
-from Products.Five import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.app.pagetemplate import viewpagetemplatefile
 
 from Products.CMFPlone.utils import getToolByName
 
-from plone.z3cform import z2
 from plone.z3cform.layout import wrap_form
-from z3c.form import form, field, button, subform, action
-from z3c.form.interfaces import HIDDEN_MODE
+from z3c.form import form, field, button
+from plone.z3cform.fieldsets import extensible, group
 
-from zope.component import getMultiAdapter
-
+from collective.geo.mapwidget.interfaces import IMapView
+from collective.geo.mapwidget.browser.widget import MapWidget
+from collective.geo.mapwidget.maplayers import MapLayer
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
-from collective.geo.contentlocations.browser.geostylesform import EditStylesForm
+# from collective.geo.contentlocations.browser.geostylesform \
+#                                                   import EditStylesForm
 from collective.geo.contentlocations.interfaces import IGeoManager
-from collective.geo.contentlocations.interfaces import IGeoForm
 
 from shapely.geos import ReadingError
 
-class GeoShapeForm(form.Form):
 
-    interface.implements(IGeoForm)
+class CsvGroup(group.Group):
+    fields = field.Fields(IGeoManager).select('coord_type', 'filecsv')
+    label = _(u"Csv Import")
+    description = _(u"Import data from csv file")
 
-    label = u"Specify the geometry for this content"
-    form_name = u"Geo Shape Form"
 
+class GeoShapeForm(extensible.ExtensibleForm, form.Form):
+    implements(IMapView)
     template = viewpagetemplatefile.ViewPageTemplateFile('geoshapeform.pt')
-    fields = field.Fields(IGeoManager).select('coord_type', 'filecsv', 'wkt')
+    form_name="edit_geometry"
+    description = _(u"Specify the geometry for this content")
+    fields = field.Fields(IGeoManager).select('wkt')
+    mapfields = ['geoshapemap']
+
+    groups = (CsvGroup, )
 
     message_ok = _(u'Changes saved.')
     message_cancel = _(u'No changes made.')
@@ -38,25 +43,16 @@ class GeoShapeForm(form.Form):
     message_error_wkt = _(u'WKT expression not correct. Verify input.')
     message_error_input = _(u'No valid input given.')
 
-    def __init__(self, context,  request):
-        super(GeoShapeForm,  self).__init__(context,  request)
+    def __init__(self, context, request):
+        super(GeoShapeForm, self).__init__(context, request)
         self.geomanager = IGeoManager(self.context)
 
         portal_url = getToolByName(self.context, 'portal_url')
         portal = portal_url.getPortalObject()
         props_tool = getToolByName(portal, 'portal_properties')
         site_props = getattr(props_tool, 'site_properties')
-        self.typesUseViewActionInListings = list(site_props.getProperty('typesUseViewActionInListings'))
-
-    def update(self):
-        self.actions = action.Actions(self, self.request, self.context)
- 
-        self.subforms = []
-        subform = EditStylesForm(self.context, self.request, self)
-        subform.prefix = 'styles%s.' % len(self.subforms)
-        self.subforms.append(subform)
-        subform.update()
-        super(GeoShapeForm, self).update()
+        self.typesUseViewActionInListings = list(
+                    site_props.getProperty('typesUseViewActionInListings'))
 
     @property
     def next_url(self):
@@ -71,7 +67,7 @@ class GeoShapeForm(form.Form):
         self.request.response.redirect(self.next_url)
 
     def setStatusMessage(self, message):
-        ptool = getToolByName(self.context,'plone_utils')
+        ptool = getToolByName(self.context, 'plone_utils')
         ptool.addPortalMessage(message)
 
     @button.buttonAndHandler(_(u'Save'))
@@ -80,12 +76,6 @@ class GeoShapeForm(form.Form):
 
         if (errors):
             return
-
-        for subform in self.subforms:
-            subform_data, subform_errors = subform.extractData()
-            if (subform_errors):
-                return
-            subform.processData(subform_data)
 
         ok, message = self.addCoordinates(data)
         if not ok:
@@ -100,25 +90,21 @@ class GeoShapeForm(form.Form):
         self.setStatusMessage(self.message_cancel)
         self.redirectAction()
 
-    @property
-    def geopoint_js(self):
-        widget_id = self.widgets['wkt'].id
-        return u"var wkt_widget_id='%s';\n" % widget_id
-
     def addCoordinates(self, data):
         """ from zgeo.geographer.README.txt
-            Now set the location geometry to type "Point" and coordinates 105.08 degrees
-            West, 40.59 degrees North using setGeoInterface()
+            Now set the location geometry to type "Point"
+            and coordinates 105.08 degrees West,
+            40.59 degrees North using setGeoInterface()
 
             >>> geo.setGeoInterface('Point', (-105.08, 40.59))
         """
-        filecsv = self.widgets['filecsv'].value
+        filecsv = self.groups[0].widgets['filecsv'].value
         if filecsv:
             filecsv.seek(0)
             coords = self.csv2coordinates(filecsv.read())
             if coords:
                 # should probably use dataconvert instead of array indexing
-                shape = self.widgets['coord_type'].value[0]
+                shape = self.groups[0].widgets['coord_type'].value[0]
                 if shape.lower() == 'polygon':
                     # Polygon expects an outer hull and a hole.
                     coords = (coords, )
@@ -129,7 +115,8 @@ class GeoShapeForm(form.Form):
         else:
             try:
                 geom = self.verifyWkt(data['wkt']).__geo_interface__
-                self.geomanager.setCoordinates(geom['type'], geom['coordinates'])
+                self.geomanager.setCoordinates(geom['type'],
+                                                geom['coordinates'])
                 return True, self.message_ok
             except ReadingError:
                 return False, self.message_error_wkt
@@ -137,7 +124,7 @@ class GeoShapeForm(form.Form):
 
     #Verify the incoming CSV file and read coordinates as per the
     #WGS 1984 reference system (longitude, latitude)
-    def verifyCsv(self,filecsv):
+    def verifyCsv(self, filecsv):
         reader = csv.reader(cStringIO.StringIO(str(filecsv)), delimiter=',')
         coords = []
         for row in reader:
@@ -155,7 +142,7 @@ class GeoShapeForm(form.Form):
                 if longitude != '' and latitude != '':
                     try:
                         # check for float convertible values
-                        coords.append((float(longitude),float(latitude)))
+                        coords.append((float(longitude), float(latitude)))
                     except:
                         return False
 
@@ -169,10 +156,38 @@ class GeoShapeForm(form.Form):
 
     def verifyWkt(self, data):
         from shapely import wkt
-        geom = wkt.loads(data);
+        geom = wkt.loads(data)
         return geom
 
-# TODO: maybe use geoform.pt as template/index
-manageCoordinates = wrap_form(GeoShapeForm, label=_(u'Coordinates'),
-                              description=_(u"Modify geographical data for this content"))
 
+manageCoordinates = wrap_form(GeoShapeForm, label=_(u'Coordinates'),
+                  description=_(u"Modify geographical data for this content"))
+
+
+class ShapeMapWidget(MapWidget):
+
+    mapid = 'geoshapemap'
+    style = "height:500px; width:600px;"
+
+    _layers = ['shapeedit']
+
+    @property
+    def js(self):
+        return """
+  jq(function() {
+    var map = cgmap.config['geoshapemap'].map;
+    var layer = map.getLayersByName('Edit')[0];
+    var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%s'});
+    map.addControl(elctl);
+    elctl.activate();
+   });
+        """ % self.view.widgets['wkt'].id
+
+
+class ShapeEditLayer(MapLayer):
+
+    name = 'shapeedit'
+
+    jsfactory = """
+    function() { return new OpenLayers.Layer.Vector('Edit');}
+    """

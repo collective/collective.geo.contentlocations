@@ -1,11 +1,14 @@
 import unittest
-from collective.geo.contentlocations.tests.base import ContentlocationsTestCase
+from collective.geo.contentlocations.tests import base
 
-class TestSetup(ContentlocationsTestCase):
+
+class TestSetup(base.TestCase):
 
     def test_portal_actions(self):
-        location_action = self.portal.portal_actions.object.get('locations', False)
+        location_action = self.portal.portal_actions.object.get('locations',
+                                                                        False)
         self.failUnless(location_action)
+
 
 def test_suite():
     suite = unittest.TestSuite()

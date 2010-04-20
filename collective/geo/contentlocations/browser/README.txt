@@ -7,13 +7,12 @@ we start the tests with the usual boilerplate
     >>> portal_url = self.portal.absolute_url()
     >>> self.portal.error_log._ignored_exceptions = ()
 
-    >>> from Products.PloneTestCase.setup import portal_owner, default_password
+we log in as manager
+    >>> from Products.PloneTestCase.setup import portal_owner
+    >>> from Products.PloneTestCase.setup import default_password
+    >>> browser.addHeader('Authorization',
+    ...                   'Basic %s:%s' % (portal_owner, default_password))
     >>> browser.open(portal_url)
-
-We have the login portlet, so let's use that.
-    >>> browser.getControl(name='__ac_name').value = portal_owner
-    >>> browser.getControl(name='__ac_password').value = default_password
-    >>> browser.getControl(name='submit').click()
 
 we have a specific tab for the georeferenceable objects -- Coordinates
     >>> '<a href="%s/front-page/@@manage-coordinates">Coordinates</a>' % portal_url in browser.contents
@@ -39,7 +38,7 @@ own WKT-specific widget code
     True
 
 let's try to submit the form with a new LineString in the wkt-field
-    >>> browser.getControl('Coordinates').value = u'LINESTRING '\
+    >>> browser.getControl('Shape in WKT format').value = u'LINESTRING '\
     ...           '(153.02719116211 -27.352252938064,'\
     ...           '153.11370849609 -27.370547753645,'\
     ...           '153.08624267578 -27.403470801049,'\
@@ -64,7 +63,7 @@ Let's do it again, first clicking on "coordinates" and choosing the
     <ListControl name='form.widgets.coord_type:list' type='select'>
 
 we're in the coordinates input form
-    >>> browser.getControl('Coordinates')
+    >>> browser.getControl('Shape in WKT format')
     <Control name='form.widgets.wkt' type='textarea'>
 
 clicking on cancel leads me to the default content view
@@ -108,51 +107,3 @@ We can also set a few custom properties on a per-content basis as well
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
 
-Check to see if our custom style section is present, with our fields
-    >>> 'Custom styles' in browser.contents
-    True
-    >>> browser.getControl('Line color')
-    <Control name='styles0.widgets.linecolor' type='text'>
-    >>> browser.getControl('Line width')
-    <Control name='styles0.widgets.linewidth' type='text'>
-    >>> browser.getControl('Polygon color')
-    <Control name='styles0.widgets.polygoncolor' type='text'>
-    >>> browser.getControl('Marker image size')
-    <Control name='styles0.widgets.marker_image_size' type='text'>
-
-    >>> use_custom_styles_control = browser.getControl(name='styles0.widgets.use_custom_style:list')
-    >>> use_custom_styles_control
-    <ListControl name='styles0.widgets.use_custom_style:list' type='radio'>
-
-We can see the default custom settings on this form
-
-    >>> use_custom_styles_control.value
-    ['false']
-   
-We can set custom settings on this form (per-content)
-
-    >>> use_custom_styles_control.value = ['true']
-    >>> browser.getControl('Save').click()
-
-Check to see that saved successfully
-
-    >>> 'Changes saved.' in browser.contents
-    True
-
-And check to see if the value was saved onto our content
-
-    >>> document = self.portal['front-page']
-    >>> from collective.geo.kml.geokmlconfig import GeoContentKmlSettings
-    >>> kml_settings = GeoContentKmlSettings(document)
-    >>> kml_settings.context = document
-
-    >>> kml_settings.initialiseStyles(document)
-
-    >>> kml_settings.get('use_custom_style')
-    True
-
-    >>> kml_settings.getStyles(document)
-    {'marker_image_size': 0.69999999999999996, 'use_custom_style': True, 'marker_image': u'img/marker.png', 'linecolor': u'#ff0000', 'linewidth': 2.0, 'display_properties': [], 'polygoncolor': u'#ff0000'}
-
-
-XXX Everything should work for Point, LineString and Polygon as well

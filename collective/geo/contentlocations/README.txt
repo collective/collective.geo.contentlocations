@@ -1,5 +1,5 @@
 collective.geo.contentlocations Package Readme
-==============================
+==============================================
 
 Overview
 --------
@@ -59,16 +59,15 @@ Create the url and open it
 
     >>> view_url = '%s/@@manage-coordinates' % document.absolute_url()
     >>> browser.open(view_url)
-    >>> '<div id="map" ' in browser.contents
+    >>> '<div id="geoshapemap" ' in browser.contents
     True
     >>> 'POINT (0.1110000000000000 0.2220000000000000)' in browser.contents
     True
 
 We should also see the fieldset/fields for custom properties for this content
-
     >>> 'Custom styles' in browser.contents
-    True
+    False
     >>> 'Use custom styles' in browser.contents
-    True
+    False
 
 That's all folks

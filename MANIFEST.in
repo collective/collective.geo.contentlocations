@@ -10,4 +10,5 @@ recursive-include collective *.pot
 recursive-include collective *.mo
 recursive-include collective *.po
 recursive-include collective *.sh
+recursive-include collective *.js
 recursive-include collective *.csv

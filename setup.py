@@ -27,12 +27,8 @@ setup(name='collective.geo.contentlocations',
           'setuptools',
           # -*- Extra requirements: -*-
           'Shapely',
-          'plone.z3cform',
-          'collective.geo.openlayers',
+          'collective.geo.mapwidget',
           'collective.geo.geographer',
-          'collective.geo.settings',
-          'collective.geo.geopoint',
-          'collective.geo.kml',
       ],
       entry_points="""
       # -*- Entry points: -*-

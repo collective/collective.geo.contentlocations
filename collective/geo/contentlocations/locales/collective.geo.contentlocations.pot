@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-06-12 23:15+0000\n"
+"POT-Creation-Date: 2010-04-20 01:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,44 +17,62 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
 
-#: ./browser/geoform.py:57
+#: ./browser/geoshapeform.py:42
 msgid "CSV File not correct. Verify file format."
 msgstr ""
 
-#: ./browser/geoform.py:93
+#: ./browser/geoshapeform.py:88
 msgid "Cancel"
 msgstr ""
 
-#: ./browser/geoform.py:55
+#: ./browser/geoshapeform.py:40
 msgid "Changes saved."
 msgstr ""
 
-#: ./interfaces.py:23
-msgid "Choose type of coordinates."
+#. Default: "Choose a tool and draw the shape on the map"
+#: ./browser/geoshapeform.pt:74
+msgid "Choose a tool and draw the shape on the map"
 msgstr ""
 
-#: ./browser/geoform.py:25
+#: ./interfaces.py:31
+msgid "Choose type of coordinates for uploading csv."
+msgstr ""
+
+#. Default: "Coordinates"
+#: ./browser/geoshapeform.pt:71
 msgid "Coordinates"
 msgstr ""
 
-#: ./interfaces.py:28
+#: ./browser/geoshapeform.py:26
+msgid "Csv Import"
+msgstr ""
+
+#: ./interfaces.py:37
 msgid "File"
+msgstr ""
+
+#: ./browser/geoshapeform.py:27
+msgid "Import data from csv file"
+msgstr ""
+
+#: ./interfaces.py:44
+msgid "Insert below the shape coordinates in wkt format."
 msgstr ""
 
 #: ./__init__.py:8
 msgid "LineString"
 msgstr ""
 
-#: ./browser/geoform.py:26
+#: ./browser/geoshapeform.py:164
 msgid "Modify geographical data for this content"
 msgstr ""
 
-#: ./browser/geoform.py:46
-msgid "Next"
+#: ./browser/geoshapeform.py:41
+msgid "No changes made."
 msgstr ""
 
-#: ./browser/geoform.py:56
-msgid "No changes made."
+#: ./browser/geoshapeform.py:44
+msgid "No valid input given."
 msgstr ""
 
 #: ./__init__.py:7
@@ -65,11 +83,27 @@ msgstr ""
 msgid "Polygon"
 msgstr ""
 
-#: ./browser/geoform.py:79
+#: ./browser/geoshapeform.py:73
 msgid "Save"
 msgstr ""
 
-#: ./interfaces.py:22
+#: ./interfaces.py:43
+msgid "Shape in WKT format"
+msgstr ""
+
+#: ./browser/geoshapeform.py:34
+msgid "Specify the geometry for this content"
+msgstr ""
+
+#: ./interfaces.py:30
 msgid "Type"
+msgstr ""
+
+#: ./browser/geoshapeform.py:43
+msgid "WKT expression not correct. Verify input."
+msgstr ""
+
+#: ./interfaces.py:38
+msgid "a csv file holding a coordinate per row and enough coordinate pairs for selected type."
 msgstr ""
 

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>1.0</version>
+  <version>0.2</version>
   <dependencies>
     <dependency>profile-collective.geo.geographer:default</dependency>
-    <dependency>profile-collective.geo.openlayers:default</dependency>
-    <dependency>profile-collective.geo.settings:default</dependency>
+    <dependency>profile-collective.geo.mapwidget:default</dependency>
+    <!-- <dependency>profile-collective.geo.settings:default</dependency> -->
   </dependencies>
 </metadata>
