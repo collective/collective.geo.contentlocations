@@ -20,7 +20,8 @@ Add geo-styled content
     ...                      ('marker_image_size', 0.4),
     ...                      ('linewidth', 2.1),
     ...                      ('linecolor', u'#cccccc'),
-    ...                      ('polygoncolor', u'#f0f0f0')])
+    ...                      ('polygoncolor', u'#f0f0f0'),
+    ...                      ('display_properties', ['Type','Subjects'])])
 
 Check the topic
 
@@ -40,4 +41,7 @@ Check the topic
     True
     
     >>> styles_metadata['polygoncolor'] ==  u'#f0f0f0'
+    True
+
+    >>> styles_metadata['display_properties'] ==  ['Type','Subjects']
     True

@@ -35,7 +35,8 @@ class GeoStyleManager(object):
             self.geostyles['polygoncolor'] = self.defaultstyles.polygoncolor
             self.geostyles['marker_image'] = self.defaultstyles.marker_image
             self.geostyles['marker_image_size'] = self.defaultstyles.marker_image_size
-            #self.geostyles['display_properties'] = self.defaultstyles.display_properties
+            self.geostyles['display_properties'] = self.defaultstyles.display_properties
+
     @property
     def linecolor(self):
         return self.get('linecolor')
@@ -56,8 +57,10 @@ class GeoStyleManager(object):
     def marker_image_size(self):
         return self.get('marker_image_size')
 
-    # def display_properties(self):
-    #         return self.get('display_properties')
+    @property
+    def display_properties(self):
+        return self.get('display_properties')
+
     def set(self, key, val):
         return self.geostyles.__setitem__(key, val)
 
