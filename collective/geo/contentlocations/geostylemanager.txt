@@ -20,8 +20,8 @@ Add geo-styled content
     ...                      ('marker_image', u'marker.png'),
     ...                      ('marker_image_size', 0.4),
     ...                      ('linewidth', 2.1),
-    ...                      ('linecolor', u'#cccccc'),
-    ...                      ('polygoncolor', u'#f0f0f0'),
+    ...                      ('linecolor', u'cccccc3c'),
+    ...                      ('polygoncolor', u'f0f0f03c'),
     ...                      ('display_properties', ['Type','Subjects'])])
 
 Check the topic
@@ -41,10 +41,10 @@ Check the topic
     >>> styles_metadata['linewidth'] == 2.1
     True
     
-    >>> styles_metadata['linecolor'] == u'#cccccc'
+    >>> styles_metadata['linecolor'] == u'cccccc3c'
     True
     
-    >>> styles_metadata['polygoncolor'] ==  u'#f0f0f0'
+    >>> styles_metadata['polygoncolor'] ==  u'f0f0f03c'
     True
 
     >>> styles_metadata['display_properties'] ==  ['Type','Subjects']
