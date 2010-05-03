@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2010-04-20 12:36+0000\n"
+"POT-Creation-Date: 2010-05-03 16:25+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
 "Last-Translator: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Domain: collective.geo.contentlocations\n"
 "X-Is-Fallback-For: it-it it-ch it-sm it-hr it-si\n"
 
-#: ./browser/geoshapeform.py:46
+#: ./browser/geoshapeform.py:48
 msgid "CSV File not correct. Verify file format."
 msgstr "Csv non corretto, verifica il formato del file ed invia nuovamente il modulo."
 
@@ -47,7 +47,7 @@ msgstr "Coordinate"
 msgid "Csv Import"
 msgstr "Importazione csv"
 
-#: ./browser/geostylesform.py:16
+#: ./browser/geostylesform.py:22
 msgid "Custom styles"
 msgstr "Stili personalizzati"
 
@@ -79,7 +79,7 @@ msgstr "Modifiche annullate"
 msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a csv file."
 msgstr "Nessuna coordinata è stata impostata. Imposta le coordinate sulla mappa, compila il campo WKT o importa un file csv."
 
-#: ./browser/geoshapeform.py:48
+#: ./browser/geoshapeform.py:50
 msgid "No valid input given."
 msgstr "Dati non corretti"
 
@@ -91,7 +91,7 @@ msgstr "Punto"
 msgid "Polygon"
 msgstr "Poligono"
 
-#: ./browser/geoshapeform.py:78
+#: ./browser/geoshapeform.py:79
 msgid "Save"
 msgstr "Salva"
 
@@ -107,7 +107,7 @@ msgstr "Specifica il tipo di area per questo contenuto"
 msgid "Type"
 msgstr "Tipo"
 
-#: ./browser/geoshapeform.py:47
+#: ./browser/geoshapeform.py:49
 msgid "WKT expression not correct. Verify input."
 msgstr "Formato WKT non corretto, verifica il valore immesso"
 

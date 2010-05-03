@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-04-20 12:36+0000\n"
+"POT-Creation-Date: 2010-05-03 16:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
 
-#: ./browser/geoshapeform.py:46
+#: ./browser/geoshapeform.py:48
 msgid "CSV File not correct. Verify file format."
 msgstr ""
 
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Csv Import"
 msgstr ""
 
-#: ./browser/geostylesform.py:16
+#: ./browser/geostylesform.py:22
 msgid "Custom styles"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a csv file."
 msgstr ""
 
-#: ./browser/geoshapeform.py:48
+#: ./browser/geoshapeform.py:50
 msgid "No valid input given."
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Polygon"
 msgstr ""
 
-#: ./browser/geoshapeform.py:78
+#: ./browser/geoshapeform.py:79
 msgid "Save"
 msgstr ""
 
@@ -107,7 +107,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: ./browser/geoshapeform.py:47
+#: ./browser/geoshapeform.py:49
 msgid "WKT expression not correct. Verify input."
 msgstr ""
 
