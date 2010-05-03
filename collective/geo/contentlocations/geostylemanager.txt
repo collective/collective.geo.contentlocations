@@ -14,9 +14,10 @@ Add geo-styled content
 
     >>> oid = self.folder.invokeFactory('Document', 'doc')
     >>> doc = self.folder[oid]
-    >>> from collective.geo.settings.interfaces import IGeoFeatureStyle
-    >>> geostyles = IGeoFeatureStyle(doc)
-    >>> geostyles.setStyles([('marker_image', u'marker.png'),
+    >>> from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
+    >>> geostyles = IGeoCustomFeatureStyle(doc)
+    >>> geostyles.setStyles([('use_custom_styles', True),
+    ...                      ('marker_image', u'marker.png'),
     ...                      ('marker_image_size', 0.4),
     ...                      ('linewidth', 2.1),
     ...                      ('linecolor', u'#cccccc'),
@@ -27,7 +28,10 @@ Check the topic
 
     >>> brain = [b for b in topic.queryCatalog() if b.id == 'doc'][0]
     >>> styles_metadata = brain.collective_geo_styles
-    
+
+    >>> styles_metadata['use_custom_styles']
+    True
+
     >>> styles_metadata['marker_image'] == u'marker.png'
     True
     

@@ -3,12 +3,18 @@ from plone.z3cform.fieldsets import group
 
 from collective.z3cform.colorpicker.colorpicker import ColorpickerFieldWidget
 
-from collective.geo.settings.interfaces import IGeoFeatureStyle
+from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 
 
 class GeoStylesForm(group.Group):
-    fields = field.Fields(IGeoFeatureStyle)
+    fields = field.Fields(IGeoCustomFeatureStyle).select('use_custom_styles',
+                                                         'linecolor',
+                                                         'linewidth',
+                                                         'polygoncolor',
+                                                         'marker_image',
+                                                         'marker_image_size',
+                                                         'display_properties')
 
     fields['linecolor'].widgetFactory = ColorpickerFieldWidget
     fields['polygoncolor'].widgetFactory = ColorpickerFieldWidget

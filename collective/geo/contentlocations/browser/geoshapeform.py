@@ -14,7 +14,7 @@ from collective.geo.mapwidget.interfaces import IMapView
 from collective.geo.mapwidget.browser.widget import MapWidget
 from collective.geo.mapwidget.maplayers import MapLayer
 
-from collective.geo.settings.interfaces import IGeoFeatureStyle
+from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
 
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 from collective.geo.contentlocations.browser.geostylesform \
@@ -96,7 +96,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         geostylesgroup = [group for group in self.groups \
                     if group.__class__.__name__ == 'GeoStylesForm']
         if geostylesgroup:
-            stylemanager = IGeoFeatureStyle(self.context)
+            stylemanager = IGeoCustomFeatureStyle(self.context)
             stylemanager.setStyles([(field_name, data[field_name]) for field_name in geostylesgroup[0].fields])
 
         ok, message = self.addCoordinates(data, filecsv)

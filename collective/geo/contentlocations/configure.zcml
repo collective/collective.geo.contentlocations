@@ -28,7 +28,7 @@
 
   <adapter
     for="Products.CMFCore.PortalContent.PortalContent"
-    provides="collective.geo.settings.interfaces.IGeoFeatureStyle"
+    provides="collective.geo.settings.interfaces.IGeoCustomFeatureStyle"
     factory=".geostylemanager.GeoStyleManager" />
 
 

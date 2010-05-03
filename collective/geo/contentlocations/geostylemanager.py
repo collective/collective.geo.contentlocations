@@ -7,7 +7,7 @@ from zope.event import notify
 from zope.annotation.interfaces import IAnnotations
 
 from plone.registry.interfaces import IRegistry
-from collective.geo.settings.interfaces import IGeoFeatureStyle
+from collective.geo.settings.interfaces import IGeoCustomFeatureStyle, IGeoFeatureStyle
 from collective.geo.contentlocations.event import ObjectStylesEvent
 
 KEY = 'collective.geo.contentlocations.style'
@@ -17,7 +17,7 @@ class GeoStyleManager(object):
     """ Adapter to manage features style for content type
     """
 
-    implements(IGeoFeatureStyle)
+    implements(IGeoCustomFeatureStyle)
 
     def __init__(self, context):
 
@@ -30,12 +30,17 @@ class GeoStyleManager(object):
         if not self.geostyles:
             annotations[KEY] = PersistentDict()
             self.geostyles = annotations[KEY]
+            self.geostyles['use_custom_styles'] = False
             self.geostyles['linecolor'] = self.defaultstyles.linecolor
             self.geostyles['linewidth'] = self.defaultstyles.linewidth
             self.geostyles['polygoncolor'] = self.defaultstyles.polygoncolor
             self.geostyles['marker_image'] = self.defaultstyles.marker_image
             self.geostyles['marker_image_size'] = self.defaultstyles.marker_image_size
             self.geostyles['display_properties'] = self.defaultstyles.display_properties
+
+    @property
+    def use_custom_styles(self):
+        return self.get('use_custom_styles')
 
     @property
     def linecolor(self):
