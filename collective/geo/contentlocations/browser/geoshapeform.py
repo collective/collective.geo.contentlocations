@@ -188,7 +188,7 @@ manageCoordinates = wrap_form(GeoShapeForm, label=_(u'Coordinates'),
 class ShapeMapWidget(MapWidget):
 
     mapid = 'geoshapemap'
-    style = "height:500px; width:600px;"
+    style = "height:500px;"
 
     _layers = ['shapeedit']
 
