@@ -2,9 +2,9 @@ from zope import interface
 
 from collective.geo.contentlocations.interfaces import IGeoManager
 
-from zgeo.geographer.interfaces import IGeoreferenceable
-from zgeo.geographer.interfaces import IGeoreferenced
-from zgeo.geographer.interfaces import IWriteGeoreferenced
+from collective.geo.geographer.interfaces import IGeoreferenceable
+from collective.geo.geographer.interfaces import IGeoreferenced
+from collective.geo.geographer.interfaces import IWriteGeoreferenced
 
 
 class GeoManager(object):

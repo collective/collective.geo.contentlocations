@@ -113,7 +113,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         self.redirectAction()
 
     def addCoordinates(self, data, filecsv):
-        """ from zgeo.geographer.README.txt
+        """ from collective.geo.geographer.README.txt
             Now set the location geometry to type "Point"
             and coordinates 105.08 degrees West,
             40.59 degrees North using setGeoInterface()

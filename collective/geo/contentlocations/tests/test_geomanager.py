@@ -1,18 +1,18 @@
 import unittest
-from zope.testing import doctest
+import doctest
 import collective.geo.contentlocations.geomanager
 
 import zope.component
-import zgeo.geographer.geo
-import zgeo.geographer.interfaces
+import collective.geo.geographer.geo
+import collective.geo.geographer.interfaces
 import zope.annotation.interfaces
 import zope.annotation.attribute
 
 def setUp(test):
 
     zope.component.provideAdapter(
-            zgeo.geographer.geo.GeoreferencingAnnotator,
-            provides=zgeo.geographer.interfaces.IWriteGeoreferenced
+            collective.geo.geographer.geo.GeoreferencingAnnotator,
+            provides=collective.geo.geographer.interfaces.IWriteGeoreferenced
         )
 
     zope.component.provideAdapter(
