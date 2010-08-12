@@ -12,16 +12,24 @@ we log in as manager
     >>> from Products.PloneTestCase.setup import default_password
     >>> browser.addHeader('Authorization',
     ...                   'Basic %s:%s' % (portal_owner, default_password))
-    >>> browser.open(portal_url)
+
+Now we create a document in user folder and we mark it as Georeferenceable
+    >>> document_id = self.folder.invokeFactory('Document', 'document')
+    >>> document = self.folder[document_id]
+    >>> from zope.interface import alsoProvides
+    >>> from collective.geo.geographer.interfaces import IGeoreferenceable
+    >>> alsoProvides(document, IGeoreferenceable)
 
 we have a specific tab for the georeferenceable objects -- Coordinates
-    >>> '<a href="%s/front-page/@@manage-coordinates">Coordinates</a>' % portal_url in browser.contents
+    >>> document_url = document.absolute_url()
+    >>> browser.open(document_url)
+    >>> '<a href="%s/@@manage-coordinates">Coordinates</a>' % document_url in browser.contents
     True
 
 let's try it!
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> browser.url == '%s/front-page/@@manage-coordinates' % portal_url
+    >>> browser.url == '%s/@@manage-coordinates' % document_url
     True
 
 Let's investigate the form a little bit
@@ -50,7 +58,7 @@ we check that our data is still there
     True
 
     >>> from collective.geo.contentlocations.interfaces import IGeoManager
-    >>> geo = IGeoManager(self.portal['front-page'])
+    >>> geo = IGeoManager(document)
     >>> geo.getCoordinates()
     ('LineString', ((153.02719116211, -27.352252938064002), (153.11370849609, -27.370547753644999), (153.08624267578, -27.403470801049), (153.00933837891, -27.402251603719002)))
 
@@ -136,7 +144,7 @@ Check to see that saved successfully
     True
 
     >>> from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
-    >>> style_config = IGeoCustomFeatureStyle(self.portal['front-page'])
+    >>> style_config = IGeoCustomFeatureStyle(document)
     >>> style_config.use_custom_styles
     True
 

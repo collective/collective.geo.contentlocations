@@ -1,6 +1,6 @@
 """Test setup for integration and functional tests."""
 from zope.component import provideAdapter
-from Products.CMFCore.PortalContent import PortalContent
+from zope.component import eventtesting
 
 from Products.Five import zcml
 from Products.Five import fiveconfigure
@@ -10,6 +10,7 @@ from Products.PloneTestCase.layer import onsetup
 
 from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
 from collective.geo.contentlocations.geostylemanager import GeoStyleManager
+from collective.geo.geographer.interfaces import IGeoreferenceable
 
 
 @onsetup
@@ -34,13 +35,20 @@ class TestCase(ptc.PloneTestCase):
 
 class FunctionalTestCase(ptc.FunctionalTestCase):
 
+    def setUp(self):
+        super(FunctionalTestCase, self).setUp()
+        eventtesting.setUp()
+
     def afterSetUp(self):
         super(FunctionalTestCase, self).afterSetUp()
         # register adapter for custom styles
-        provideAdapter(GeoStyleManager, (PortalContent,), IGeoCustomFeatureStyle)
+        provideAdapter(GeoStyleManager, (IGeoreferenceable, ),
+                                        IGeoCustomFeatureStyle)
 
     def tearDown(self):
+        super(FunctionalTestCase, self).tearDown()
         # unregister IGeoCustomFeatureStyle adapter
         from zope.component import getGlobalSiteManager
         gsm = getGlobalSiteManager()
-        gsm.unregisterAdapter(GeoStyleManager, (PortalContent,), IGeoCustomFeatureStyle) 
+        gsm.unregisterAdapter(GeoStyleManager, (IGeoreferenceable, ),
+                                                IGeoCustomFeatureStyle)

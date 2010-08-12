@@ -4,6 +4,5 @@
   <dependencies>
     <dependency>profile-collective.geo.geographer:default</dependency>
     <dependency>profile-collective.geo.mapwidget:default</dependency>
-    <!-- <dependency>profile-collective.geo.settings:default</dependency> -->
   </dependencies>
 </metadata>

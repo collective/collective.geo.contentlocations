@@ -13,7 +13,7 @@ class IGeoView(Interface):
     """ View to access coordinates
     """
 
-    def isGeoreferenceable():
+    def isGeoreferenceable(self):
         """ Returns True if an object is Georeferenceable
         """
 
@@ -53,3 +53,10 @@ class IGeoManager(Interface):
     def setCoordinates(self):
         """ """
 
+
+class IGeoMarker(Interface):
+    """Utility to mark IGeoreferenceable portal types"""
+
+
+class IGeoMarkerUtility(Interface):
+    pass

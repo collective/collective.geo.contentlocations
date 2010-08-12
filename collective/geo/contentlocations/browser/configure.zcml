@@ -4,14 +4,15 @@
   <browser:page
       name="geoview"
       for="*"
-      allowed_attributes="isGeoreferenceable"
       class=".geoview.GeoView"
       template="geoview.pt"
-      permission = "zope2.View" />
+      permission = "zope2.View"
+      allowed_attributes="isGeoreferenceable"
+      />
 
   <browser:page
       name="manage-coordinates"
-      for="*"
+      for="collective.geo.geographer.interfaces.IGeoreferenceable"
       class=".geoshapeform.manageCoordinates"
       permission = "cmf.ModifyPortalContent" />
 
@@ -30,5 +31,12 @@
         factory=".geoshapeform.ShapeEditLayer"
         name="shapeedit"
         />
+
+    <adapter 
+      for ="Products.CMFPlone.interfaces.IPloneSiteRoot
+            zope.publisher.interfaces.http.IHTTPRequest
+            collective.geo.mapwidget.browser.controlpanel.GeoControlpanelForm"
+      factory = ".controlpanel.GeoControlpanelFormExtender"
+      name = 'geocontrolpanel-extender'/>
 
 </configure>

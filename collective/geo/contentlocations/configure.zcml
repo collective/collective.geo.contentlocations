@@ -18,8 +18,12 @@
       name='collective_geo_styles' />
 
   <subscriber
-     handler=".event.reindexDocSubscriber"
-     for="collective.geo.contentlocations.event.IObjectStylesEvent" />
+     handler=".events.reindexDocSubscriber"
+     for="collective.geo.contentlocations.events.IObjectStylesEvent" />
+
+  <subscriber
+     handler=".events.updateGeoObjects"
+     for="collective.geo.settings.events.IGeoSettingsEvent" />
 
   <adapter
       for="Products.CMFCore.PortalContent.PortalContent"
@@ -27,7 +31,7 @@
       factory=".geomanager.GeoManager" />
 
   <adapter
-    for="Products.CMFCore.PortalContent.PortalContent"
+    for="collective.geo.geographer.interfaces.IGeoreferenceable"
     provides="collective.geo.settings.interfaces.IGeoCustomFeatureStyle"
     factory=".geostylemanager.GeoStyleManager" />
 
@@ -42,5 +46,20 @@
       factory=".vocabularies.coordsVocab"
       name="coordsVocab"
       provides="zope.app.schema.vocabulary.IVocabularyFactory" />
+
+
+  <!-- Adapter to mark object with interface -->
+  <adapter
+      for="Products.ATContentTypes.interface.interfaces.IATContentType"
+      factory=".geomarker.GeoMarker"
+      provides=".interfaces.IGeoMarker"
+      />
+
+  <!-- Event Subscriber to mark object with interface -->
+  <subscriber
+      for="Products.ATContentTypes.interface.interfaces.IATContentType
+           zope.lifecycleevent.IObjectCreatedEvent"
+      handler=".events.markGeoObject"
+      />
 
 </configure>

@@ -8,7 +8,7 @@ from zope.annotation.interfaces import IAnnotations
 
 from plone.registry.interfaces import IRegistry
 from collective.geo.settings.interfaces import IGeoCustomFeatureStyle, IGeoFeatureStyle
-from collective.geo.contentlocations.event import ObjectStylesEvent
+from collective.geo.contentlocations.events import ObjectStylesEvent
 
 KEY = 'collective.geo.contentlocations.style'
 

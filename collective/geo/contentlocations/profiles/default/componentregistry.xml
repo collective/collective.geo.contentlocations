@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<componentregistry>
+ <adapters/>
+ <utilities>
+  <utility
+     interface="collective.geo.contentlocations.interfaces.IGeoMarkerUtility"
+     factory="collective.geo.contentlocations.geomarker.GeoMarkerUtility" />
+ </utilities>
+</componentregistry>

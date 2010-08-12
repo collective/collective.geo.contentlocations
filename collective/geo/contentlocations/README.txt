@@ -10,14 +10,16 @@ z3c.form for collective.geo.geographer package
 Tests
 -----
 
-We create a generic Document
+We create a generic Document that implements IGeoreferenceable interface
 
-    >>> self.folder.invokeFactory('Document', 'base-document')
-    'base-document'
+    >>> oid = self.folder.invokeFactory('Document', 'base-document')
+    >>> document = self.folder[oid]
+    >>> from zope.interface import alsoProvides
+    >>> from collective.geo.geographer.interfaces import IGeoreferenceable
+    >>> alsoProvides(document, IGeoreferenceable)
 
 The document is georeferenceable with the IGeoManager interface
 
-    >>> document = self.folder['base-document']
     >>> from collective.geo.contentlocations.interfaces import IGeoManager
     >>> geo = IGeoManager(document)
     >>> geo.isGeoreferenceable()
