@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-05-03 16:25+0000\n"
+"POT-Creation-Date: 2010-08-11 22:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,6 @@ msgstr ""
 msgid "Changes saved."
 msgstr ""
 
-#. Default: "Choose a tool and draw the shape on the map"
 #: ./browser/geoshapeform.pt:74
 msgid "Choose a tool and draw the shape on the map"
 msgstr ""
@@ -38,8 +37,9 @@ msgstr ""
 msgid "Choose type of coordinates for uploading csv."
 msgstr ""
 
-#. Default: "Coordinates"
 #: ./browser/geoshapeform.pt:71
+#: ./browser/geoshapeform.py:184
+#: ./profiles/default/actions.xml
 msgid "Coordinates"
 msgstr ""
 
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Csv Import"
 msgstr ""
 
-#: ./browser/geostylesform.py:22
+#: ./browser/geostylesform.py:23
 msgid "Custom styles"
 msgstr ""
 
@@ -113,5 +113,13 @@ msgstr ""
 
 #: ./interfaces.py:38
 msgid "a csv file holding a coordinate per row and enough coordinate pairs for selected type."
+msgstr ""
+
+#: ./geomarker.py:34
+msgid "objects updated."
+msgstr ""
+
+#: ./geomarker.py:40
+msgid "update(s) on object(s) failed"
 msgstr ""
 

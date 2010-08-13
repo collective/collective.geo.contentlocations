@@ -31,7 +31,7 @@ def update_georeferenceable_objects(context, new_ct):
         return
 
     nb_items, bad_items = g_marker.update(context, adds, olds_pt)
-    updated = u'%d %s' % (nb_items, (u'objects updated.'))
+    updated = u'%d %s' % (nb_items, _(u'objects updated.'))
     if not bad_items:
         message = updated
     else:
