@@ -33,7 +33,7 @@
         />
 
     <adapter 
-      for ="Products.CMFPlone.interfaces.IPloneSiteRoot
+      for ="*
             zope.publisher.interfaces.http.IHTTPRequest
             collective.geo.mapwidget.browser.controlpanel.GeoControlpanelForm"
       factory = ".controlpanel.GeoControlpanelFormExtender"

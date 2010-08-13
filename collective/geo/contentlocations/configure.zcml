@@ -35,7 +35,6 @@
     provides="collective.geo.settings.interfaces.IGeoCustomFeatureStyle"
     factory=".geostylemanager.GeoStyleManager" />
 
-
   <adapter
       for="*
            .interfaces.IGeoView"

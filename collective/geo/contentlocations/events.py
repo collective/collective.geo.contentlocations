@@ -7,11 +7,6 @@ from collective.geo.contentlocations.interfaces import IGeoMarker
 from collective.geo.contentlocations.geomarker import update_georeferenceable_objects
 
 
-def is_contentlocations_installed():
-    i_name = u'collective.geo.contentlocations.interfaces.IGeoMarkerUtility'
-    return queryUtility(IInterface, name=i_name, default=False)
-
-
 class IObjectStylesEvent(IObjectModifiedEvent):
     """An event signaling that an object has been 'geo styled'
     """
@@ -30,16 +25,13 @@ def reindexDocSubscriber(event):
 
 
 def updateGeoObjects(event):
-    if not is_contentlocations_installed():
-        return
     update_georeferenceable_objects(event.context,
                     event.data.get('geo_content_types', []))
 
 
 def markGeoObject(obj, event):
     """Mark an object Georeferenceable"""
-    if not queryAdapter(obj, IGeoMarker) or \
-            not is_contentlocations_installed():
+    if not queryAdapter(obj, IGeoMarker):
         return
     try:
         IGeoMarker(obj).process()

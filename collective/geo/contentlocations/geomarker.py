@@ -1,5 +1,5 @@
 from zope.interface import implements, alsoProvides, noLongerProvides
-from zope.component import getUtility
+from zope.component import queryUtility
 from Products.CMFCore.utils import getToolByName
 
 from collective.geo.settings.utils import geo_settings
@@ -11,6 +11,10 @@ from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 
 
 def update_georeferenceable_objects(context, new_ct):
+    g_marker = queryUtility(IGeoMarkerUtility)
+    if not g_marker:
+        return
+
     ct = getToolByName(context, 'portal_catalog')
     query = {'object_provides':
                 'collective.geo.geographer.interfaces.IGeoreferenceable'}
@@ -26,7 +30,6 @@ def update_georeferenceable_objects(context, new_ct):
     if len(olds_pt)==0 and len(adds)==0:
         return
 
-    g_marker = getUtility(IGeoMarkerUtility)
     nb_items, bad_items = g_marker.update(context, adds, olds_pt)
     updated = u'%d %s' % (nb_items, (u'objects updated.'))
     if not bad_items:
@@ -63,7 +66,12 @@ class GeoMarker(object):
     def process(self):
         """ Proceed to the markage
         """
-        if not self.context.portal_type in self.geo_content_types:
+        try: 
+            geo_content_types = self.geo_content_types
+        except:
+            return
+
+        if not self.context.portal_type in geo_content_types:
             self.clear()
         else:
             self.add()
