@@ -36,11 +36,6 @@ we set the coordinates and verify
     >>> geo.getCoordinates()
     ('Point', (0.111, 0.222))
 
-Georeferenceable objects have another tab (Coordinates), registered in
-portal_action This is the condition to enable them
-
-    >>> document.restrictedTraverse('@@geoview').isGeoreferenceable()
-    True
 
 Try browsing the geo-shape edit view:
 -------------------------------------
