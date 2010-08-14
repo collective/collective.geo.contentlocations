@@ -20,7 +20,7 @@ Add geo-styled content
     >>> from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
     >>> geostyles = IGeoCustomFeatureStyle(doc)
     >>> geostyles.setStyles([('use_custom_styles', True),
-    ...                      ('marker_image', u'marker.png'),
+    ...                      ('marker_image', u'string:marker.png'),
     ...                      ('marker_image_size', 0.4),
     ...                      ('linewidth', 2.1),
     ...                      ('linecolor', u'cccccc3c'),
@@ -35,7 +35,7 @@ Check the topic
     >>> styles_metadata['use_custom_styles']
     True
 
-    >>> styles_metadata['marker_image'] == u'marker.png'
+    >>> styles_metadata['marker_image'] == u'string:marker.png'
     True
     
     >>> styles_metadata['marker_image_size'] == 0.4
