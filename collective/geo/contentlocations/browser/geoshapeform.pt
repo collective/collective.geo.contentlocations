@@ -65,7 +65,101 @@
 
 
         <div class="row horizontal map-wrapper">
+          <div class="field geocoder-wrapper">
+            <script type="text/javascript">
+
+              function setCoordinates(lon, lat) {
+                  $('#form-widgets-wkt').val('POINT (' + lon + " " + lat +")");
+                  var map = cgmap.config.geoshapemap.map;
+                  lonlat = new OpenLayers.LonLat(lon, lat);
+                  var point = new OpenLayers.Geometry.Point(lon, lat);
+
+                  if (map.displayProjection) {
+                    lonlat.transform(map.displayProjection, map.getProjectionObject());
+                    point.transform(map.displayProjection, map.getProjectionObject());
+                  }
+
+                  var layer = map.getLayersBy('name', 'Edit');
+                  layer[0].addFeatures([new OpenLayers.Feature.Vector(point)]);
+                  cgmap.config.geoshapemap.map.setCenter(lonlat, 10);
+              }
+
+              $(document).ready(function(){
+                $('#get-location').click(function(){
+                  var view_url = "http://192.168.1.2:8080/av/newPlone/front-page/geocoderview";
+                  var address = $('input[name=geocoding-address]').val();
+                  var container = $('#location-options');
+                  var list = container.children('ul');
+
+                  /* clear container */
+                  container.hide();
+                  list.empty();
+                  $('#geocoder-loader').show();
+
+                  $.getJSON(view_url, {'address': address}, function(data) {
+                    if (data == null) {
+                      $('#geocodre-error').show();
+                      $('.geocoder-wrapper').addClass('error');
+                    } else {
+                      $('#geocodre-error').hide();
+                      $('.geocoder-wrapper').removeClass('error');
+
+                      var i = 0;
+                      for (i = 0; i < data.length; i++){
+                          var link = $(document.createElement('a')).append(data[i][0]) //.attr('href','');
+                          link.bind('click', {idx: i}, function(event){
+                            var idx = event.data.idx;
+                            setCoordinates(data[idx][1][1], data[idx][1][0]);
+                            list.children().removeClass('selected');
+                            $(this).parent().addClass('selected');
+                            return false;
+                          });
+
+                          var li = $(document.createElement('li'));
+                          li.append(link)
+                          list.append(li)
+                      }
+                      container.show();
+                    }
+
+                    $('#geocoder-loader').hide();
+                  });
+                });
+              });
+
+
+
+            </script>
+            <label for="geocoding-address"
+              i18n:domain="collective.geo.contentlocations"
+              i18n:translate="">Find places</label>
+            <img id="geocoder-loader" 
+                  style="display: none"
+                  tal:define="portal_state context/@@plone_portal_state;
+                             portal_url portal_state/portal_url;"
+              tal:attributes="src string:$portal_url/++resource++collectivegeo-loader.gif" 
+                  width="16px" height="11px"/>
+            <br/>
+            <div class="fieldErrorBox" id="geocodre-error"
+                  style="display: none"
+                  i18n:domain="collective.geo.contentlocations"
+                  i18n:translate="">No corresponding geographic location could be found for the
+                         specified location, possibly because the address is relatively
+                         new, or because it may be incorrect.</div>
+            <input type="text" name="geocoding-address" value="Serravalle Italy"
+                    tal:attributes="value context/getLocation | nothing"/>
+            <input type="button"
+              i18n:domain="collective.geo.contentlocations"
+              i18n:attributes="value" value="Search" id="get-location" />
+
+            <div id="location-options" style="display: none">
+              <div class="formHelp">Select a location from the list below to set the coordinates.</div>
+              <ul></ul>
+            </div>
+          </div>
+
           <div class="visualClear" ><!-- clear floats --></div>
+
           <div class="field map-wrapper">
             <label>
               <span i18n:translate=""

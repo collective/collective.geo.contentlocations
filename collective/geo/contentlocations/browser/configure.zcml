@@ -30,4 +30,9 @@
       factory = ".controlpanel.GeoControlpanelFormExtender"
       name = 'geocontrolpanel-extender'/>
 
+    <browser:resource
+       name="collectivegeo-loader.gif"
+       file="collectivegeo-loader.gif"
+      />
+
 </configure>
