@@ -26,7 +26,7 @@
      for="collective.geo.settings.events.IGeoSettingsEvent" />
 
   <adapter
-      for="Products.CMFCore.PortalContent.PortalContent"
+      for="collective.geo.geographer.interfaces.IGeoreferenceable"
       provides=".interfaces.IGeoManager"
       factory=".geomanager.GeoManager" />
 
