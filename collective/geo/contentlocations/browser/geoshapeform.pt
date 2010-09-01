@@ -66,6 +66,10 @@
 
         <div class="row horizontal map-wrapper">
           <div class="field geocoder-wrapper">
+            <script type="text/javascript"
+              tal:content='string:var geoview_url = "${context/absolute_url}/geocoderview";'></script>
+
+
             <script type="text/javascript">
 
               function setCoordinates(lon, lat) {
@@ -86,7 +90,6 @@
 
               $(document).ready(function(){
                 $('#get-location').click(function(){
-                  var view_url = "http://192.168.1.2:8080/av/newPlone/front-page/geocoderview";
                   var address = $('input[name=geocoding-address]').val();
                   var container = $('#location-options');
                   var list = container.children('ul');
@@ -96,7 +99,7 @@
                   list.empty();
                   $('#geocoder-loader').show();
 
-                  $.getJSON(view_url, {'address': address}, function(data) {
+                  $.getJSON(geoview_url, {'address': address}, function(data) {
                     if (data == null) {
                       $('#geocodre-error').show();
                       $('.geocoder-wrapper').addClass('error');
