@@ -7,25 +7,18 @@ It provides some simple forms to add geographical coordinates and associated set
 
 Requirements
 ------------
- * plone >= 3.2.1
- * plone.app.z3cform
- * collective.geo.geographer
- * collective.geo.settings
- * collective.geo.kml
+ * plone >= 4.0
  * Shapely
+ * collective.geo.mapwidget
+ * collective.geo.geographer
 
 Installation
 ============
-Before installing collective.geo.contentolocations, you should install the Shapely package and its dependencies (see http://pypi.python.org/pypi/Shapely/ for more information).
-
-After that just a simple easy_install collective.geo.contentlocations is enough.
-
-Alternatively, buildout users can install collective.geo.contentlocations as part of a specific project's buildout, by having a buildout configuration such as: ::
+You can install collective.geo.contentlocations as part of a specific project's buildout, by having a buildout configuration such as: ::
 
         [buildout]
         ...
         eggs = 
-            zope.i18n>=3.4
             collective.geo.contentlocations
         ...
         [instance]
@@ -39,4 +32,5 @@ Contributors
 
 * Giorgio Borelli - gborelli
 * Silvio Tomatis - silviot
+* Gerhard Weis - gweis
 * David Breitkreutz - rockdj
