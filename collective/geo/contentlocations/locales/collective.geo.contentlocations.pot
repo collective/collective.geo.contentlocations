@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-08-13 01:56+0000\n"
+"POT-Creation-Date: 2010-11-07 13:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,8 @@ msgstr ""
 msgid "Changes saved."
 msgstr ""
 
-#: ./browser/geoshapeform.pt:168
+#. Default: "Choose a tool and draw the shape on the map"
+#: ./browser/geoshapeform.pt:82
 msgid "Choose a tool and draw the shape on the map"
 msgstr ""
 
@@ -37,9 +38,8 @@ msgstr ""
 msgid "Choose type of coordinates for uploading csv."
 msgstr ""
 
-#: ./browser/geoshapeform.pt:165
-#: ./browser/geoshapeform.py:184
-#: ./profiles/default/actions.xml
+#. Default: "Coordinates"
+#: ./browser/geoshapeform.pt:79
 msgid "Coordinates"
 msgstr ""
 
@@ -53,10 +53,6 @@ msgstr ""
 
 #: ./interfaces.py:37
 msgid "File"
-msgstr ""
-
-#: ./browser/geoshapeform.pt:133
-msgid "Find places"
 msgstr ""
 
 #: ./browser/geoshapeform.py:30
@@ -83,10 +79,6 @@ msgstr ""
 msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a csv file."
 msgstr ""
 
-#: ./browser/geoshapeform.pt:143
-msgid "No corresponding geographic location could be found for the specified location, possibly because the address is relatively new, or because it may be incorrect."
-msgstr ""
-
 #: ./browser/geoshapeform.py:50
 msgid "No valid input given."
 msgstr ""
@@ -101,10 +93,6 @@ msgstr ""
 
 #: ./browser/geoshapeform.py:79
 msgid "Save"
-msgstr ""
-
-#: ./browser/geoshapeform.pt:151
-msgid "Search"
 msgstr ""
 
 #: ./interfaces.py:43

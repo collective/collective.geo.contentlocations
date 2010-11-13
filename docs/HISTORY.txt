@@ -1,10 +1,11 @@
 Changelog
 =========
 
-0.3 (unreleased)
-----------------
+0.2.1 (2010-11-13)
+------------------
 
-- Nothing changed yet.
+- geocoding javascript refactoring
+- added translations
 
 
 0.2 (2010-10-31)
