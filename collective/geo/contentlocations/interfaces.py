@@ -9,19 +9,6 @@ class IContentlocationsLayer(Interface):
     """
 
 
-class IGeoView(Interface):
-    """ View to access coordinates
-    """
-
-    def isGeoreferenceable(self):
-        """ Returns True if an object is Georeferenceable
-        """
-
-    def getCoordinates(self):
-        """ Public function to get object coordinates
-        """
-
-
 class IGeoManager(Interface):
     """ Interface for shape management
     """
