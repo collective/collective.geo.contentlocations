@@ -15,7 +15,8 @@ class GeoStylesForm(group.Group):
                                                          'polygoncolor',
                                                          'marker_image',
                                                          'marker_image_size',
-                                                         'display_properties')
+                                                         'display_properties',
+                                                         'map_display_manager')
 
     fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
     fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget

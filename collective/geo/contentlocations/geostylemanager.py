@@ -37,6 +37,7 @@ class GeoStyleManager(object):
             self.geostyles['marker_image'] = self.defaultstyles.marker_image
             self.geostyles['marker_image_size'] = self.defaultstyles.marker_image_size
             self.geostyles['display_properties'] = self.defaultstyles.display_properties
+            self.geostyles['map_display_manager'] = self.defaultstyles.map_display_manager
 
     @property
     def use_custom_styles(self):
@@ -65,6 +66,10 @@ class GeoStyleManager(object):
     @property
     def display_properties(self):
         return self.get('display_properties')
+
+    @property
+    def map_display_manager(self):
+        return self.get('map_display_manager')
 
     def set(self, key, val):
         return self.geostyles.__setitem__(key, val)
