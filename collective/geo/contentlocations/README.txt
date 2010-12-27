@@ -1,14 +1,5 @@
-collective.geo.contentlocations Package Readme
-==============================================
-
-Overview
---------
-
-collective.geo.contentlocations provides graphical interface based on
-z3c.form for collective.geo.geographer package
-
-Tests
------
+How it Work
+-----------
 
 We create a generic Document that implements IGeoreferenceable interface
 
@@ -46,6 +37,7 @@ Try browsing the geo-shape edit view:
     >>> self.portal.error_log._ignored_exceptions = ()
 
 The edit view is protected so we need to log in
+
     >>> from Products.PloneTestCase.setup import (portal_owner,
     ...                                          default_password)
     >>> browser.addHeader('Authorization',
@@ -62,7 +54,6 @@ Create the url and open it
     True
 
 We should also see the fieldset/fields for custom properties for this content
+
     >>> 'Custom styles' in browser.contents
     True
-
-That's all folks

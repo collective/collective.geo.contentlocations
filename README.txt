@@ -1,5 +1,11 @@
+collective.geo.contentlocations
+===============================
+
+.. contents:: Summary
+   :local:
+
 Introduction
-============
+------------
 
 collective.geo.contentlocations is a GUI for collective.geo.geographer.
 
@@ -13,7 +19,7 @@ Requirements
  * collective.geo.geographer
 
 Installation
-============
+------------
 You can install collective.geo.contentlocations as part of a specific project's buildout, by having a buildout configuration such as: ::
 
         [buildout]
@@ -28,7 +34,7 @@ You can install collective.geo.contentlocations as part of a specific project's 
 
 
 Contributors
-============
+------------
 
 * Giorgio Borelli - gborelli
 * Silvio Tomatis - silviot

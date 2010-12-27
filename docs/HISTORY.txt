@@ -4,7 +4,8 @@ Changelog
 0.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- removed IGeoView [gborelli]
+- Added dutch translations [robgietema]
 
 
 0.2.1 (2010-11-13)

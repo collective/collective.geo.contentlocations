@@ -1,32 +1,34 @@
-collective.geo.contentlocations.browser
-=======================================
+Coordinates form
+----------------
 
-we start the tests with the usual boilerplate
+We start the tests with the usual boilerplate and we log in as manager
+
     >>> from Products.Five.testbrowser import Browser
     >>> browser = Browser()
     >>> portal_url = self.portal.absolute_url()
     >>> self.portal.error_log._ignored_exceptions = ()
-
-we log in as manager
     >>> from Products.PloneTestCase.setup import portal_owner
     >>> from Products.PloneTestCase.setup import default_password
     >>> browser.addHeader('Authorization',
     ...                   'Basic %s:%s' % (portal_owner, default_password))
 
 Now we create a document in user folder and we mark it as Georeferenceable
+
     >>> document_id = self.folder.invokeFactory('Document', 'document')
     >>> document = self.folder[document_id]
     >>> from zope.interface import alsoProvides
     >>> from collective.geo.geographer.interfaces import IGeoreferenceable
     >>> alsoProvides(document, IGeoreferenceable)
 
-we have a specific tab for the georeferenceable objects -- Coordinates
+We have a specific tab for the georeferenceable objects -- Coordinates
+
     >>> document_url = document.absolute_url()
     >>> browser.open(document_url)
     >>> '<a href="%s/@@manage-coordinates">Coordinates</a>' % document_url in browser.contents
     True
 
 let's try it!
+
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
     >>> browser.url == '%s/@@manage-coordinates' % document_url
@@ -34,6 +36,7 @@ let's try it!
 
 Let's investigate the form a little bit
 First check the type list box:
+
     >>> control = browser.getControl('Type', index=0)
     >>> control
     <ListControl name='form.widgets.coord_type:list' type='select'>
@@ -42,10 +45,12 @@ First check the type list box:
 
 There shouldn't be the GeoPoint Javascript in the page, since we implement our
 own WKT-specific widget code
+
     >>> '<script type="text/javascript" src="++resource++geo-point.js"></script>' not in browser.contents
     True
 
 let's try to submit the form with a new LineString in the wkt-field
+
     >>> browser.getControl('Shape in WKT format').value = u'LINESTRING '\
     ...           '(153.02719116211 -27.352252938064,'\
     ...           '153.11370849609 -27.370547753645,'\
@@ -53,33 +58,37 @@ let's try to submit the form with a new LineString in the wkt-field
     ...           '153.00933837891 -27.402251603719)'
     >>> browser.getControl('Save').click()
 
+
 we check that our data is still there
+
     >>> 'Changes saved.' in browser.contents
     True
-
     >>> from collective.geo.contentlocations.interfaces import IGeoManager
     >>> geo = IGeoManager(document)
     >>> geo.getCoordinates()
     ('LineString', ((153.02719116211, -27.352252938064002), (153.11370849609, -27.370547753644999), (153.08624267578, -27.403470801049), (153.00933837891, -27.402251603719002)))
 
 I might instead click "cancel".
-Let's do it again, first clicking on "coordinates" and choosing the
-"point" type
+Let's do it again, first clicking on "coordinates" and choosing the "point" type
+
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
     >>> browser.getControl('Type', index=0)
     <ListControl name='form.widgets.coord_type:list' type='select'>
 
 we're in the coordinates input form
+
     >>> browser.getControl('Shape in WKT format')
     <Control name='form.widgets.wkt' type='textarea'>
 
 clicking on cancel leads me to the default content view
+
     >>> browser.getControl('Cancel').click()
     >>> 'No changes made.' in browser.contents
     True
 
 let's choose "polygon"
+
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
     >>> control = browser.getControl('Type', index=0)
@@ -89,6 +98,7 @@ let's choose "polygon"
     <Control name='form.widgets.filecsv' type='file'>
 
 we load a coordinates csv file and verify saved data
+
     >>> csvdata = '152.78686523438, -27.36323019018\n'\
     ...           '152.96264648438, -27.447352944394\n'\
     ...           '152.87887573242, -27.522886832325\n'\
@@ -106,7 +116,6 @@ Check there wasn't an error message
     False
     >>> 'Changes saved.' in browser.contents
     True
-
     >>> geo.getCoordinates()
     (u'Polygon', (((152.78686523438, -27.363230190180001), (152.96264648438, -27.447352944394002), (152.87887573242, -27.522886832325), (152.72506713867, -27.507053374681998), (152.71408081054, -27.430289738862001), (152.78686523438, -27.363230190180001)),))
 
@@ -116,37 +125,33 @@ We can also set a few custom properties on a per-content basis as well
     >>> link.click()
 
 Check to see if our custom style section is present, with our fields
+
     >>> 'Custom styles' in browser.contents
     True
-
     >>> browser.getControl('Use custom styles?')
     <ItemControl name='form.widgets.use_custom_styles:list' type='checkbox' optionValue='selected' selected=False>
-
     >>> browser.getControl('Line color')
     <Control name='form.widgets.linecolor' type='text'>
-
     >>> browser.getControl('Line width')
     <Control name='form.widgets.linewidth' type='text'>
-
     >>> browser.getControl('Polygon color')
     <Control name='form.widgets.polygoncolor' type='text'>
-
     >>> browser.getControl('Marker image size')
     <Control name='form.widgets.marker_image_size' type='text'>
 
 We can set custom settings on this form (per-content)
+
     >>> browser.getControl('Use custom styles?').click()
     >>> browser.getControl('Line width').value = "2.1"
     >>> browser.getControl('Save').click()
 
 Check to see that saved successfully
+
     >>> 'Changes saved.' in browser.contents
     True
-
     >>> from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
     >>> style_config = IGeoCustomFeatureStyle(document)
     >>> style_config.use_custom_styles
     True
-
     >>> style_config.linewidth == 2.1
     True
