@@ -27,10 +27,6 @@ You can install collective.geo.contentlocations as part of a specific project's 
         eggs = 
             collective.geo.contentlocations
         ...
-        [instance]
-        ...
-        zcml = 
-            collective.geo.contentlocations
 
 
 Contributors

@@ -33,5 +33,7 @@ setup(name='collective.geo.contentlocations',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )
