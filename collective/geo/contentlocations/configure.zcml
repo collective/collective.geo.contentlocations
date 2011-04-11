@@ -43,8 +43,9 @@
 
   <utility
       factory=".vocabularies.coordsVocab"
-      name="coordsVocab"
-      provides="zope.app.schema.vocabulary.IVocabularyFactory" />
+      name="coordsVocab" />
+      <!-- robert@redcor.ch plone 4.1
+      provides="zope.app.schema.vocabulary.IVocabularyFactory" / -->
 
 
   <!-- Adapter to mark object with interface -->
