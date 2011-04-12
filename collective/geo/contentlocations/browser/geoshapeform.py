@@ -26,8 +26,8 @@ from shapely.geos import ReadingError
 
 class CsvGroup(group.Group):
     fields = field.Fields(IGeoManager).select('coord_type', 'filecsv')
-    label = _(u"Csv Import")
-    description = _(u"Import data from csv file")
+    label = _(u"CSV Import")
+    description = _(u"Import data from CSV file")
 
 
 class GeoShapeForm(extensible.ExtensibleForm, form.Form):
@@ -44,7 +44,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     message_cancel = _(u'No changes made.')
     message_coordinates_null = _(u"No coordinate has been set. Please, set "
                                   "coordinates on the map, fill in the WKT "
-                                  "field or import a csv file.")
+                                  "field or import a CSV file.")
     message_error_csv = _(u'CSV File not correct. Verify file format.')
     message_error_wkt = _(u'WKT expression not correct. Verify input.')
     message_error_input = _(u'No valid input given.')

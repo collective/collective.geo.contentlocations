@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - added z3c.autoinclude entry point
+- Normalising CSV and WKT abbreviations throughout the package [davidjb]
 
 
 0.2.2 (2010-12-28)

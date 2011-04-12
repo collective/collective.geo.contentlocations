@@ -35,7 +35,7 @@ msgid "Choose a tool and draw the shape on the map"
 msgstr ""
 
 #: ./interfaces.py:31
-msgid "Choose type of coordinates for uploading csv."
+msgid "Choose type of coordinates for uploading CSV."
 msgstr ""
 
 #. Default: "Coordinates"
@@ -44,7 +44,7 @@ msgid "Coordinates"
 msgstr ""
 
 #: ./browser/geoshapeform.py:29
-msgid "Csv Import"
+msgid "CSV Import"
 msgstr ""
 
 #: ./browser/geostylesform.py:23
@@ -56,11 +56,11 @@ msgid "File"
 msgstr ""
 
 #: ./browser/geoshapeform.py:30
-msgid "Import data from csv file"
+msgid "Import data from CSV file"
 msgstr ""
 
 #: ./interfaces.py:44
-msgid "Insert below the shape coordinates in wkt format."
+msgid "Insert below the shape coordinates in WKT format."
 msgstr ""
 
 #: ./__init__.py:8
@@ -76,7 +76,7 @@ msgid "No changes made."
 msgstr ""
 
 #: ./browser/geoshapeform.py:45
-msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a csv file."
+msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a CSV file."
 msgstr ""
 
 #: ./browser/geoshapeform.py:50
@@ -112,7 +112,7 @@ msgid "WKT expression not correct. Verify input."
 msgstr ""
 
 #: ./interfaces.py:38
-msgid "a csv file holding a coordinate per row and enough coordinate pairs for selected type."
+msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
 msgstr ""
 
 #: ./geomarker.py:34

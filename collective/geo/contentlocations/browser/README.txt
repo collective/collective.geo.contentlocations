@@ -49,7 +49,7 @@ own WKT-specific widget code
     >>> '<script type="text/javascript" src="++resource++geo-point.js"></script>' not in browser.contents
     True
 
-let's try to submit the form with a new LineString in the wkt-field
+let's try to submit the form with a new LineString in the WKT-field
 
     >>> browser.getControl('Shape in WKT format').value = u'LINESTRING '\
     ...           '(153.02719116211 -27.352252938064,'\

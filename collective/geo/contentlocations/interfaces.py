@@ -15,20 +15,20 @@ class IGeoManager(Interface):
 
     coord_type = schema.Choice(
         title=_(u"Type"),
-        description=_(u"Choose type of coordinates for uploading csv."),
+        description=_(u"Choose type of coordinates for uploading CSV."),
         vocabulary = 'coordsVocab',
         #values=config.COORDTYPE,
         required=True)
 
     filecsv = schema.Bytes(
         title=_(u"File"),
-        description=_(u"a csv file holding a coordinate per row and enough "
+        description=_(u"A CSV file holding a coordinate per row and enough "
                       u"coordinate pairs for selected type."),
         required=False)
 
     wkt = schema.Text(
         title=_(u"Shape in WKT format"),
-        description=_(u"Insert below the shape coordinates in wkt format."),
+        description=_(u"Insert below the shape coordinates in WKT format."),
         required=False)
 
     def isGeoreferenceable(self):

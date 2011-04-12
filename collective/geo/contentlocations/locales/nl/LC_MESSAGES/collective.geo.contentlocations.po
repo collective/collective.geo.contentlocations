@@ -32,8 +32,8 @@ msgid "Choose a tool and draw the shape on the map"
 msgstr "Kies een tool en teken de vorm op de kaart"
 
 #: ./interfaces.py:31
-msgid "Choose type of coordinates for uploading csv."
-msgstr "Kies coordinaten type voor het uploaden van csv."
+msgid "Choose type of coordinates for uploading CSV."
+msgstr "Kies coordinaten type voor het uploaden van CSV."
 
 #. Default: "Coordinates"
 #: ./browser/geoshapeform.pt:79
@@ -41,8 +41,8 @@ msgid "Coordinates"
 msgstr "Coordinaten"
 
 #: ./browser/geoshapeform.py:29
-msgid "Csv Import"
-msgstr "Csv Import"
+msgid "CSV Import"
+msgstr "CSV Import"
 
 #: ./browser/geostylesform.py:23
 msgid "Custom styles"
@@ -53,12 +53,12 @@ msgid "File"
 msgstr "Bestand"
 
 #: ./browser/geoshapeform.py:30
-msgid "Import data from csv file"
-msgstr "Importeer gegevens van een csv bestand"
+msgid "Import data from CSV file"
+msgstr "Importeer gegevens van een CSV bestand"
 
 #: ./interfaces.py:44
-msgid "Insert below the shape coordinates in wkt format."
-msgstr "Voer hieronder de coordinaten van de vorm in wkt formaat in."
+msgid "Insert below the shape coordinates in WKT format."
+msgstr "Voer hieronder de coordinaten van de vorm in WKT formaat in."
 
 #: ./__init__.py:8
 msgid "LineString"
@@ -73,8 +73,8 @@ msgid "No changes made."
 msgstr "Geen aanpassingen gemaakt."
 
 #: ./browser/geoshapeform.py:45
-msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a csv file."
-msgstr "Er zijn geen coordinaten opgegeven. Zet de coordinaten op de kaart, vul het WKT veld in of importeer een csv bestand."
+msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a CSV file."
+msgstr "Er zijn geen coordinaten opgegeven. Zet de coordinaten op de kaart, vul het WKT veld in of importeer een CSV bestand."
 
 #: ./browser/geoshapeform.py:50
 msgid "No valid input given."
@@ -109,8 +109,8 @@ msgid "WKT expression not correct. Verify input."
 msgstr "WKT expressie niet correct. Controleer de invoer."
 
 #: ./interfaces.py:38
-msgid "a csv file holding a coordinate per row and enough coordinate pairs for selected type."
-msgstr "een csv bestand welke per rij genoeg coordinaten paren bevat voor het geselecteerde type."
+msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
+msgstr "een CSV bestand welke per rij genoeg coordinaten paren bevat voor het geselecteerde type."
 
 #: ./geomarker.py:34
 msgid "objects updated."
