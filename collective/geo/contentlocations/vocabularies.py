@@ -1,11 +1,6 @@
-from zope.interface import implements, directlyProvides
+from zope.interface import implements
 from zope.schema import vocabulary
-
-try:
-    from zope.app.schema.vocabulary import IVocabularyFactory
-except ImportError:
-    # robert@redcor.ch Plone 4.1
-    from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.interfaces import IVocabularyFactory
 
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 from collective.geo.contentlocations import COORDTYPE
@@ -27,5 +22,3 @@ class baseVocabulary(object):
 
 class coordsVocab(baseVocabulary):
     terms = COORDTYPE
-#plone 4.1 robert@redcor.ch 
-directlyProvides(coordsVocab, IVocabularyFactory)

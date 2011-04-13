@@ -1,7 +1,7 @@
 import unittest
 from collective.geo.contentlocations.tests import base
 
-from Products.Five.testbrowser import Browser
+from Testing.testbrowser import Browser
 from Products.PloneTestCase.setup import portal_owner, default_password
 from collective.geo.settings.utils import geo_settings
 

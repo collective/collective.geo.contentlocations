@@ -4,7 +4,8 @@ Changelog
 0.2.3 (unreleased)
 ------------------
 
-- added z3c.autoinclude entry point
+- added extra_requires in setup.py for test [gborelli]
+- added z3c.autoinclude entry point [gborelli]
 - Normalising CSV and WKT abbreviations throughout the package [davidjb]
 
 

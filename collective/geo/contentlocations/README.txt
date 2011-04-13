@@ -31,7 +31,7 @@ we set the coordinates and verify
 Try browsing the geo-shape edit view:
 -------------------------------------
 
-    >>> from Products.Five.testbrowser import Browser
+    >>> from Testing.testbrowser import Browser
     >>> browser = Browser()
     >>> portal_url = self.portal.absolute_url()
     >>> self.portal.error_log._ignored_exceptions = ()

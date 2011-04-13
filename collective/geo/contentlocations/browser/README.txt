@@ -3,7 +3,7 @@ Coordinates form
 
 We start the tests with the usual boilerplate and we log in as manager
 
-    >>> from Products.Five.testbrowser import Browser
+    >>> from Testing.testbrowser import Browser
     >>> browser = Browser()
     >>> portal_url = self.portal.absolute_url()
     >>> self.portal.error_log._ignored_exceptions = ()
