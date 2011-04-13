@@ -27,14 +27,10 @@ setup(name='collective.geo.contentlocations',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          'Shapely',
+          'Shapely >= 1.0.14',
           'collective.geo.mapwidget',
           'collective.geo.geographer',
       ],
-      extras_require = {
-        'test': [
-            'Products.PloneTestCase']
-      },
       entry_points="""
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
