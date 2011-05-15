@@ -47,3 +47,5 @@ Check the topic
     True
     >>> styles_metadata['display_properties'] ==  ['Type','Subjects']
     True
+    >>> styles_metadata['map_viewlet_position'] == u'plone.abovecontentbody'
+    True

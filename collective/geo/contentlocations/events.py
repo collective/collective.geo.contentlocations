@@ -1,10 +1,11 @@
 from zope.interface import implements
-from zope.interface.interfaces import IInterface
-from zope.component import queryAdapter, queryUtility
+from zope.component import queryAdapter
+
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 
 from collective.geo.contentlocations.interfaces import IGeoMarker
-from collective.geo.contentlocations.geomarker import update_georeferenceable_objects
+from collective.geo.contentlocations.geomarker import \
+                                  update_georeferenceable_objects
 
 
 class IObjectStylesEvent(IObjectModifiedEvent):
