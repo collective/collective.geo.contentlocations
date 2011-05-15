@@ -10,13 +10,13 @@ from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 
 class GeoStylesForm(group.Group):
     fields = field.Fields(IGeoCustomFeatureStyle).select('use_custom_styles',
+                                                     'map_viewlet_position',
                                                      'linecolor',
                                                      'linewidth',
                                                      'polygoncolor',
                                                      'marker_image',
                                                      'marker_image_size',
-                                                     'display_properties',
-                                                     'map_viewlet_position')
+                                                     'display_properties',)
 
     fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
     fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget
