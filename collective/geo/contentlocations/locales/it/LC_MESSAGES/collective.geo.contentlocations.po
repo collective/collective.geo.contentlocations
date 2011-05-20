@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2010-11-07 13:42+0000\n"
+"POT-Creation-Date: 2011-05-15 13:01+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
 "Last-Translator: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -17,9 +17,17 @@ msgstr ""
 "Domain: collective.geo.contentlocations\n"
 "X-Is-Fallback-For: it-it it-ch it-sm it-hr it-si\n"
 
+#: ./interfaces.py:25
+msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
+msgstr "carica un CSV contenente una serie di coordinate per riga, ogni riga deve contenere  due valori: longitudine, latitudine"
+
 #: ./browser/geoshapeform.py:48
 msgid "CSV File not correct. Verify file format."
 msgstr "CSV non corretto, verifica il formato del file ed invia nuovamente il modulo."
+
+#: ./browser/geoshapeform.py:29
+msgid "CSV Import"
+msgstr "Importazione CSV"
 
 #: ./browser/geoshapeform.py:110
 msgid "Cancel"
@@ -34,24 +42,22 @@ msgstr "Modifiche memorizzate."
 msgid "Choose a tool and draw the shape on the map"
 msgstr "Seleziona uno strumento e disegna direttamente sulla mappa"
 
-#: ./interfaces.py:31
+#: ./interfaces.py:18
 msgid "Choose type of coordinates for uploading CSV."
 msgstr "Seleziona un tipo di coordinate per l'importazione del CSV."
 
 #. Default: "Coordinates"
 #: ./browser/geoshapeform.pt:79
+#: ./browser/geoshapeform.py:184
+#: ./profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "Coordinate"
 
-#: ./browser/geoshapeform.py:29
-msgid "CSV Import"
-msgstr "Importazione CSV"
-
-#: ./browser/geostylesform.py:23
+#: ./browser/geostylesform.py:24
 msgid "Custom styles"
 msgstr "Stili personalizzati"
 
-#: ./interfaces.py:37
+#: ./interfaces.py:24
 msgid "File"
 msgstr "File"
 
@@ -59,7 +65,7 @@ msgstr "File"
 msgid "Import data from CSV file"
 msgstr "Importazione dei dati da un file CSV"
 
-#: ./interfaces.py:44
+#: ./interfaces.py:31
 msgid "Insert below the shape coordinates in WKT format."
 msgstr "Inserisci qui sotto le coordinate in formato WKT"
 
@@ -95,7 +101,7 @@ msgstr "Poligono"
 msgid "Save"
 msgstr "Salva"
 
-#: ./interfaces.py:43
+#: ./interfaces.py:30
 msgid "Shape in WKT format"
 msgstr "Forme in formato KWT"
 
@@ -103,17 +109,13 @@ msgstr "Forme in formato KWT"
 msgid "Specify the geometry for this content"
 msgstr "Specifica il tipo di area per questo contenuto"
 
-#: ./interfaces.py:30
+#: ./interfaces.py:17
 msgid "Type"
 msgstr "Tipo"
 
 #: ./browser/geoshapeform.py:49
 msgid "WKT expression not correct. Verify input."
 msgstr "Formato WKT non corretto, verifica il valore immesso"
-
-#: ./interfaces.py:38
-msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
-msgstr "carica un CSV contenente una serie di coordinate per riga, ogni riga deve contenere  due valori: longitudine, latitudine"
 
 #: ./geomarker.py:34
 msgid "objects updated."

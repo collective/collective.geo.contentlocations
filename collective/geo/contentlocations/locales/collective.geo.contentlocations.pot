@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-11-07 13:42+0000\n"
+"POT-Creation-Date: 2011-05-15 13:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,16 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
 
+#: ./interfaces.py:25
+msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
+msgstr ""
+
 #: ./browser/geoshapeform.py:48
 msgid "CSV File not correct. Verify file format."
+msgstr ""
+
+#: ./browser/geoshapeform.py:29
+msgid "CSV Import"
 msgstr ""
 
 #: ./browser/geoshapeform.py:110
@@ -29,29 +37,25 @@ msgstr ""
 msgid "Changes saved."
 msgstr ""
 
-#. Default: "Choose a tool and draw the shape on the map"
 #: ./browser/geoshapeform.pt:82
 msgid "Choose a tool and draw the shape on the map"
 msgstr ""
 
-#: ./interfaces.py:31
+#: ./interfaces.py:18
 msgid "Choose type of coordinates for uploading CSV."
 msgstr ""
 
-#. Default: "Coordinates"
 #: ./browser/geoshapeform.pt:79
+#: ./browser/geoshapeform.py:184
+#: ./profiles/default/actions.xml
 msgid "Coordinates"
 msgstr ""
 
-#: ./browser/geoshapeform.py:29
-msgid "CSV Import"
-msgstr ""
-
-#: ./browser/geostylesform.py:23
+#: ./browser/geostylesform.py:24
 msgid "Custom styles"
 msgstr ""
 
-#: ./interfaces.py:37
+#: ./interfaces.py:24
 msgid "File"
 msgstr ""
 
@@ -59,7 +63,7 @@ msgstr ""
 msgid "Import data from CSV file"
 msgstr ""
 
-#: ./interfaces.py:44
+#: ./interfaces.py:31
 msgid "Insert below the shape coordinates in WKT format."
 msgstr ""
 
@@ -95,7 +99,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: ./interfaces.py:43
+#: ./interfaces.py:30
 msgid "Shape in WKT format"
 msgstr ""
 
@@ -103,16 +107,12 @@ msgstr ""
 msgid "Specify the geometry for this content"
 msgstr ""
 
-#: ./interfaces.py:30
+#: ./interfaces.py:17
 msgid "Type"
 msgstr ""
 
 #: ./browser/geoshapeform.py:49
 msgid "WKT expression not correct. Verify input."
-msgstr ""
-
-#: ./interfaces.py:38
-msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
 msgstr ""
 
 #: ./geomarker.py:34
