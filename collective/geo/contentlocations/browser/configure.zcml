@@ -1,6 +1,8 @@
+<?xml version="1.0"?>
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser" >
 
+  <include package="Products.CMFCore" file="configure.zcml" />
   <browser:page
       name="manage-coordinates"
       for="collective.geo.geographer.interfaces.IGeoreferenceable"
@@ -23,7 +25,7 @@
         name="shapeedit"
         />
 
-    <adapter 
+    <adapter
       for ="*
             zope.publisher.interfaces.http.IHTTPRequest
             collective.geo.mapwidget.browser.controlpanel.GeoControlpanelForm"
