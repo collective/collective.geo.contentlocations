@@ -3,8 +3,7 @@ Coordinates form
 
 We start the tests with the usual boilerplate and we log in as manager
 
-    >>> from Testing.testbrowser import Browser
-    >>> browser = Browser()
+    >>> browser = self.browser
     >>> portal_url = self.portal.absolute_url()
     >>> self.portal.error_log._ignored_exceptions = ()
     >>> from Products.PloneTestCase.setup import portal_owner

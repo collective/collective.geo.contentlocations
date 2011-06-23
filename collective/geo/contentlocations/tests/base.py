@@ -1,10 +1,13 @@
 """Test setup for integration and functional tests."""
+from AccessControl.SecurityManager import setSecurityPolicy
+from AccessControl.ImplPython import ZopeSecurityPolicy
 from zope.component import provideAdapter
 from zope.component import eventtesting
 
 # from Products.Five import zcml
 from Zope2.App import zcml
 from Products.Five import fiveconfigure
+from Products.Five.testbrowser import Browser
 
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
@@ -45,6 +48,25 @@ class FunctionalTestCase(ptc.FunctionalTestCase):
         # register adapter for custom styles
         provideAdapter(GeoStyleManager, (IGeoreferenceable, ),
                                         IGeoCustomFeatureStyle)
+
+        #Set up our security policy so we can get verbose errors, if any
+        setSecurityPolicy(ZopeSecurityPolicy(verbose=True))
+
+        #Make sure our test browser won't try to handle errors
+        browser = self.browser = Browser()
+        self.browser.handleErrors = False
+
+        #Make our portal error log ignore no exceptions
+        self.portal.error_log._ignored_exceptions = ()
+
+        def raising(self, info):
+            #import traceback
+            #traceback.print_tb(info[2])
+            print info[1]
+
+        #Make sure our site error log raises errors so we can check for them
+        from Products.SiteErrorLog.SiteErrorLog import SiteErrorLog
+        SiteErrorLog.raising = raising
 
     def tearDown(self):
         super(FunctionalTestCase, self).tearDown()

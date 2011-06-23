@@ -6,17 +6,11 @@ from collective.z3cform.colorpicker.colorpickeralpha import \
 
 from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
+from collective.geo.contentlocations.config import GEO_STYLE_FIELDS
 
 
 class GeoStylesForm(group.Group):
-    fields = field.Fields(IGeoCustomFeatureStyle).select('use_custom_styles',
-                                                     'map_viewlet_position',
-                                                     'linecolor',
-                                                     'linewidth',
-                                                     'polygoncolor',
-                                                     'marker_image',
-                                                     'marker_image_size',
-                                                     'display_properties',)
+    fields = field.Fields(IGeoCustomFeatureStyle).select(*GEO_STYLE_FIELDS)
 
     fields['linecolor'].widgetFactory = ColorpickerAlphaFieldWidget
     fields['polygoncolor'].widgetFactory = ColorpickerAlphaFieldWidget

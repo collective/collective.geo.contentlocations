@@ -9,6 +9,8 @@ from zope.annotation.interfaces import IAnnotations
 from plone.registry.interfaces import IRegistry
 from collective.geo.settings.interfaces import IGeoCustomFeatureStyle, IGeoFeatureStyle
 from collective.geo.contentlocations.events import ObjectStylesEvent
+from collective.geo.contentlocations.config import GEO_STYLE_FIELDS
+
 
 KEY = 'collective.geo.contentlocations.style'
 
@@ -30,46 +32,25 @@ class GeoStyleManager(object):
         if not self.geostyles:
             annotations[KEY] = PersistentDict()
             self.geostyles = annotations[KEY]
+
+            #Set our custom styles to be the defaults for all fields
+            for field in GEO_STYLE_FIELDS:
+                self.geostyles[field] = getattr(self.defaultstyles, field, None)
+
+            #This field isn't present in the defaults so set it manually
             self.geostyles['use_custom_styles'] = False
-            self.geostyles['linecolor'] = self.defaultstyles.linecolor
-            self.geostyles['linewidth'] = self.defaultstyles.linewidth
-            self.geostyles['polygoncolor'] = self.defaultstyles.polygoncolor
-            self.geostyles['marker_image'] = self.defaultstyles.marker_image
-            self.geostyles['marker_image_size'] = self.defaultstyles.marker_image_size
-            self.geostyles['display_properties'] = self.defaultstyles.display_properties
-            self.geostyles['map_viewlet_position'] = self.defaultstyles.map_viewlet_position
 
-    @property
-    def use_custom_styles(self):
-        return self.get('use_custom_styles')
+    def __getattribute__(self, name):
+        """Proxy attribute access to our local styles.
 
-    @property
-    def linecolor(self):
-        return self.get('linecolor')
-
-    @property
-    def linewidth(self):
-        return self.get('linewidth')
-
-    @property
-    def polygoncolor(self):
-        return self.get('polygoncolor')
-
-    @property
-    def marker_image(self):
-        return self.get('marker_image')
-
-    @property
-    def marker_image_size(self):
-        return self.get('marker_image_size')
-
-    @property
-    def display_properties(self):
-        return self.get('display_properties')
-
-    @property
-    def map_viewlet_position(self):
-        return self.get('map_viewlet_position')
+        If something has requested one of the fields in our custom styles
+        then we get the property from there.  Otherwise, provide access
+        normally using the parent method.
+        """
+        if name in GEO_STYLE_FIELDS:
+            return self.get(name)
+        else:
+            return super(GeoStyleManager, self).__getattribute__(name)
 
     def set(self, key, val):
         return self.geostyles.__setitem__(key, val)

@@ -4,6 +4,14 @@ Changelog
 0.2.3 (unreleased)
 ------------------
 
+- Made testing output more verbose in the case of errors when using the
+  test browser.
+  [davidjb]
+- Added plone.testing as a extra requirements for testing
+  [davidjb]
+- Made geo feature styles more flexible through common style field definition
+  and proxying any calls for style attributes against our style manager
+  [davidjb]
 - added map_viewlet_position in custom style form [gborelli]
 - plone 4.1 fixes [gborelli]
 - added z3c.autoinclude entry point [gborelli]
