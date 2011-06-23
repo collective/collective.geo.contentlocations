@@ -4,6 +4,8 @@ Changelog
 0.2.3 (unreleased)
 ------------------
 
+- Added support for Spanish localization [macagua]
+- Added improvements about the Internationalization [macagua]
 - Made testing output more verbose in the case of errors when using the
   test browser.
   [davidjb]
