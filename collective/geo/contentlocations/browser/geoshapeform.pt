@@ -30,7 +30,7 @@
 <p  class="discreet"
     tal:define="description view/description | nothing"
     tal:content="description">
-        Description
+        <tal:comment replace="nothing">Description</tal:comment>
 </p>
 
 <form class="rowlike enableUnloadProtection" action="." method="post"
@@ -120,12 +120,12 @@
                          tal:define="description widget/field/description"
                          i18n:translate=""
                          tal:content="description"
-                         tal:condition="python:description and not hidden"
-                         >field description</div>
+                         tal:condition="python:description and not hidden">
+                         field description</div>
 
             <div class="fieldErrorBox"
                  tal:content="structure error/render|nothing">
-              Error
+              <tal:comment replace="nothing">Error</tal:comment>
             </div>
 
                     <div class="widget z3cformInlineValidation horizontal">
