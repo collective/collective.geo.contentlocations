@@ -129,6 +129,12 @@ Check to see if our custom style section is present, with our fields
     True
     >>> browser.getControl('Use custom styles?')
     <ItemControl name='form.widgets.use_custom_styles:list' type='checkbox' optionValue='selected' selected=False>
+    >>> browser.getControl('Map width')
+    <Control name='form.widgets.map_width' type='text'>
+    >>> browser.getControl('Map height')
+    <Control name='form.widgets.map_height' type='text'>
+    >>> browser.getControl('Map display position')
+    <ListControl name='form.widgets.map_viewlet_position:list' type='select'>
     >>> browser.getControl('Line color')
     <Control name='form.widgets.linecolor' type='text'>
     >>> browser.getControl('Line width')
@@ -141,6 +147,8 @@ Check to see if our custom style section is present, with our fields
 We can set custom settings on this form (per-content)
 
     >>> browser.getControl('Use custom styles?').click()
+    >>> browser.getControl('Map width').value = "123px"
+    >>> browser.getControl('Map height').value = "50%"
     >>> browser.getControl('Line width').value = "2.1"
     >>> browser.getControl('Save').click()
 
@@ -152,5 +160,9 @@ Check to see that saved successfully
     >>> style_config = IGeoCustomFeatureStyle(document)
     >>> style_config.use_custom_styles
     True
+    >>> style_config.map_width
+    u'123px'
+    >>> style_config.map_height
+    u'50%'
     >>> style_config.linewidth == 2.1
     True

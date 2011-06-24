@@ -4,6 +4,10 @@ Changelog
 0.2.3 (unreleased)
 ------------------
 
+- Added custom width/height fields for map sizing to the custom styles form.
+  This requires the relevant new fields of 'map_width' and 'map_height' from 
+  the interfaces specified in collective.geo.settings.
+  [davidjb]
 - Added support for Spanish localization [macagua]
 - Added improvements about the Internationalization [macagua]
 - Made testing output more verbose in the case of errors when using the
