@@ -2,7 +2,7 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser" >
 
-  <include package="Products.CMFCore" file="configure.zcml" />
+  <include package="Products.CMFCore" file="permissions.zcml" />
   <browser:page
       name="manage-coordinates"
       for="collective.geo.geographer.interfaces.IGeoreferenceable"
