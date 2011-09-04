@@ -66,8 +66,8 @@
 
         <div class="row horizontal map-wrapper">
           <script type="text/javascript">
-            $(document).ready( function() {
-                $('#cgeo-get-location').click(function(){
+            jq(document).ready( function() {
+                jq('#cgeo-get-location').click(function(){
                   cgmap.geocoding('geoshapemap',
                   'Edit',
                   cgmap.portal_url + '/geocoderview')});

@@ -193,13 +193,13 @@ class ShapeMapWidget(MapWidget):
     @property
     def js(self):
         return """
-  jq(function() {
+  jq(window).bind('load', function() {
     var map = cgmap.config['geoshapemap'].map;
     var layer = map.getLayersByName('Edit')[0];
     var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%s'});
     map.addControl(elctl);
     elctl.activate();
-   });
+  });
         """ % self.view.widgets['wkt'].id
 
 
