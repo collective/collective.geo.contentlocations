@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.2.3'
+version = '0.2.3-remove-coordinate'
 
 setup(name='collective.geo.contentlocations',
       version=version,

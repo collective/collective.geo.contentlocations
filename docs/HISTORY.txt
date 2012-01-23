@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.2.3-remove-coordinate (2012-01-23)
+------------------
+- Allowed the remove of coordinate from objects [mircoangelini]
+
 0.2.3 (2011-09-05)
 ------------------
 - Changed javascript to bind window load event to create map. It fixes #29 [gborelli]

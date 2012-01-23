@@ -87,10 +87,10 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
                     if group.__class__.__name__ == 'CsvGroup']
         filecsv = csv_group[0].widgets['filecsv'].value
 
-        #we need wkt value or csv file to set coordinates
-        if not data['wkt'] and not filecsv:
-            self.status = self.message_coordinates_null
-            return
+#        #we need wkt value or csv file to set coordinates
+#        if not data['wkt'] and not filecsv:
+#            self.status = self.message_coordinates_null
+#            return
 
         # set content geo style
         geostylesgroup = [group for group in self.groups \
@@ -134,13 +134,17 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
             else:
                 return False, self.message_error_csv
         else:
-            try:
-                geom = self.verifyWkt(data['wkt']).__geo_interface__
-                self.geomanager.setCoordinates(geom['type'],
-                                                geom['coordinates'])
+            if data['wkt']:
+                try:
+                    geom = self.verifyWkt(data['wkt']).__geo_interface__
+                    self.geomanager.setCoordinates(geom['type'],
+                                                    geom['coordinates'])
+                    return True, self.message_ok
+                except ReadingError:
+                    return False, self.message_error_wkt
+            else:
+                self.geomanager.removeCoordinates()
                 return True, self.message_ok
-            except ReadingError:
-                return False, self.message_error_wkt
         return False, self.message_error_input
 
     #Verify the incoming CSV file and read coordinates as per the

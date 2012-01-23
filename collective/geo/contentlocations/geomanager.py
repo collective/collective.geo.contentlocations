@@ -115,3 +115,8 @@ class GeoManager(object):
         if(self.isGeoreferenceable()):
             geo = IWriteGeoreferenced(self.context)
             geo.setGeoInterface(type, coords)
+            
+    def removeCoordinates(self):
+        if(self.isGeoreferenceable()):
+            geo = IWriteGeoreferenced(self.context)
+            geo.removeGeoInterface()
