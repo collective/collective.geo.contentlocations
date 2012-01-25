@@ -1,110 +1,113 @@
+# collective.geo.contentlocations
+# Giorgio Borelli <giorgio@giorgioborelli.it>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "POT-Creation-Date: 2012-01-25 08:20+0000\n"
-"PO-Revision-Date: 2010-11-24 16:22+0100\n"
-"Last-Translator: Rob Gietema <rob@fourdigits.nl>\n"
-"Language-Team: Rob Gietema <rob@fourdigits.nl>\n"
+"PO-Revision-Date: 2009-06-12  21:28+0000\n"
+"Last-Translator: Fabien Moret <martronic@martronic.ch>\n"
+"Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: nl\n"
-"Language-Name: Dutch\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
 #: ../interfaces.py:25
 msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
-msgstr "een CSV bestand welke per rij genoeg coordinaten paren bevat voor het geselecteerde type."
+msgstr "Un fichier CSV contenant une série de coordonnées par ligne, chque ligne doit contenir une paire de valeurs: longitude, latitude"
 
 #: ../browser/geoshapeform.py:48
 msgid "CSV File not correct. Verify file format."
-msgstr "CSV Bestand niet correct. Controleer het bestandsformaat."
+msgstr "Fichier CSV incorrecte, vérifiez le format de fichier et envoyez le formulaire à nouveau."
 
 #: ../browser/geoshapeform.py:29
 msgid "CSV Import"
-msgstr "CSV Import"
+msgstr "Importer CSV"
 
 #: ../browser/geoshapeform.py:110
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Annuler"
 
 #: ../browser/geoshapeform.py:43
 msgid "Changes saved."
-msgstr "Wijzigingen opgeslagen."
+msgstr "Enregistrer les changements"
 
 #. Default: "Choose a tool and draw the shape on the map"
 #: ../browser/geoshapeform.pt:82
 msgid "Choose a tool and draw the shape on the map"
-msgstr "Kies een tool en teken de vorm op de kaart"
+msgstr "Sélectionnez un outil et dessinez une forme sur la carte"
 
 #: ../interfaces.py:18
 msgid "Choose type of coordinates for uploading CSV."
-msgstr "Kies coordinaten type voor het uploaden van CSV."
+msgstr "Sélectionnez un type de coordonnées pour le téléchargement CSV."
 
 #. Default: "Coordinates"
 #: ../browser/geoshapeform.pt:79
 #: ../browser/geoshapeform.py:184
 #: ../profiles/default/actions.xml
 msgid "Coordinates"
-msgstr "Coordinaten"
+msgstr "Coordonnées"
 
 #: ../browser/geostylesform.py:18
 msgid "Custom styles"
-msgstr "Aangepaste stijlen"
+msgstr "Styles personnalisés"
 
 #: ../interfaces.py:24
 msgid "File"
-msgstr "Bestand"
+msgstr "Fichier"
 
 #: ../browser/geoshapeform.py:30
 msgid "Import data from CSV file"
-msgstr "Importeer gegevens van een CSV bestand"
+msgstr "Importation des données depuis un fichier CSV"
 
 #: ../interfaces.py:31
 msgid "Insert below the shape coordinates in WKT format."
-msgstr "Voer hieronder de coordinaten van de vorm in WKT formaat in."
+msgstr "Insérez ci-dessous les corrdonnées de la forme au format WKT."
 
 #: ../__init__.py:8
 msgid "LineString"
-msgstr "LineString"
+msgstr "Ligne"
 
 #: ../browser/geoshapeform.py:185
 msgid "Modify geographical data for this content"
-msgstr "Pas de geografische gegevens aan voor deze content"
+msgstr "Modifier les données géographiques pour ce contenu"
 
 #: ../browser/geoshapeform.py:44
 msgid "No changes made."
-msgstr "Geen aanpassingen gemaakt."
+msgstr "Modifications annulées"
 
 #: ../browser/geoshapeform.py:45
 msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a CSV file."
-msgstr "Er zijn geen coordinaten opgegeven. Zet de coordinaten op de kaart, vul het WKT veld in of importeer een CSV bestand."
+msgstr "Aucune coordonnée n'a été fixée. mettrez des coordonnées sur la carte, remplissez le champ WKT ou importez un fichier CSV."
 
 #: ../browser/geoshapeform.py:50
 msgid "No valid input given."
-msgstr "De ingevoerde gevens zijn niet valide."
+msgstr "Données incorrectes"
 
 #: ../__init__.py:7
 msgid "Point"
-msgstr "Punt"
+msgstr "Point"
 
 #: ../__init__.py:9
 msgid "Polygon"
-msgstr "Polygon"
+msgstr "Polygône"
 
 #: ../browser/geoshapeform.py:79
 msgid "Save"
-msgstr "Opslaan"
+msgstr "Sauvegarder"
 
 #: ../interfaces.py:30
 msgid "Shape in WKT format"
-msgstr "Vorm in WKT formaat"
+msgstr "Forme au format KWT"
 
 #: ../browser/geoshapeform.py:37
 msgid "Specify the geometry for this content"
-msgstr "Specifieer de geometrie voor deze content"
+msgstr "Spécifiez le type de géométrie pour ce contenu"
 
 #: ../interfaces.py:17
 msgid "Type"
@@ -112,13 +115,13 @@ msgstr "Type"
 
 #: ../browser/geoshapeform.py:49
 msgid "WKT expression not correct. Verify input."
-msgstr "WKT expressie niet correct. Controleer de invoer."
+msgstr "Format WKT incorrecte, vérifiez les valeurs entrées."
 
 #: ../geomarker.py:34
 msgid "objects updated."
-msgstr "objecten aangepast."
+msgstr "objets mis à jour."
 
 #: ../geomarker.py:40
 msgid "update(s) on object(s) failed"
-msgstr "aanpassing(en) op object(en) mislukt"
+msgstr "mise à jour des objet(s) échouée"
 

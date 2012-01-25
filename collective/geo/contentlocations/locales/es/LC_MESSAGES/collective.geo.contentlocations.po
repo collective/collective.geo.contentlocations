@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2011-06-23 18:16+0000\n"
+"POT-Creation-Date: 2012-01-25 08:20+0000\n"
 "PO-Revision-Date: 2011-06-23 13:50-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
@@ -17,111 +17,111 @@ msgstr ""
 "Domain: collective.geo.contentlocations\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
-#: ./interfaces.py:25
+#: ../interfaces.py:25
 msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
 msgstr "Un archivo .CSV conteniendo una coordenada para cada fila y suficientes pares de coordenadas para el tipo seleccionado."
 
-#: ./browser/geoshapeform.py:48
+#: ../browser/geoshapeform.py:48
 msgid "CSV File not correct. Verify file format."
 msgstr "Archivo .CSV no esta correcto. Por favor, verifique el formato del archivo."
 
-#: ./browser/geoshapeform.py:29
+#: ../browser/geoshapeform.py:29
 msgid "CSV Import"
 msgstr "Importar .CSV"
 
-#: ./browser/geoshapeform.py:110
+#: ../browser/geoshapeform.py:110
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ./browser/geoshapeform.py:43
+#: ../browser/geoshapeform.py:43
 msgid "Changes saved."
 msgstr "Cambios guardados."
 
 #. Default: "Choose a tool and draw the shape on the map"
-#: ./browser/geoshapeform.pt:82
+#: ../browser/geoshapeform.pt:82
 msgid "Choose a tool and draw the shape on the map"
 msgstr "Seleccionar la herramienta y dibujar la figura en el mapa"
 
-#: ./interfaces.py:18
+#: ../interfaces.py:18
 msgid "Choose type of coordinates for uploading CSV."
 msgstr "Seleccione el tipo de coordenadas para subir el archivo .CSV"
 
 #. Default: "Coordinates"
-#: ./browser/geoshapeform.pt:79
-#: ./browser/geoshapeform.py:184
-#: ./profiles/default/actions.xml
+#: ../browser/geoshapeform.pt:79
+#: ../browser/geoshapeform.py:184
+#: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "Coordenadas"
 
-#: ./browser/geostylesform.py:24
+#: ../browser/geostylesform.py:18
 msgid "Custom styles"
 msgstr "Personalizar estilos"
 
-#: ./interfaces.py:24
+#: ../interfaces.py:24
 msgid "File"
 msgstr "Archivo"
 
-#: ./browser/geoshapeform.py:30
+#: ../browser/geoshapeform.py:30
 msgid "Import data from CSV file"
 msgstr "Importar data desde un archivo .CSV"
 
-#: ./interfaces.py:31
+#: ../interfaces.py:31
 msgid "Insert below the shape coordinates in WKT format."
 msgstr "Insertar la siguiente coordenadas de figuras en formato WKT."
 
-#: ./__init__.py:8
+#: ../__init__.py:8
 msgid "LineString"
 msgstr "Linea"
 
-#: ./browser/geoshapeform.py:185
+#: ../browser/geoshapeform.py:185
 msgid "Modify geographical data for this content"
 msgstr "Modificar los datos geográficos de este contenido"
 
-#: ./browser/geoshapeform.py:44
+#: ../browser/geoshapeform.py:44
 msgid "No changes made."
 msgstr "Sin cambios hechos."
 
-#: ./browser/geoshapeform.py:45
+#: ../browser/geoshapeform.py:45
 msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a CSV file."
 msgstr "No hay coordinada que se allá establecido. Por favor, establezca las coordenadas en el mapa, rellene el campo de WKT o importar un archivo .CSV."
 
-#: ./browser/geoshapeform.py:50
+#: ../browser/geoshapeform.py:50
 msgid "No valid input given."
 msgstr "No es válida valor ingresado"
 
-#: ./__init__.py:7
+#: ../__init__.py:7
 msgid "Point"
 msgstr "Punto"
 
-#: ./__init__.py:9
+#: ../__init__.py:9
 msgid "Polygon"
 msgstr "Polígono"
 
-#: ./browser/geoshapeform.py:79
+#: ../browser/geoshapeform.py:79
 msgid "Save"
 msgstr "Guardar"
 
-#: ./interfaces.py:30
+#: ../interfaces.py:30
 msgid "Shape in WKT format"
 msgstr "Figura en formato WKT"
 
-#: ./browser/geoshapeform.py:37
+#: ../browser/geoshapeform.py:37
 msgid "Specify the geometry for this content"
 msgstr "Especificar la geometría de este contenido"
 
-#: ./interfaces.py:17
+#: ../interfaces.py:17
 msgid "Type"
 msgstr "Tipo"
 
-#: ./browser/geoshapeform.py:49
+#: ../browser/geoshapeform.py:49
 msgid "WKT expression not correct. Verify input."
 msgstr "La expresión WKT no es correcta. Verifique la ingresado."
 
-#: ./geomarker.py:34
+#: ../geomarker.py:34
 msgid "objects updated."
 msgstr "objetos actualizados."
 
-#: ./geomarker.py:40
+#: ../geomarker.py:40
 msgid "update(s) on object(s) failed"
 msgstr "La(s) actualización en el(los) objeto(s) falló."
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.contentlocations\n"
-"POT-Creation-Date: 2011-05-15 13:01+0000\n"
+"POT-Creation-Date: 2012-01-25 08:20+0000\n"
 "PO-Revision-Date: 2012-01-01 22:10+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -14,109 +14,109 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
 
-#: ./interfaces.py:25
+#: ../interfaces.py:25
 msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
 msgstr "內含座標資訊的 CSV 檔案，配合需要的類型，逐行記錄必要的座標資料。"
 
-#: ./browser/geoshapeform.py:48
+#: ../browser/geoshapeform.py:48
 msgid "CSV File not correct. Verify file format."
 msgstr "CSV 檔案並不正確，請確認檔案格式。"
 
-#: ./browser/geoshapeform.py:29
+#: ../browser/geoshapeform.py:29
 msgid "CSV Import"
 msgstr "匯入 CSV"
 
-#: ./browser/geoshapeform.py:110
+#: ../browser/geoshapeform.py:110
 msgid "Cancel"
 msgstr "取消"
 
-#: ./browser/geoshapeform.py:43
+#: ../browser/geoshapeform.py:43
 msgid "Changes saved."
 msgstr "變更儲存。"
 
-#: ./browser/geoshapeform.pt:82
+#: ../browser/geoshapeform.pt:82
 msgid "Choose a tool and draw the shape on the map"
 msgstr "選擇工具並在地圖上標示座標位置或形狀"
 
-#: ./interfaces.py:18
+#: ../interfaces.py:18
 msgid "Choose type of coordinates for uploading CSV."
 msgstr "選擇座標資料的類型。"
 
-#: ./browser/geoshapeform.pt:79
-#: ./browser/geoshapeform.py:184
-#: ./profiles/default/actions.xml
+#: ../browser/geoshapeform.pt:79
+#: ../browser/geoshapeform.py:184
+#: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "座標"
 
-#: ./browser/geostylesform.py:24
+#: ../browser/geostylesform.py:18
 msgid "Custom styles"
 msgstr "自訂樣式"
 
-#: ./interfaces.py:24
+#: ../interfaces.py:24
 msgid "File"
 msgstr "檔案"
 
-#: ./browser/geoshapeform.py:30
+#: ../browser/geoshapeform.py:30
 msgid "Import data from CSV file"
 msgstr "匯入 CSV 格式的資料"
 
-#: ./interfaces.py:31
+#: ../interfaces.py:31
 msgid "Insert below the shape coordinates in WKT format."
 msgstr "輸入 WKT 格式的座標資訊。"
 
-#: ./__init__.py:8
+#: ../__init__.py:8
 msgid "LineString"
 msgstr "線"
 
-#: ./browser/geoshapeform.py:185
+#: ../browser/geoshapeform.py:185
 msgid "Modify geographical data for this content"
 msgstr "修改這筆內容的地理資訊"
 
-#: ./browser/geoshapeform.py:44
+#: ../browser/geoshapeform.py:44
 msgid "No changes made."
 msgstr "沒有變更。"
 
-#: ./browser/geoshapeform.py:45
+#: ../browser/geoshapeform.py:45
 msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a CSV file."
 msgstr "尚未輸入座標值，請在地圖上選定座標，也可以在 WKT 欄位輸入資料，或是匯入 CSV 檔案。"
 
-#: ./browser/geoshapeform.py:50
+#: ../browser/geoshapeform.py:50
 msgid "No valid input given."
 msgstr "沒有正確的輸入值。"
 
-#: ./__init__.py:7
+#: ../__init__.py:7
 msgid "Point"
 msgstr "點"
 
-#: ./__init__.py:9
+#: ../__init__.py:9
 msgid "Polygon"
 msgstr "多邊形"
 
-#: ./browser/geoshapeform.py:79
+#: ../browser/geoshapeform.py:79
 msgid "Save"
 msgstr "儲存"
 
-#: ./interfaces.py:30
+#: ../interfaces.py:30
 msgid "Shape in WKT format"
 msgstr "WKT 格式的資料"
 
-#: ./browser/geoshapeform.py:37
+#: ../browser/geoshapeform.py:37
 msgid "Specify the geometry for this content"
 msgstr "指定這筆內容的地理資訊。"
 
-#: ./interfaces.py:17
+#: ../interfaces.py:17
 msgid "Type"
 msgstr "類型"
 
-#: ./browser/geoshapeform.py:49
+#: ../browser/geoshapeform.py:49
 msgid "WKT expression not correct. Verify input."
 msgstr "不是正確的 WKT 格式，請再次確認輸入的資料。"
 
-#: ./geomarker.py:34
+#: ../geomarker.py:34
 msgid "objects updated."
 msgstr "完成變更。"
 
-#: ./geomarker.py:40
+#: ../geomarker.py:40
 msgid "update(s) on object(s) failed"
 msgstr "變更失敗"
 

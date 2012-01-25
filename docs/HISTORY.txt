@@ -4,8 +4,8 @@ Changelog
 0.2.4 (unreleased)
 ------------------
 
+- Added French translation [Fabien Moret]
 - Added Danish translation [stonor]
-
 
 0.2.3 (2011-09-05)
 ------------------
@@ -14,7 +14,7 @@ Changelog
   changes in plone.app.z3cform 0.5.0+.
   [davidjb]
 - Added custom width/height fields for map sizing to the custom styles form.
-  This requires the relevant new fields of 'map_width' and 'map_height' from 
+  This requires the relevant new fields of 'map_width' and 'map_height' from
   the interfaces specified in collective.geo.settings.
   [davidjb]
 - Added support for Spanish localization [macagua]
@@ -54,11 +54,11 @@ Changelog
   causing the old marker actions to be applied to the map widget.
   [rockdj]
 * Manage coordinates form now redirects to the the View action for
-  certain types of content specified in the site properties.  This 
+  certain types of content specified in the site properties.  This
   includes types such as File and Image where redirecting to their normal
   absolute URL would prompt the user to download said content.
   [rockdj]
-* Added collective.geo.kml to install_requires for per-content KML 
+* Added collective.geo.kml to install_requires for per-content KML
   settings.
   [rockdj]
 * Added ability to specify per-content KML style settings together with
@@ -69,14 +69,14 @@ Changelog
   [rockdj]
 * Restructured geoshapeform.pt to have the map widget above the action
   buttons and allowed for subforms to be included at the bottom of the
-  form.  
+  form.
 * added Shapely package in install_requiries
 * Updated CSV reader and other coordinate references to be consistent
   with WGS 1984 reference system.  This involves standardising the
   coordinate order to be [longitude, latitude] rather than [latitude,
   longitude].
   [rockdj]
-* Updated unit tests to check for error message on CSV upload as well 
+* Updated unit tests to check for error message on CSV upload as well
   as updated coordinates.
   [rockdj]
 * use single form instead of two-step form for editing shapes
