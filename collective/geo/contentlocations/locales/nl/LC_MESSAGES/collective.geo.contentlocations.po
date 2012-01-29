@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2012-01-25 08:20+0000\n"
+"POT-Creation-Date: 2012-01-29 18:05+0000\n"
 "PO-Revision-Date: 2010-11-24 16:22+0100\n"
 "Last-Translator: Rob Gietema <rob@fourdigits.nl>\n"
 "Language-Team: Rob Gietema <rob@fourdigits.nl>\n"
@@ -14,11 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
 
-#: ../interfaces.py:25
+#: ../interfaces.py:24
 msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
 msgstr "een CSV bestand welke per rij genoeg coordinaten paren bevat voor het geselecteerde type."
 
-#: ../browser/geoshapeform.py:48
+#: ../browser/geoshapeform.py:49
 msgid "CSV File not correct. Verify file format."
 msgstr "CSV Bestand niet correct. Controleer het bestandsformaat."
 
@@ -26,7 +26,7 @@ msgstr "CSV Bestand niet correct. Controleer het bestandsformaat."
 msgid "CSV Import"
 msgstr "CSV Import"
 
-#: ../browser/geoshapeform.py:110
+#: ../browser/geoshapeform.py:112
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -45,16 +45,20 @@ msgstr "Kies coordinaten type voor het uploaden van CSV."
 
 #. Default: "Coordinates"
 #: ../browser/geoshapeform.pt:79
-#: ../browser/geoshapeform.py:184
+#: ../browser/geoshapeform.py:186
 #: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "Coordinaten"
+
+#: ../browser/geoshapeform.py:45
+msgid "Coordinates removed"
+msgstr ""
 
 #: ../browser/geostylesform.py:18
 msgid "Custom styles"
 msgstr "Aangepaste stijlen"
 
-#: ../interfaces.py:24
+#: ../interfaces.py:23
 msgid "File"
 msgstr "Bestand"
 
@@ -62,7 +66,7 @@ msgstr "Bestand"
 msgid "Import data from CSV file"
 msgstr "Importeer gegevens van een CSV bestand"
 
-#: ../interfaces.py:31
+#: ../interfaces.py:30
 msgid "Insert below the shape coordinates in WKT format."
 msgstr "Voer hieronder de coordinaten van de vorm in WKT formaat in."
 
@@ -70,7 +74,7 @@ msgstr "Voer hieronder de coordinaten van de vorm in WKT formaat in."
 msgid "LineString"
 msgstr "LineString"
 
-#: ../browser/geoshapeform.py:185
+#: ../browser/geoshapeform.py:187
 msgid "Modify geographical data for this content"
 msgstr "Pas de geografische gegevens aan voor deze content"
 
@@ -78,11 +82,11 @@ msgstr "Pas de geografische gegevens aan voor deze content"
 msgid "No changes made."
 msgstr "Geen aanpassingen gemaakt."
 
-#: ../browser/geoshapeform.py:45
+#: ../browser/geoshapeform.py:46
 msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a CSV file."
 msgstr "Er zijn geen coordinaten opgegeven. Zet de coordinaten op de kaart, vul het WKT veld in of importeer een CSV bestand."
 
-#: ../browser/geoshapeform.py:50
+#: ../browser/geoshapeform.py:51
 msgid "No valid input given."
 msgstr "De ingevoerde gevens zijn niet valide."
 
@@ -94,11 +98,11 @@ msgstr "Punt"
 msgid "Polygon"
 msgstr "Polygon"
 
-#: ../browser/geoshapeform.py:79
+#: ../browser/geoshapeform.py:80
 msgid "Save"
 msgstr "Opslaan"
 
-#: ../interfaces.py:30
+#: ../interfaces.py:29
 msgid "Shape in WKT format"
 msgstr "Vorm in WKT formaat"
 
@@ -110,7 +114,7 @@ msgstr "Specifieer de geometrie voor deze content"
 msgid "Type"
 msgstr "Type"
 
-#: ../browser/geoshapeform.py:49
+#: ../browser/geoshapeform.py:50
 msgid "WKT expression not correct. Verify input."
 msgstr "WKT expressie niet correct. Controleer de invoer."
 

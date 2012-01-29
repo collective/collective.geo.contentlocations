@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2012-01-25 08:20+0000\n"
+"POT-Creation-Date: 2012-01-29 18:05+0000\n"
 "PO-Revision-Date: 2010-11-24 16:22+0100\n"
 "Last-Translator: Anton Stonor <anton@headnet.dk>\n"
 "Language-Team: Anton Stonor <anton@headnet.dk>\n"
@@ -14,11 +14,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
 
-#: ../interfaces.py:25
+#: ../interfaces.py:24
 msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
 msgstr "En CSV-fil. Hver række repræsenterer et punkt. Hver række har to kolonner for hhv x- og y-koordinat. Fx kan en fil se sådan ud: '-73.9662495,40.783434499999984'. Den vil importere et punkt i New York."
 
-#: ../browser/geoshapeform.py:48
+#: ../browser/geoshapeform.py:49
 msgid "CSV File not correct. Verify file format."
 msgstr "CSV-filen kan ikke importeres. Tjek formatet."
 
@@ -26,7 +26,7 @@ msgstr "CSV-filen kan ikke importeres. Tjek formatet."
 msgid "CSV Import"
 msgstr "Import"
 
-#: ../browser/geoshapeform.py:110
+#: ../browser/geoshapeform.py:112
 msgid "Cancel"
 msgstr "Fortryd"
 
@@ -45,16 +45,20 @@ msgstr "Vælg hvilken type koordinater, du vil uploade som CSV-fil."
 
 #. Default: "Coordinates"
 #: ../browser/geoshapeform.pt:79
-#: ../browser/geoshapeform.py:184
+#: ../browser/geoshapeform.py:186
 #: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "Kortdata"
+
+#: ../browser/geoshapeform.py:45
+msgid "Coordinates removed"
+msgstr ""
 
 #: ../browser/geostylesform.py:18
 msgid "Custom styles"
 msgstr "Layout"
 
-#: ../interfaces.py:24
+#: ../interfaces.py:23
 msgid "File"
 msgstr "Fil"
 
@@ -62,7 +66,7 @@ msgstr "Fil"
 msgid "Import data from CSV file"
 msgstr "Importer data fra en CSV-fil"
 
-#: ../interfaces.py:31
+#: ../interfaces.py:30
 msgid "Insert below the shape coordinates in WKT format."
 msgstr "Her kan du indsætte koordinater (punkt, linje eller polygon) i WKT-format (ignorer bare, hvis du ikke ved hvad WKT er)."
 
@@ -70,7 +74,7 @@ msgstr "Her kan du indsætte koordinater (punkt, linje eller polygon) i WKT-form
 msgid "LineString"
 msgstr "Linje"
 
-#: ../browser/geoshapeform.py:185
+#: ../browser/geoshapeform.py:187
 msgid "Modify geographical data for this content"
 msgstr "Tilpasning de geografiske data for dette indhold"
 
@@ -78,11 +82,11 @@ msgstr "Tilpasning de geografiske data for dette indhold"
 msgid "No changes made."
 msgstr "Ingen ændringer."
 
-#: ../browser/geoshapeform.py:45
+#: ../browser/geoshapeform.py:46
 msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a CSV file."
 msgstr "Ingen koordinater er blev sat. Du kan enten sætte koordinater ved at klikke på kortet, udfylde WKT-feltet eller importere fra en CSV-fil."
 
-#: ../browser/geoshapeform.py:50
+#: ../browser/geoshapeform.py:51
 msgid "No valid input given."
 msgstr "Ugyldig data."
 
@@ -94,11 +98,11 @@ msgstr "Punkt"
 msgid "Polygon"
 msgstr "Polygon"
 
-#: ../browser/geoshapeform.py:79
+#: ../browser/geoshapeform.py:80
 msgid "Save"
 msgstr "Gem"
 
-#: ../interfaces.py:30
+#: ../interfaces.py:29
 msgid "Shape in WKT format"
 msgstr "Koordinater i WKT-format"
 
@@ -110,7 +114,7 @@ msgstr "Her kan du angive, hvilken placering, dit indhold skal have på kortet. 
 msgid "Type"
 msgstr "Type"
 
-#: ../browser/geoshapeform.py:49
+#: ../browser/geoshapeform.py:50
 msgid "WKT expression not correct. Verify input."
 msgstr "WKT-data er ikke korrekt. Juster venligst."
 
