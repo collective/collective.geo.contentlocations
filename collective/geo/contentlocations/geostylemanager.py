@@ -7,7 +7,8 @@ from zope.event import notify
 from zope.annotation.interfaces import IAnnotations
 
 from plone.registry.interfaces import IRegistry
-from collective.geo.settings.interfaces import IGeoCustomFeatureStyle, IGeoFeatureStyle
+from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
+from collective.geo.settings.interfaces import IGeoFeatureStyle
 from collective.geo.contentlocations.events import ObjectStylesEvent
 from collective.geo.contentlocations.config import GEO_STYLE_FIELDS
 
@@ -35,7 +36,8 @@ class GeoStyleManager(object):
 
             #Set our custom styles to be the defaults for all fields
             for field in GEO_STYLE_FIELDS:
-                self.geostyles[field] = getattr(self.defaultstyles, field, None)
+                self.geostyles[field] = getattr(
+                                self.defaultstyles, field, None)
 
             #This field isn't present in the defaults so set it manually
             self.geostyles['use_custom_styles'] = False
