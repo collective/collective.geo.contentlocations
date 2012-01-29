@@ -6,7 +6,7 @@ class TestSetup(base.TestCase):
 
     def test_portal_actions(self):
         pa = self.portal.portal_actions
-        location_action = pa.object.get('locations',False)
+        location_action = pa.object.get('locations', False)
         self.failUnless(location_action)
 
 

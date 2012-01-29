@@ -16,4 +16,4 @@ class GeoControlpanelFormExtender(extensible.FormExtender):
         for group in self.form.groups:
             if group.__name__ == 'GeoAdvancedConfGroup' and \
                     'geo_content_types' not in group.fields:
-                self.add(fields, group = 'GeoAdvancedConfGroup')
+                self.add(fields, group='GeoAdvancedConfGroup')

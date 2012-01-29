@@ -33,7 +33,7 @@ class CsvGroup(group.Group):
 class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     implements(IMapView)
     template = viewpagetemplatefile.ViewPageTemplateFile('geoshapeform.pt')
-    form_name="edit_geometry"
+    form_name = "edit_geometry"
     description = _(u"Specify the geometry for this content")
     fields = field.Fields(IGeoManager).select('wkt')
     mapfields = ['geoshapemap']
@@ -77,14 +77,13 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         ptool.addPortalMessage(message)
 
     @button.buttonAndHandler(_(u'Save'))
-    def handleApply(self, action):
+    def handleApply(self, action):  # pylint: disable=W0613
         data, errors = self.extractData()
-
         if (errors):
             return
 
-        csv_group = [group for group in self.groups \
-                    if group.__class__.__name__ == 'CsvGroup']
+        csv_group = [gr for gr in self.groups \
+                    if gr.__class__.__name__ == 'CsvGroup']
         filecsv = csv_group[0].widgets['filecsv'].value
 
         #we need wkt value or csv file to set coordinates
@@ -93,11 +92,12 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
             return
 
         # set content geo style
-        geostylesgroup = [group for group in self.groups \
-                    if group.__class__.__name__ == 'GeoStylesForm']
+        geostylesgroup = [gr for gr in self.groups \
+                    if gr.__class__.__name__ == 'GeoStylesForm']
         if geostylesgroup:
             stylemanager = IGeoCustomFeatureStyle(self.context)
-            stylemanager.setStyles([(field_name, data[field_name]) for field_name in geostylesgroup[0].fields])
+            fields = geostylesgroup[0].fields
+            stylemanager.setStyles([(i, data[i]) for i in fields])
 
         ok, message = self.addCoordinates(data, filecsv)
         if not ok:
@@ -108,7 +108,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         self.redirectAction()
 
     @button.buttonAndHandler(_(u'Cancel'))
-    def handleCancel(self, action):
+    def handleCancel(self, action):  # pylint: disable=W0613
         self.setStatusMessage(self.message_cancel)
         self.redirectAction()
 
@@ -169,8 +169,8 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
 
         return coords
 
-    def csv2coordinates(self, csv):
-        csv_data = self.verifyCsv(csv)
+    def csv2coordinates(self, csv_data):
+        csv_data = self.verifyCsv(csv_data)
         if csv_data != False:
             return tuple(csv_data)
         return False

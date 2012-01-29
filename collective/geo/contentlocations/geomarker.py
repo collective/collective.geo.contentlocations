@@ -27,7 +27,7 @@ def update_georeferenceable_objects(context, new_ct):
             olds_pt.remove(new)
         else:
             adds.append(new)
-    if len(olds_pt)==0 and len(adds)==0:
+    if len(olds_pt) == 0 and len(adds) == 0:
         return
 
     nb_items, bad_items = g_marker.update(context, adds, olds_pt)
@@ -44,7 +44,7 @@ def update_georeferenceable_objects(context, new_ct):
 
 
 class GeoMarker(object):
-    """ Utility to mark an object IGeoreferenceable
+    """Utility to mark an object IGeoreferenceable
     """
     implements(IGeoMarker)
 
@@ -66,7 +66,7 @@ class GeoMarker(object):
     def process(self):
         """ Proceed to the markage
         """
-        try: 
+        try:
             geo_content_types = self.geo_content_types
         except:
             return
@@ -94,8 +94,6 @@ class GeoMarker(object):
 
 
 class GeoMarkerUtility(object):
-    """
-    """
     implements(IGeoMarkerUtility)
 
     def update(self, context, news, olds):
@@ -118,9 +116,7 @@ class GeoMarkerUtility(object):
         """
         return self._walker(context, 'process')
 
-    def _walker(self, context, meth, portal_type = ''):
-        """
-        """
+    def _walker(self, context, meth, portal_type=''):
         pc = getToolByName(context, 'portal_catalog')
         bad_objects = []
         i = 0

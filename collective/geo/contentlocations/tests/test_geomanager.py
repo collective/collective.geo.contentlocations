@@ -8,6 +8,7 @@ import collective.geo.geographer.interfaces
 import zope.annotation.interfaces
 import zope.annotation.attribute
 
+
 def setUp(test):
 
     zope.component.provideAdapter(
@@ -20,10 +21,12 @@ def setUp(test):
             provides=zope.annotation.interfaces.IAnnotations
         )
 
+
 def tearDown(test):
     """This is the companion to setUp - it can be used to clean up the
     test environment after each test.
     """
+
 
 def test_suite():
     return unittest.TestSuite((
@@ -31,5 +34,7 @@ def test_suite():
         doctest.DocTestSuite(collective.geo.contentlocations.geomanager,
                      setUp=setUp,
                      tearDown=tearDown,
-                     optionflags=doctest.NORMALIZE_WHITESPACE|doctest.ELLIPSIS,),
+                     optionflags=doctest.NORMALIZE_WHITESPACE | \
+                                                doctest.ELLIPSIS,
+                    ),
         ))

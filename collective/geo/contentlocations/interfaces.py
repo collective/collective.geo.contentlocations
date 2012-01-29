@@ -16,8 +16,7 @@ class IGeoManager(Interface):
     coord_type = schema.Choice(
         title=_(u"Type"),
         description=_(u"Choose type of coordinates for uploading CSV."),
-        vocabulary = 'coordsVocab',
-        #values=config.COORDTYPE,
+        vocabulary='coordsVocab',
         required=True)
 
     filecsv = schema.Bytes(
@@ -32,17 +31,21 @@ class IGeoManager(Interface):
         required=False)
 
     def isGeoreferenceable(self):
-        """ """
+        """Check if an object is isGeoreferenceable
+        """
 
     def getCoordinates(self):
-        """ """
+        """Return the coordinates assigned to an object
+        """
 
     def setCoordinates(self):
-        """ """
+        """set coordinates to an object
+        """
 
 
 class IGeoMarker(Interface):
-    """Utility to mark IGeoreferenceable portal types"""
+    """Utility to mark IGeoreferenceable portal types
+    """
 
 
 class IGeoMarkerUtility(Interface):

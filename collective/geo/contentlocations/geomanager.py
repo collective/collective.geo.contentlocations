@@ -60,11 +60,17 @@ class GeoManager(object):
       True
 
       We can also change the coordinates to represent a Polygon
-      >>> geo.setCoordinates('Polygon', (((0.111,0.222),(0.222,0.222), (0.222,0.111),(0.111,0.111)),) )
+      >>> poligon_coords = (((0.111,0.222),(0.222,0.222),
+      ...    (0.222,0.111),(0.111,0.111)),)
+
+      >>> geo.setCoordinates('Polygon', coordinates)
 
       and get its coordinates back accordingly
-      >>> geo.getCoordinates()
-      ('Polygon', (((0.111, 0.222), (0.222, 0.222), (0.222, 0.111), (0.111, 0.111)),))
+      >>> coords = geo.getCoordinates()
+      >>> coords[0]
+      'Polygon'
+      >>> coords[1] == poligon_coords
+      True
 
     """
     interface.implements(IGeoManager)
@@ -97,7 +103,7 @@ class GeoManager(object):
             pass
         return u''
 
-    def __init__(self, context, form = None):
+    def __init__(self, context, form=None):
         self.context = context
         self.form = form
 

@@ -1,11 +1,10 @@
 import unittest
 from collective.geo.contentlocations.tests import base
 
-# from Products.Five.testbrowser import Browser
-# from Products.PloneTestCase.setup import portal_owner, default_password
-from collective.geo.settings.utils import geo_settings
+# from collective.geo.settings.utils import geo_settings
 from collective.geo.geographer.interfaces import IGeoreferenceable
-from collective.geo.contentlocations.geomarker import update_georeferenceable_objects
+from collective.geo.contentlocations.geomarker import \
+                                    update_georeferenceable_objects
 
 
 class TestGeomanager(base.FunctionalTestCase):
@@ -15,12 +14,13 @@ class TestGeomanager(base.FunctionalTestCase):
         self.p_types = ('Image', 'Event', 'News Item')
 
         self.setRoles('Manager')
+
         def create_obj(context, pt):
             oid = 'test-%s' % pt.lower().replace(' ', '-')
-            return context.invokeFactory(pt, oid) 
+            return context.invokeFactory(pt, oid)
 
         self.obj_ids = [create_obj(self.folder, pt) for pt in self.p_types]
-        geo_settings(self.portal).geo_content_types
+        # geo_settings(self.portal).geo_content_types
 
     def test_after_obj_creation(self):
         for oid in self.obj_ids:
@@ -46,7 +46,7 @@ class TestGeomanager(base.FunctionalTestCase):
                 self.assertTrue(IGeoreferenceable.providedBy(obj))
             else:
                 self.assertFalse(IGeoreferenceable.providedBy(obj))
-                
+
 
 def test_suite():
     suite = unittest.TestSuite()
