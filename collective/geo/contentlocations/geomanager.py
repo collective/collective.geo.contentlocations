@@ -8,8 +8,7 @@ from collective.geo.geographer.interfaces import IWriteGeoreferenced
 
 
 class GeoManager(object):
-    """
-      We instanciate a GeoManager on a non georeferenceable context
+    """We instanciate a GeoManager on a non georeferenceable context
       >>> geo = GeoManager(None)
       >>> geo.isGeoreferenceable()
       False
@@ -63,7 +62,7 @@ class GeoManager(object):
       >>> poligon_coords = (((0.111,0.222),(0.222,0.222),
       ...    (0.222,0.111),(0.111,0.111)),)
 
-      >>> geo.setCoordinates('Polygon', coordinates)
+      >>> geo.setCoordinates('Polygon', poligon_coords)
 
       and get its coordinates back accordingly
       >>> coords = geo.getCoordinates()
@@ -71,6 +70,14 @@ class GeoManager(object):
       'Polygon'
       >>> coords[1] == poligon_coords
       True
+
+      To remove coordinates from an object we can
+      call removeCoordinates method
+
+      >>> geo.removeCoordinates()
+      >>> geo.getCoordinates()
+      (None, None)
+
 
     """
     interface.implements(IGeoManager)
@@ -121,3 +128,8 @@ class GeoManager(object):
         if(self.isGeoreferenceable()):
             geo = IWriteGeoreferenced(self.context)
             geo.setGeoInterface(type, coords)
+
+    def removeCoordinates(self):
+        if(self.isGeoreferenceable()):
+            geo = IWriteGeoreferenced(self.context)
+            geo.removeGeoInterface()

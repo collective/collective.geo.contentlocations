@@ -4,8 +4,10 @@ Changelog
 2.4 (unreleased)
 ------------------
 
+- Allowed to remove coordinates from a content type [gborelli, mircoangelini]
 - Added French translation [Fabien Moret]
 - Added Danish translation [stonor]
+
 
 0.2.3 (2011-09-05)
 ------------------

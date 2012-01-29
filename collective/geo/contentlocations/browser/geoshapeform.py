@@ -42,6 +42,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
 
     message_ok = _(u'Changes saved.')
     message_cancel = _(u'No changes made.')
+    message_coordaintes_removed = _(u'Coordinates removed')
     message_coordinates_null = _(u"No coordinate has been set. Please, set "
                                   "coordinates on the map, fill in the WKT "
                                   "field or import a CSV file.")
@@ -82,15 +83,6 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         if (errors):
             return
 
-        csv_group = [gr for gr in self.groups \
-                    if gr.__class__.__name__ == 'CsvGroup']
-        filecsv = csv_group[0].widgets['filecsv'].value
-
-        #we need wkt value or csv file to set coordinates
-        if not data['wkt'] and not filecsv:
-            self.status = self.message_coordinates_null
-            return
-
         # set content geo style
         geostylesgroup = [gr for gr in self.groups \
                     if gr.__class__.__name__ == 'GeoStylesForm']
@@ -99,12 +91,22 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
             fields = geostylesgroup[0].fields
             stylemanager.setStyles([(i, data[i]) for i in fields])
 
-        ok, message = self.addCoordinates(data, filecsv)
-        if not ok:
-            self.status = message
-            return
+        csv_group = [gr for gr in self.groups \
+                    if gr.__class__.__name__ == 'CsvGroup']
+        filecsv = csv_group[0].widgets['filecsv'].value
 
-        self.setStatusMessage(self.message_ok)
+        # we remove coordinates if wkt and filecsv are 'empty'
+        message = self.message_ok
+        if not data['wkt'] and not filecsv:
+            message = self.message_coordaintes_removed
+            self.geomanager.removeCoordinates()
+        else:
+            ok, message = self.addCoordinates(data, filecsv)
+            if not ok:
+                self.status = message
+                return
+
+        self.setStatusMessage(message)
         self.redirectAction()
 
     @button.buttonAndHandler(_(u'Cancel'))

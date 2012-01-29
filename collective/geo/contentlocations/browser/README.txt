@@ -67,6 +67,19 @@ we check that our data is still there
     >>> geo.getCoordinates()
     ('LineString', ((153.02719116211, -27.352252938064002), (153.11370849609, -27.370547753644999), (153.08624267578, -27.403470801049), (153.00933837891, -27.402251603719002)))
 
+
+We can remove coordinates from an object by removing data from Wkt textarea
+    >>> browser.getLink('Coordinates').click()
+    >>> browser.getControl('Shape in WKT format').value = u''
+    >>> browser.getControl('Save').click()
+    >>> 'Coordinates removed' in browser.contents
+    True
+
+geo manager adapter will return null coordiantes
+    >>> geo = IGeoManager(document)
+    >>> geo.getCoordinates()
+    (None, None)
+
 I might instead click "cancel".
 Let's do it again, first clicking on "coordinates" and choosing the "point" type
 
@@ -110,7 +123,7 @@ we load a coordinates csv file and verify saved data
     >>> browser.getControl('Save').click()
 
 Check there wasn't an error message
-  
+
     >>> 'CSV File not correct. Verify file format.' in browser.contents
     False
     >>> 'Changes saved.' in browser.contents

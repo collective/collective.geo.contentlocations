@@ -30,7 +30,8 @@ def setup_product():
 
 
 setup_product()
-ptc.setupPloneSite(products=['collective.geo.contentlocations', ])
+ptc.setupPloneSite(
+        extension_profiles=('collective.geo.contentlocations:default', ))
 
 
 class TestCase(ptc.PloneTestCase):
@@ -53,15 +54,13 @@ class FunctionalTestCase(ptc.FunctionalTestCase):
         setSecurityPolicy(ZopeSecurityPolicy(verbose=True))
 
         #Make sure our test browser won't try to handle errors
-        browser = self.browser = Browser()
+        self.browser = Browser()
         self.browser.handleErrors = False
 
         #Make our portal error log ignore no exceptions
         self.portal.error_log._ignored_exceptions = ()
 
-        def raising(self, info):
-            #import traceback
-            #traceback.print_tb(info[2])
+        def raising(self, info):  # pylint: disable=W0613
             print info[1]
 
         #Make sure our site error log raises errors so we can check for them
