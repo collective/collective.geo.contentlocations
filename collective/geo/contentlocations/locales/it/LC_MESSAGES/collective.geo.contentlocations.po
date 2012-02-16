@@ -107,7 +107,7 @@ msgstr "Salva"
 
 #: ../interfaces.py:29
 msgid "Shape in WKT format"
-msgstr "Forme in formato KWT"
+msgstr "Coordinate in formato KWT"
 
 #: ../browser/geoshapeform.py:37
 msgid "Specify the geometry for this content"
