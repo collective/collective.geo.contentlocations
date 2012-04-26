@@ -85,7 +85,7 @@
                   Choose a tool and draw the shape on the map</div>
                <metal:use use-macro="context/@@collectivegeo-macros/openlayers"/>
                <metal:map use-macro="context/@@collectivegeo-macros/map-widget" />
-          <div>
+          </div>
         </div>
 
         <metal:define define-macro="widget_rendering">

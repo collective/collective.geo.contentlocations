@@ -4,7 +4,7 @@ Changelog
 2.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fixed wrongly open div tag in the geoshapeform.pt [rnd0101]
 
 
 2.4 (2012-02-14)
