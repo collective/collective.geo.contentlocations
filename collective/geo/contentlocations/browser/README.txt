@@ -146,7 +146,7 @@ Check to see if our custom style section is present, with our fields
     <Control name='form.widgets.map_width' type='text'>
     >>> browser.getControl('Map height')
     <Control name='form.widgets.map_height' type='text'>
-    >>> browser.getControl('Map display position')
+    >>> browser.getControl('Map position in the page')
     <ListControl name='form.widgets.map_viewlet_position:list' type='select'>
     >>> browser.getControl('Line color')
     <Control name='form.widgets.linecolor' type='text'>
