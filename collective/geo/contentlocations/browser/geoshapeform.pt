@@ -79,7 +79,7 @@
               <span i18n:translate=""
                     i18n:domain="collective.geo.contentlocations">Coordinates</span>
             </label>
-            <div class="formHelp" 
+            <div class="formHelp"
                   i18n:translate=""
                   i18n:domain="collective.geo.contentlocations">
                   Choose a tool and draw the shape on the map</div>
@@ -88,56 +88,65 @@
           </div>
         </div>
 
-        <metal:define define-macro="widget_rendering">
-            <tal:widgets repeat="widget view/widgets/values">
-              <div class="row horizontal"
-                   tal:define="hidden python:widget.mode == 'hidden'"
-                   tal:omit-tag="hidden">
+        <div class="row horizontal">
+          <dl class="collapsible collapsedOnLoad">
+            <dt class="collapsibleHeader">Manual coordinates</dt>
+            <dd class="collapsibleContent">
 
-                <metal:field define-macro="field">
-                  <div class="field"
-                       tal:define="error widget/error;
-                           error_class python:error and ' error' or ' ';
-                           fieldname_class string:kssattr-fieldname-${widget/name};"
-                       tal:attributes="class string:field ${fieldname_class}${error_class};
-                               id string:formfield-${widget/id};">
+          <metal:define define-macro="widget_rendering">
+              <tal:widgets repeat="widget view/widgets/values">
+                <div class="horizontal"
+                     tal:define="hidden python:widget.mode == 'hidden'"
+                     tal:omit-tag="hidden">
 
-                    <label for="" class="horizontal"
-                           tal:attributes="for widget/id"
-                           tal:condition="not:hidden">
-                      <span i18n:translate=""
-                            tal:content="widget/label">label</span>
-                    </label>
+                  <metal:field define-macro="field">
+                    <div class="field"
+                         tal:define="error widget/error;
+                             error_class python:error and ' error' or ' ';
+                             fieldname_class string:kssattr-fieldname-${widget/name};"
+                         tal:attributes="class string:field ${fieldname_class}${error_class};
+                                 id string:formfield-${widget/id};">
 
-                    <span class="fieldRequired horizontal" title="Required"
-                          tal:condition="python:widget.required and not hidden"
-                          i18n:translate="label_required"
-                          i18n:attributes="title title_required;">
-                      (Required)
-                    </span>
+                      <label for="" class="horizontal"
+                             tal:attributes="for widget/id"
+                             tal:condition="not:hidden">
+                        <span i18n:translate=""
+                              tal:content="widget/label">label</span>
+                      </label>
 
-                    <div class="formHelp"
-                         tal:define="description widget/field/description"
-                         i18n:translate=""
-                         tal:content="description"
-                         tal:condition="python:description and not hidden">
-                         field description</div>
+                      <span class="fieldRequired horizontal" title="Required"
+                            tal:condition="python:widget.required and not hidden"
+                            i18n:translate="label_required"
+                            i18n:attributes="title title_required;">
+                        (Required)
+                      </span>
 
-            <div class="fieldErrorBox"
-                 tal:content="structure error/render|nothing">
-              <tal:comment replace="nothing">Error</tal:comment>
-            </div>
+                      <div class="formHelp"
+                           tal:define="description widget/field/description"
+                           i18n:translate=""
+                           tal:content="description"
+                           tal:condition="python:description and not hidden">
+                           field description</div>
 
-                    <div class="widget z3cformInlineValidation horizontal">
-                      <input type="text" tal:replace="structure widget/render" />
-                    </div>
-                  </div>
-                </metal:field>
-
+              <div class="fieldErrorBox"
+                   tal:content="structure error/render|nothing">
+                <tal:comment replace="nothing">Error</tal:comment>
               </div>
-            </tal:widgets>
-        </metal:define>
 
+                      <div class="widget z3cformInlineValidation horizontal">
+                        <input type="text" tal:replace="structure widget/render" />
+                      </div>
+                    </div>
+                  </metal:field>
+
+                </div>
+              </tal:widgets>
+          </metal:define>
+
+
+            </dd>
+          </dl>
+        </div>
 
     </fieldset>
 

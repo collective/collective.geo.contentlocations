@@ -34,6 +34,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     implements(IMapView)
     template = viewpagetemplatefile.ViewPageTemplateFile('geoshapeform.pt')
     form_name = "edit_geometry"
+    id = 'coordinates-form'
     description = _(u"Specify the geometry for this content")
     fields = field.Fields(IGeoManager).select('wkt')
     mapfields = ['geoshapemap']
@@ -42,7 +43,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
 
     message_ok = _(u'Changes saved.')
     message_cancel = _(u'No changes made.')
-    message_coordaintes_removed = _(u'Coordinates removed')
+    message_georeference_removed = _(u'Coordinates removed')
     message_coordinates_null = _(u"No coordinate has been set. Please, set "
                                   "coordinates on the map, fill in the WKT "
                                   "field or import a CSV file.")
@@ -98,7 +99,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         # we remove coordinates if wkt and filecsv are 'empty'
         message = self.message_ok
         if not data['wkt'] and not filecsv:
-            message = self.message_coordaintes_removed
+            message = self.message_georeference_removed
             self.geomanager.removeCoordinates()
         else:
             ok, message = self.addCoordinates(data, filecsv)
@@ -112,6 +113,12 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     @button.buttonAndHandler(_(u'Cancel'))
     def handleCancel(self, action):  # pylint: disable=W0613
         self.setStatusMessage(self.message_cancel)
+        self.redirectAction()
+
+    @button.buttonAndHandler(_(u'Remove georeference'), name='remove-georeference')
+    def handleRemoveGeoreference(self, action):
+        self.geomanager.removeCoordinates()
+        self.setStatusMessage(self.message_georeference_removed)
         self.redirectAction()
 
     def addCoordinates(self, data, filecsv):

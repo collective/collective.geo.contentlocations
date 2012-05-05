@@ -4,6 +4,7 @@ Changelog
 2.5 (unreleased)
 ----------------
 
+- Changed coordinates edit form in order to make it more user friendly [gborelli]
 - Fixed wrongly open div tag in the geoshapeform.pt [rnd0101]
 
 
