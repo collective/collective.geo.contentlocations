@@ -18,8 +18,7 @@ setup(name='collective.geo.contentlocations',
       keywords='Zope Plone GIS KML Google Maps Bing Yahoo OpenLayers',
       author='Giorgio Borelli',
       author_email='giorgio@giorgioborelli.it',
-      url='https://svn.plone.org/svn/collective/" \
-                     "collective.geo.contentlocations',
+      url='https://github.com/collective/collective.geo.contentlocations'
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['collective', 'collective.geo'],
