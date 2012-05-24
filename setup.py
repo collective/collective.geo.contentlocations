@@ -7,7 +7,7 @@ setup(name='collective.geo.contentlocations',
       version=version,
       description="geo reference for plone contents",
       long_description=open(
-                "README.txt").read() + "\n" +
+                "README.rst").read() + "\n" +
                 open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
         "Framework :: Plone",
