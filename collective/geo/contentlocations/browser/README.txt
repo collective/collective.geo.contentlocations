@@ -65,7 +65,7 @@ we check that our data is still there
     >>> from collective.geo.contentlocations.interfaces import IGeoManager
     >>> geo = IGeoManager(document)
     >>> geo.getCoordinates()
-    ('LineString', ((153.02719116211, -27.352252938064002), (153.11370849609, -27.370547753644999), (153.08624267578, -27.403470801049), (153.00933837891, -27.402251603719002)))
+    ('LineString', ((153.02719116211, -27.352252938064), (153.11370849609, -27.370547753645), (153.08624267578, -27.403470801049), (153.00933837891, -27.402251603719)))
 
 
 We can remove coordinates from an object by removing data from Wkt textarea
@@ -129,7 +129,7 @@ Check there wasn't an error message
     >>> 'Changes saved.' in browser.contents
     True
     >>> geo.getCoordinates()
-    (u'Polygon', (((152.78686523438, -27.363230190180001), (152.96264648438, -27.447352944394002), (152.87887573242, -27.522886832325), (152.72506713867, -27.507053374681998), (152.71408081054, -27.430289738862001), (152.78686523438, -27.363230190180001)),))
+    (u'Polygon', (((152.78686523438, -27.36323019018), (152.96264648438, -27.447352944394), (152.87887573242, -27.522886832325), (152.72506713867, -27.507053374682), (152.71408081054, -27.430289738862), (152.78686523438, -27.36323019018)),))
 
 We can also set a few custom properties on a per-content basis as well
 
@@ -146,7 +146,7 @@ Check to see if our custom style section is present, with our fields
     <Control name='form.widgets.map_width' type='text'>
     >>> browser.getControl('Map height')
     <Control name='form.widgets.map_height' type='text'>
-    >>> browser.getControl('Map position in the page')
+    >>> browser.getControl('Map position')
     <ListControl name='form.widgets.map_viewlet_position:list' type='select'>
     >>> browser.getControl('Line color')
     <Control name='form.widgets.linecolor' type='text'>
