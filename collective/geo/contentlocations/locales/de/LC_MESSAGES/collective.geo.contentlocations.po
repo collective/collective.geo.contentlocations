@@ -1,0 +1,135 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"POT-Creation-Date: 2012-07-02 11:38+0000\n"
+"PO-Revision-Date: 2012-07-02 14:00+0000\n"
+"Last-Translator: Denis Krienbühl <denis.krienbuehl@gmail.com>\n"
+"Language-Team: <denis.krienbuehl@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: German\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.geo.contentlocations\n"
+"X-Is-Fallback-For: de-at de-ch de-li de-lu\n"
+
+#: ./interfaces.py:24
+msgid "A CSV file holding a coordinate per row and enough coordinate pairs for selected type."
+msgstr "Eine CSV Datei mit Koordinaten pro Zeile und genug Koordinaten-Paaren für den ausgewählten Typ."
+
+#: ./browser/geoshapeform.py:50
+msgid "CSV File not correct. Verify file format."
+msgstr "CSV Datei inkorrekt. Bitte verifizieren Sie das Dateiformat."
+
+#: ./browser/geoshapeform.py:29
+msgid "CSV Import"
+msgstr ""
+
+#: ./browser/geoshapeform.py:113
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: ./browser/geoshapeform.py:44
+msgid "Changes saved."
+msgstr "Änderungen gespeichert."
+
+#: ./browser/geoshapeform.pt:82
+msgid "Choose a tool and draw the shape on the map"
+msgstr "Wählen Sie ein Werkzeug und zeichnen Sie die Markierung auf die Karte."
+
+#: ./interfaces.py:18
+msgid "Choose type of coordinates for uploading CSV."
+msgstr "Wählen Sie den Koordinaten-Typ für den CSV Upload"
+
+#: ./browser/geoshapeform.pt:79
+#: ./browser/geoshapeform.py:193
+#: ./profiles/default/actions.xml
+msgid "Coordinates"
+msgstr "Koordinaten"
+
+#: ./browser/geoshapeform.py:46
+msgid "Coordinates removed"
+msgstr "Koordinaten entfernt"
+
+#: ./browser/geostylesform.py:18
+msgid "Custom styles"
+msgstr "Individuelle Styles"
+
+#: ./interfaces.py:23
+msgid "File"
+msgstr "Datei"
+
+#: ./browser/geoshapeform.py:30
+msgid "Import data from CSV file"
+msgstr "Dateninimport von CSV Datei"
+
+#: ./interfaces.py:30
+msgid "Insert below the shape coordinates in WKT format."
+msgstr "Fügen Sie die Markierungs-Koordinaten unten im WKT Format ein."
+
+#: ./__init__.py:8
+msgid "LineString"
+msgstr "Linie"
+
+#: ./browser/geoshapeform.pt:93
+msgid "Manual coordinates"
+msgstr "Manuelle Koordinaten"
+
+#: ./browser/geoshapeform.py:194
+msgid "Modify geographical data for this content"
+msgstr "Geographische Daten für diesen Inhalt ändern"
+
+#: ./browser/geoshapeform.py:45
+msgid "No changes made."
+msgstr "Keine Änderungen."
+
+#: ./browser/geoshapeform.py:47
+msgid "No coordinate has been set. Please, set coordinates on the map, fill in the WKT field or import a CSV file."
+msgstr "Keine Koordinate gesetzt. Bitte setzen Sie die Koordinaten auf der Karte, ergänzen Sie das WKT Feld oder importieren Sie eine CSV Datei."
+
+#: ./browser/geoshapeform.py:52
+msgid "No valid input given."
+msgstr "Kein gültiger Eingabewert."
+
+#: ./__init__.py:7
+msgid "Point"
+msgstr "Punkt"
+
+#: ./__init__.py:9
+msgid "Polygon"
+msgstr ""
+
+#: ./browser/geoshapeform.py:118
+msgid "Remove georeference"
+msgstr "Georeferenzierung entfernen"
+
+#: ./browser/geoshapeform.py:81
+msgid "Save"
+msgstr "Speichern"
+
+#: ./interfaces.py:29
+msgid "Shape in WKT format"
+msgstr "Markierung im WKT Format"
+
+#: ./browser/geoshapeform.py:38
+msgid "Specify the geometry for this content"
+msgstr "Spezifizieren Sie die Geometrie für diesen Inhalt"
+
+#: ./interfaces.py:17
+msgid "Type"
+msgstr "Typ"
+
+#: ./browser/geoshapeform.py:51
+msgid "WKT expression not correct. Verify input."
+msgstr "WKT Ausdruck nicht korrekt. Bitte überprüfen Sie die Eingabe."
+
+#: ./geomarker.py:34
+msgid "objects updated."
+msgstr "Objekte aktualisiert."
+
+#: ./geomarker.py:40
+msgid "update(s) on object(s) failed"
+msgstr "Aktualisierung des Objekts/der Objekte fehlgeschlagen"
+
