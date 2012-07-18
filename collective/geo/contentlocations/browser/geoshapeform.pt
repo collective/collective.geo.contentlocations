@@ -90,7 +90,7 @@
 
         <div class="row horizontal">
           <dl class="collapsible collapsedOnLoad">
-            <dt class="collapsibleHeader">Manual coordinates</dt>
+            <dt class="collapsibleHeader" i18n:translate="" i18n:domain="collective.geo.contentlocations">Manual coordinates</dt>
             <dd class="collapsibleContent">
 
           <metal:define define-macro="widget_rendering">

@@ -6,6 +6,7 @@ Changelog
 
 - Changed coordinates edit form in order to make it more user friendly [gborelli]
 - Fixed wrongly open div tag in the geoshapeform.pt [rnd0101]
+- Added German translation [Denis Krienbühl]
 
 
 2.4 (2012-02-14)
