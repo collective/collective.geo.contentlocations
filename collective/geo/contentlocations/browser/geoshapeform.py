@@ -21,7 +21,7 @@ from collective.geo.contentlocations.browser.geostylesform \
                                                   import GeoStylesForm
 from collective.geo.contentlocations.interfaces import IGeoManager
 
-from shapely.geos import ReadingError
+#from shapely.geos import ReadingError
 
 
 class CsvGroup(group.Group):
@@ -148,7 +148,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
                 self.geomanager.setCoordinates(geom['type'],
                                                 geom['coordinates'])
                 return True, self.message_ok
-            except ReadingError:
+            except: #ReadingError: is a subclass of generic exception
                 return False, self.message_error_wkt
         return False, self.message_error_input
 
@@ -185,8 +185,12 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         return False
 
     def verifyWkt(self, data):
-        from shapely import wkt
-        geom = wkt.loads(data)
+        try:
+            from shapely import wkt
+            geom = wkt.loads(data)
+        except ImportError:
+            from pygeoif.geometry import from_wkt
+            geom = from_wkt(data)
         return geom
 
 

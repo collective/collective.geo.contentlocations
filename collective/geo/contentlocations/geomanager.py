@@ -102,7 +102,10 @@ class GeoManager(object):
 
     @property
     def wkt(self):
-        from shapely.geometry.geo import asShape
+        try:
+            from shapely.geometry.geo import asShape
+        except ImportError:
+            from pygeoif.geometry import as_shape as asShape
         try:
             return asShape(IGeoreferenced(self.context).geo).wkt
         except ValueError:
