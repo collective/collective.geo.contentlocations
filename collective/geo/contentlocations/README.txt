@@ -50,7 +50,9 @@ Create the url and open it
     >>> browser.open(view_url)
     >>> '<div id="geoshapemap" ' in browser.contents
     True
-    >>> 'POINT (0.1110000000000000 0.2220000000000000)' in browser.contents
+    >>> 'POINT (0.111' in browser.contents
+    True
+    >>> ' 0.222' in browser.contents
     True
 
 We should also see the fieldset/fields for custom properties for this content
