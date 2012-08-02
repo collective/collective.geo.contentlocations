@@ -108,7 +108,7 @@ class GeoManager(object):
             from pygeoif.geometry import as_shape as asShape
         try:
             return asShape(IGeoreferenced(self.context).geo).wkt
-        except (ValueError, TypeError):
+        except (ValueError, TypeError, NotImplementedError):
             # context is not a valid shape.
             pass
         return u''
