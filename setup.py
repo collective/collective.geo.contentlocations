@@ -27,7 +27,7 @@ setup(name='collective.geo.contentlocations',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          'pygeoif > 0.1',
+          'pygeoif > 0.2',
           'collective.geo.mapwidget',
           'collective.geo.geographer',
       ],
