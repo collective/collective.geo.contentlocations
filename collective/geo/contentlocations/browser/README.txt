@@ -64,9 +64,10 @@ we check that our data is still there
     True
     >>> from collective.geo.contentlocations.interfaces import IGeoManager
     >>> geo = IGeoManager(document)
-    >>> geo.getCoordinates()
-    ('LineString', ((153.02719116211, -27.352252938064), (153.11370849609, -27.370547753645), (153.08624267578, -27.403470801049), (153.00933837891, -27.402251603719)))
-
+    >>> geo.getCoordinates()[0]
+    'LineString'
+    >>> [(round(c[0],4), round(c[1],4)) for c in geo.getCoordinates()[1]]
+    [(153.0272, -27.3523), (153.1137, -27.3705), (153.0862, -27.4035), (153.0093, -27.4023)]
 
 We can remove coordinates from an object by removing data from Wkt textarea
     >>> browser.getLink('Coordinates').click()
