@@ -206,8 +206,7 @@ class ShapeMapWidget(MapWidget):
     @property
     def js(self):
         return """
-  jq(window).bind('load', function() {
-    var map = cgmap.config['geoshapemap'].map;
+  jq(window).bind('map-load', function(e, map) {
     var layer = map.getLayersByName('Edit')[0];
     var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%s'});
     map.addControl(elctl);
