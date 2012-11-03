@@ -5,6 +5,8 @@ Make a topic in our folder
 
     >>> self.setRoles(('Manager',))
     >>> folder = self.folder
+    >>> topic_pt = self.portal.portal_types['Topic']
+    >>> topic_pt.global_allow = True
     >>> oid = self.folder.invokeFactory('Topic', 'topic')
     >>> topic = self.folder[oid]
     >>> c = topic.addCriterion('getGeometry', 'ATBooleanCriterion')
