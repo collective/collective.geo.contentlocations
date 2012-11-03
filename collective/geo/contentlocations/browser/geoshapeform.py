@@ -2,12 +2,12 @@ import csv
 import cStringIO
 from zope.interface import implements
 
-from zope.app.pagetemplate import viewpagetemplatefile
+from z3c.form import form, field, button
 
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.utils import getToolByName
 
 from plone.z3cform.layout import wrap_form
-from z3c.form import form, field, button
 from plone.z3cform.fieldsets import extensible, group
 
 from collective.geo.mapwidget.interfaces import IMapView
@@ -32,7 +32,7 @@ class CsvGroup(group.Group):
 
 class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     implements(IMapView)
-    template = viewpagetemplatefile.ViewPageTemplateFile('geoshapeform.pt')
+    template = ViewPageTemplateFile('geoshapeform.pt')
     form_name = "edit_geometry"
     id = 'coordinates-form'
     description = _(u"Specify the geometry for this content")

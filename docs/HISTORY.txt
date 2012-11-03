@@ -3,6 +3,8 @@ Changelog
 
 2.5 (unreleased)
 ----------------
+
+- removed import from zope.app [gborelli]
 - removed dependency on shapely, depend on pygeoif instead, fallback to shapely if installed [nan]
 - Changed coordinates edit form in order to make it more user friendly [gborelli]
 - Fixed wrongly open div tag in the geoshapeform.pt [rnd0101]
