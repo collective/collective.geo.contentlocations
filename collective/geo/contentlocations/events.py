@@ -20,9 +20,14 @@ class ObjectStylesEvent(object):
         self.object = ob
 
 
-def reindexDocSubscriber(event):
+def reindexStylesSubscriber(event):
     """A subscriber to ObjectModifiedEvent"""
     event.object.reindexObject(idxs=['collective_geo_styles'])
+
+
+def reindexDocSubscriber(event):
+    """A subscriber to ObjectModifiedEvent"""
+    event.object.reindexObject(idxs=['zgeo_geometry'])
 
 
 def updateGeoObjects(event):
@@ -30,12 +35,12 @@ def updateGeoObjects(event):
                     event.data.get('geo_content_types', []))
 
 
-def markGeoObject(obj, event):
+def markGeoObject(obj, event):  # pylint: disable=W0613
     """Mark an object Georeferenceable"""
     if not queryAdapter(obj, IGeoMarker):
         return
     try:
         IGeoMarker(obj).process()
-    except AttributeError, e:
+    except AttributeError:
         print "collective.geo.contentlocations markObject: error in event"
         return

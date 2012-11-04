@@ -18,12 +18,18 @@
       name='collective_geo_styles' />
 
   <subscriber
-     handler=".events.reindexDocSubscriber"
+     handler=".events.reindexStylesSubscriber"
      for="collective.geo.contentlocations.events.IObjectStylesEvent" />
 
   <subscriber
      handler=".events.updateGeoObjects"
      for="collective.geo.settings.events.IGeoSettingsEvent" />
+
+  <subscriber
+    handler=".events.reindexDocSubscriber"
+    for="collective.geo.geographer.event.IObjectGeoreferencedEvent"
+  />
+
 
   <adapter
       for="collective.geo.geographer.interfaces.IGeoreferenceable"
