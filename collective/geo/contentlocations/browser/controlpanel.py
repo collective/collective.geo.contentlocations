@@ -13,10 +13,5 @@ class GeoControlpanelFormExtender(extensible.FormExtender):
     def update(self):
         # add geo_content_types field to controlpanel form
         fields = field.Fields(IGeoSettings).select('geo_content_types')
-        # import ipdb; ipdb.set_trace( )
         if 'geo_content_types' not in self.form.fields:
             self.add(fields, index=0)
-        # for group in self.form.groups:
-        #     if group.__name__ == 'GeoAdvancedConfGroup' and \
-        #             'geo_content_types' not in group.fields:
-        #         self.add(fields, group='GeoAdvancedConfGroup')
