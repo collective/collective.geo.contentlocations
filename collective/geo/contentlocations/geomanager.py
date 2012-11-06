@@ -21,6 +21,9 @@ class GeoManager(object):
       >>> from zope.annotation.interfaces import IAttributeAnnotatable
       >>> class TestContent(object):
       ...     interface.implements(IGeoreferenceable, IAttributeAnnotatable)
+      ...
+      ...     def reindexObject(*args, **kw):
+      ...         pass
       >>> geofoo = TestContent()
       >>> geo = GeoManager(geofoo)
       >>> geo.isGeoreferenceable()

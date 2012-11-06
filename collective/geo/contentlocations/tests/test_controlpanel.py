@@ -1,22 +1,27 @@
 import unittest
-from collective.geo.contentlocations.tests import base
 
-from Testing.testbrowser import Browser
-from Products.PloneTestCase.setup import portal_owner, default_password
+from plone.testing.z2 import Browser
+from plone.app.testing import SITE_OWNER_NAME, SITE_OWNER_PASSWORD
+
+from ..testing import CGEO_CONTENTLOCATIONS_FUNCTIONAL
+
 from collective.geo.settings.utils import geo_settings
 
 
-class TestControlPanel(base.FunctionalTestCase):
+class TestControlPanel(unittest.TestCase):
 
-    def afterSetUp(self):
-        super(TestControlPanel, self).afterSetUp()
-        self.browser = Browser()
+    layer = CGEO_CONTENTLOCATIONS_FUNCTIONAL
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+        self.app = self.layer['app']
+        self.browser = Browser(self.app)
 
     def test_extended_form(self):
         portal_url = self.portal.absolute_url()
 
         self.browser.addHeader('Authorization',
-                'Basic %s:%s' % (portal_owner, default_password))
+                'Basic %s:%s' % (SITE_OWNER_NAME, SITE_OWNER_PASSWORD))
         self.browser.open('%s/@@collectivegeo-controlpanel' % portal_url)
 
         widget = None
@@ -30,9 +35,3 @@ class TestControlPanel(base.FunctionalTestCase):
         if widget:
             geo_content_types = geo_settings(self.portal).geo_content_types
             self.assertEqual(widget.options, geo_content_types)
-
-
-def test_suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestControlPanel))
-    return suite

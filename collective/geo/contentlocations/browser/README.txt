@@ -3,21 +3,29 @@ Coordinates form
 
 We start the tests with the usual boilerplate and we log in as manager
 
-    >>> browser = self.browser
-    >>> portal_url = self.portal.absolute_url()
-    >>> self.portal.error_log._ignored_exceptions = ()
-    >>> from Products.PloneTestCase.setup import portal_owner
-    >>> from Products.PloneTestCase.setup import default_password
+    >>> import transaction
+    >>> from plone.testing.z2 import Browser
+    >>> app = layer['app']
+    >>> browser = Browser(app)
+    >>> portal = layer['portal']
+    >>> from plone.app.testing import (TEST_USER_ID, TEST_USER_NAME,
+    ...                                TEST_USER_PASSWORD)
+    >>> from plone.app.testing import login, setRoles
+    >>> setRoles(portal, TEST_USER_ID, ['Manager'])
+    >>> login(portal, TEST_USER_NAME)
+    >>> portal_url = portal.absolute_url()
+    >>> portal.error_log._ignored_exceptions = ()
     >>> browser.addHeader('Authorization',
-    ...                   'Basic %s:%s' % (portal_owner, default_password))
+    ...                   'Basic %s:%s' % (TEST_USER_NAME, TEST_USER_PASSWORD))
 
 Now we create a document in user folder and we mark it as Georeferenceable
 
-    >>> document_id = self.folder.invokeFactory('Document', 'document')
-    >>> document = self.folder[document_id]
+    >>> document_id = portal.invokeFactory('Document', 'document')
+    >>> document = portal[document_id]
     >>> from zope.interface import alsoProvides
     >>> from collective.geo.geographer.interfaces import IGeoreferenceable
     >>> alsoProvides(document, IGeoreferenceable)
+    >>> transaction.commit()
 
 We have a specific tab for the georeferenceable objects -- Coordinates
 
