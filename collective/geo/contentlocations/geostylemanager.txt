@@ -3,18 +3,24 @@ GeoStyleManager
 
 Make a topic in our folder
 
-    >>> self.setRoles(('Manager',))
-    >>> folder = self.folder
-    >>> topic_pt = self.portal.portal_types['Topic']
+    >>> portal = layer['portal']
+    >>> from plone.app.testing import TEST_USER_ID, TEST_USER_NAME
+    >>> from plone.app.testing import login, setRoles
+    >>> setRoles(portal, TEST_USER_ID, ['Manager'])
+    >>> login(portal, TEST_USER_NAME)
+
+self.setRoles(('Manager',))
+
+    >>> topic_pt = portal.portal_types['Topic']
     >>> topic_pt.global_allow = True
-    >>> oid = self.folder.invokeFactory('Topic', 'topic')
-    >>> topic = self.folder[oid]
+    >>> oid = portal.invokeFactory('Topic', 'topic')
+    >>> topic = portal[oid]
     >>> c = topic.addCriterion('getGeometry', 'ATBooleanCriterion')
 
 Add geo-styled content
 
-    >>> oid = self.folder.invokeFactory('Document', 'doc')
-    >>> doc = self.folder[oid]
+    >>> oid = portal.invokeFactory('Document', 'doc')
+    >>> doc = portal[oid]
     >>> from collective.geo.geographer.interfaces import IGeoreferenceable
     >>> from zope.interface import alsoProvides
     >>> alsoProvides(doc, IGeoreferenceable)

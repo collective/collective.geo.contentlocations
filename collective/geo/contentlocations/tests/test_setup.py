@@ -1,16 +1,16 @@
 import unittest
-from collective.geo.contentlocations.tests import base
+
+from ..testing import CGEO_CONTENTLOCATIONS_FUNCTIONAL
 
 
-class TestSetup(base.TestCase):
+class TestSetup(unittest.TestCase):
+
+    layer = CGEO_CONTENTLOCATIONS_FUNCTIONAL
+
+    def setUp(self):
+        self.portal = self.layer['portal']
 
     def test_portal_actions(self):
         pa = self.portal.portal_actions
         location_action = pa.object.get('locations', False)
         self.failUnless(location_action)
-
-
-def test_suite():
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(TestSetup))
-    return suite
