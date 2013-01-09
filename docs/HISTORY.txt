@@ -4,6 +4,7 @@ Changelog
 2.5 (unreleased)
 ----------------
 
+- Added travis-ci configuration [gborelli]
 - Moved reindexDocSubscriber from collective.geo.geographer [gborelli]
 - Changed reindexDocSubscriber to reindexStylesSubscriber [gborelli]
 - Removed import from zope.app [gborelli]

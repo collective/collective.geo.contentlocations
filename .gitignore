@@ -22,4 +22,5 @@ dist
 *.tmp*
 include/
 lib/
+extras/
 .coverage*
