@@ -1,20 +1,20 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.5.dev0'
+version = '2.5.dev'
 
 setup(name='collective.geo.contentlocations',
       version=version,
       description="geo reference for plone contents",
       long_description=open(
-                "README.rst").read() + "\n" +
-                open(os.path.join("docs", "HISTORY.txt")).read(),
+          "README.rst").read() + "\n" + open(
+              os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
-        "Framework :: Plone",
-        "Topic :: Internet",
-        "Topic :: Scientific/Engineering :: GIS",
-        "Programming Language :: Python",
-        ],
+          "Framework :: Plone",
+          "Topic :: Internet",
+          "Topic :: Scientific/Engineering :: GIS",
+          "Programming Language :: Python",
+      ],
       keywords='Zope Plone GIS KML Google Maps Bing Yahoo OpenLayers',
       author='Giorgio Borelli',
       author_email='giorgio@giorgioborelli.it',

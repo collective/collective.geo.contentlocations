@@ -1,17 +1,4 @@
-include README.rst
-recursive-include docs *.txt
-recursive-include docs *.rst
-recursive-include docs *.GPL
-recursive-include collective *.zcml
-recursive-include collective *.xml
-recursive-include collective *.txt
-recursive-include collective *.rst
-recursive-include collective *.py
-recursive-include collective *.pt
-recursive-include collective *.pot
-recursive-include collective *.mo
-recursive-include collective *.po
-recursive-include collective *.sh
-recursive-include collective *.js
-recursive-include collective *.csv
-recursive-include collective *.mo
+recursive-include collective *
+recursive-include docs *
+include *
+global-exclude *.pyc
