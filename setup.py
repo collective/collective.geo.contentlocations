@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '2.5.dev'
+version = '2.5'
 
 setup(name='collective.geo.contentlocations',
       version=version,
