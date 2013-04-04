@@ -1,5 +1,3 @@
-import csv
-import cStringIO
 from zope.interface import implements
 
 from z3c.form import form, field, button
@@ -8,7 +6,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.utils import getToolByName
 
 from plone.z3cform.layout import wrap_form
-from plone.z3cform.fieldsets import extensible, group
+from plone.z3cform.fieldsets import extensible
 
 from collective.geo.mapwidget.interfaces import IMapView
 from collective.geo.mapwidget.browser.widget import MapWidget
@@ -24,12 +22,6 @@ from collective.geo.contentlocations.interfaces import IGeoManager
 #from shapely.geos import ReadingError
 
 
-class CsvGroup(group.Group):
-    fields = field.Fields(IGeoManager).select('coord_type', 'filecsv')
-    label = _(u"CSV Import")
-    description = _(u"Import data from CSV file")
-
-
 class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     implements(IMapView)
     template = ViewPageTemplateFile('geoshapeform.pt')
@@ -39,15 +31,14 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     fields = field.Fields(IGeoManager).select('wkt')
     mapfields = ['geoshapemap']
 
-    groups = (CsvGroup, GeoStylesForm)
+    groups = (GeoStylesForm,)
 
     message_ok = _(u'Changes saved.')
     message_cancel = _(u'No changes made.')
     message_georeference_removed = _(u'Coordinates removed')
     message_coordinates_null = _(u"No coordinate has been set. Please, set "
-                                  "coordinates on the map, fill in the WKT "
-                                  "field or import a CSV file.")
-    message_error_csv = _(u'CSV File not correct. Verify file format.')
+                                  "coordinates on the map or fill the WKT "
+                                  "field.")
     message_error_wkt = _(u'WKT expression not correct. Verify input.')
     message_error_input = _(u'No valid input given.')
 
@@ -74,9 +65,9 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
     def redirectAction(self):
         self.request.response.redirect(self.next_url)
 
-    def setStatusMessage(self, message):
+    def setStatusMessage(self, message, level='info'):
         ptool = getToolByName(self.context, 'plone_utils')
-        ptool.addPortalMessage(message)
+        ptool.addPortalMessage(message, level)
 
     @button.buttonAndHandler(_(u'Save'))
     def handleApply(self, action):  # pylint: disable=W0613
@@ -92,17 +83,19 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
             fields = geostylesgroup[0].fields
             stylemanager.setStyles([(i, data[i]) for i in fields])
 
-        csv_group = [gr for gr in self.groups \
-                    if gr.__class__.__name__ == 'CsvGroup']
-        filecsv = csv_group[0].widgets['filecsv'].value
-
-        # we remove coordinates if wkt and filecsv are 'empty'
+        # we remove coordinates if wkt is 'empty'
         message = self.message_ok
-        if not data['wkt'] and not filecsv:
-            message = self.message_georeference_removed
-            self.geomanager.removeCoordinates()
+        if not data['wkt']:
+            geo = IGeoManager(self.context)
+            coord = geo.getCoordinates()
+            if coord == (None, None):
+                self.setStatusMessage(self.message_coordinates_null, 'warning')
+            else:
+                message = self.message_georeference_removed
+                self.geomanager.removeCoordinates()
+
         else:
-            ok, message = self.addCoordinates(data, filecsv)
+            ok, message = self.addCoordinates(data)
             if not ok:
                 self.status = message
                 return
@@ -121,7 +114,7 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         self.setStatusMessage(self.message_georeference_removed)
         self.redirectAction()
 
-    def addCoordinates(self, data, filecsv):
+    def addCoordinates(self, data):
         """ from collective.geo.geographer.README.txt
             Now set the location geometry to type "Point"
             and coordinates 105.08 degrees West,
@@ -129,60 +122,14 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
 
             >>> geo.setGeoInterface('Point', (-105.08, 40.59))
         """
-        if filecsv:
-            filecsv.seek(0)
-            coords = self.csv2coordinates(filecsv.read())
-            if coords:
-                # should probably use dataconvert instead of array indexing
-                shape = self.groups[0].widgets['coord_type'].value[0]
-                if shape.lower() == 'polygon':
-                    # Polygon expects an outer hull and a hole.
-                    coords = (coords, )
-                self.geomanager.setCoordinates(shape, coords)
-                return True, self.message_ok
-            else:
-                return False, self.message_error_csv
-        else:
-            try:
-                geom = self.verifyWkt(data['wkt']).__geo_interface__
-                self.geomanager.setCoordinates(geom['type'],
-                                                geom['coordinates'])
-                return True, self.message_ok
-            except: #ReadingError: is a subclass of generic exception
-                return False, self.message_error_wkt
-        return False, self.message_error_input
 
-    #Verify the incoming CSV file and read coordinates as per the
-    #WGS 1984 reference system (longitude, latitude)
-    def verifyCsv(self, filecsv):
-        reader = csv.reader(cStringIO.StringIO(str(filecsv)), delimiter=',')
-        coords = []
-        for row in reader:
-            # check for row existence ???
-            # are there any problems if the row is empty ???
-            if row:
-                # verify pairs of values are there
-                try:
-                    longitude = row[0]
-                    latitude = row[1]
-                except:
-                    return False
-
-                # verify that longitude and latitude are non-empty and non-zero
-                if longitude != '' and latitude != '':
-                    try:
-                        # check for float convertible values
-                        coords.append((float(longitude), float(latitude)))
-                    except:
-                        return False
-
-        return coords
-
-    def csv2coordinates(self, csv_data):
-        csv_data = self.verifyCsv(csv_data)
-        if csv_data != False:
-            return tuple(csv_data)
-        return False
+        try:
+            geom = self.verifyWkt(data['wkt']).__geo_interface__
+            self.geomanager.setCoordinates(geom['type'],
+                                            geom['coordinates'])
+            return True, self.message_ok
+        except: #ReadingError: is a subclass of generic exception
+            return False, self.message_error_wkt
 
     def verifyWkt(self, data):
         try:

@@ -4,7 +4,8 @@ Changelog
 2.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Removed csv import feature. See https://github.com/collective/collective.geo.bundle/issues/6
+  [valentinaB]
 
 
 2.5 (2013-01-29)

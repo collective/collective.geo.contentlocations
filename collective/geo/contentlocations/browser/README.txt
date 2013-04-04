@@ -41,22 +41,7 @@ let's try it!
     >>> browser.url == '%s/@@manage-coordinates' % document_url
     True
 
-Let's investigate the form a little bit
-First check the type list box:
-
-    >>> control = browser.getControl('Type', index=0)
-    >>> control
-    <ListControl name='form.widgets.coord_type:list' type='select'>
-    >>> control.options
-    ['Point', 'LineString', 'Polygon']
-
-There shouldn't be the GeoPoint Javascript in the page, since we implement our
-own WKT-specific widget code
-
-    >>> '<script type="text/javascript" src="++resource++geo-point.js"></script>' not in browser.contents
-    True
-
-let's try to submit the form with a new LineString in the WKT-field
+Let's try to submit the form with a new LineString in the WKT-field
 
     >>> browser.getControl('Shape in WKT format').value = u'LINESTRING '\
     ...           '(153.02719116211 -27.352252938064,'\
@@ -77,28 +62,43 @@ we check that our data is still there
     >>> [(round(c[0],4), round(c[1],4)) for c in geo.getCoordinates()[1]]
     [(153.0272, -27.3523), (153.1137, -27.3705), (153.0862, -27.4035), (153.0093, -27.4023)]
 
-We can remove coordinates from an object by removing data from Wkt textarea
+We can remove coordinates from an object using Remove georeference button
+    >>> browser.getLink('Coordinates').click()
+    >>> browser.getControl('Remove georeference').click()
+    >>> 'Coordinates removed' in browser.contents
+    True
+
+geo manager adapter will return null coordiantes
+    >>> geo.getCoordinates()
+    (None, None)
+
+We can also remove the coordinates by deleting data from Wkt textarea
+    >>> geo.setCoordinates('Point', (0.111, 0.222))
+    >>> transaction.commit()
     >>> browser.getLink('Coordinates').click()
     >>> browser.getControl('Shape in WKT format').value = u''
     >>> browser.getControl('Save').click()
     >>> 'Coordinates removed' in browser.contents
     True
 
-geo manager adapter will return null coordiantes
-    >>> geo = IGeoManager(document)
+and geo manager adapter returns null coordiantes
     >>> geo.getCoordinates()
     (None, None)
 
+without coordinates we have a warning
+    >>> browser.getLink('Coordinates').click()
+    >>> browser.getControl('Save').click()
+    >>> 'No coordinate has been set.' in browser.contents
+    True
+    >>> 'Changes saved.' in browser.contents
+    True
+
+
 I might instead click "cancel".
-Let's do it again, first clicking on "coordinates" and choosing the "point" type
+Let's do it again, first clicking on "coordinates"
 
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> browser.getControl('Type', index=0)
-    <ListControl name='form.widgets.coord_type:list' type='select'>
-
-we're in the coordinates input form
-
     >>> browser.getControl('Shape in WKT format')
     <Control name='form.widgets.wkt' type='textarea'>
 
@@ -108,42 +108,14 @@ clicking on cancel leads me to the default content view
     >>> 'No changes made.' in browser.contents
     True
 
-let's choose "polygon"
-
-    >>> link = browser.getLink('Coordinates')
-    >>> link.click()
-    >>> control = browser.getControl('Type', index=0)
-    >>> control.value = ['Polygon',]
-    >>> file_control = browser.getControl('File')
-    >>> file_control
-    <Control name='form.widgets.filecsv' type='file'>
-
-we load a coordinates csv file and verify saved data
-
-    >>> csvdata = '152.78686523438, -27.36323019018\n'\
-    ...           '152.96264648438, -27.447352944394\n'\
-    ...           '152.87887573242, -27.522886832325\n'\
-    ...           '152.72506713867, -27.507053374682\n'\
-    ...           '152.71408081054, -27.430289738862\n'\
-    ...           '152.78686523438, -27.36323019018'
-    >>> import cStringIO
-    >>> csvfile = cStringIO.StringIO(csvdata)
-    >>> file_control.add_file(csvfile, 'text/csv', 'poly.csv')
-    >>> browser.getControl('Save').click()
-
-Check there wasn't an error message
-
-    >>> 'CSV File not correct. Verify file format.' in browser.contents
-    False
-    >>> 'Changes saved.' in browser.contents
-    True
-    >>> geo.getCoordinates()
-    (u'Polygon', (((152.78686523438, -27.36323019018), (152.96264648438, -27.447352944394), (152.87887573242, -27.522886832325), (152.72506713867, -27.507053374682), (152.71408081054, -27.430289738862), (152.78686523438, -27.36323019018)),))
+Set map's custom style
+----------------------
 
 We can also set a few custom properties on a per-content basis as well
-
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
+    >>> browser.getControl('Shape in WKT format').value = u'POINT (0.111 0.222)'
+
 
 Check to see if our custom style section is present, with our fields
 
