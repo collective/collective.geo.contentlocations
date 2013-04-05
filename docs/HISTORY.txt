@@ -4,7 +4,10 @@ Changelog
 2.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Moved ShapeMapWidget and ShapeEditLayer classes to c.geo.mapwidget
+  [gborelli]
+- Removed geoshapemap shapeedit layer and widget and put them
+  in c.geo.mapwidget [gborelli]
 
 
 2.5 (2013-01-29)

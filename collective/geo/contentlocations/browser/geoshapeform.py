@@ -198,27 +198,27 @@ manageCoordinates = wrap_form(GeoShapeForm, label=_(u'Coordinates'),
                   description=_(u"Modify geographical data for this content"))
 
 
-class ShapeMapWidget(MapWidget):
+# class ShapeMapWidget(MapWidget):
 
-    mapid = 'geoshapemap'
-    _layers = ['shapeedit']
+#     mapid = 'geoshapemap'
+#     _layers = ['shapeedit']
 
-    @property
-    def js(self):
-        return """
-  jq(window).bind('map-load', function(e, map) {
-    var layer = map.getLayersByName('Edit')[0];
-    var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%s'});
-    map.addControl(elctl);
-    elctl.activate();
-  });
-        """ % self.view.widgets['wkt'].id
+#     @property
+#     def js(self):
+#         return """
+#   jq(window).bind('map-load', function(e, map) {
+#     var layer = map.getLayersByName('Edit')[0];
+#     var elctl = new OpenLayers.Control.WKTEditingToolbar(layer, {wktid: '%s'});
+#     map.addControl(elctl);
+#     elctl.activate();
+#   });
+#         """ % self.view.widgets['wkt'].id
 
 
-class ShapeEditLayer(MapLayer):
+# class ShapeEditLayer(MapLayer):
 
-    name = 'shapeedit'
+#     name = 'shapeedit'
 
-    jsfactory = """
-    function() { return new OpenLayers.Layer.Vector('Edit');}
-    """
+#     jsfactory = """
+#     function() { return new OpenLayers.Layer.Vector('Edit');}
+#     """
