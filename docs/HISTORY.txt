@@ -4,10 +4,13 @@ Changelog
 2.6 (unreleased)
 ----------------
 
+
 - Moved ShapeMapWidget and ShapeEditLayer classes to c.geo.mapwidget
   [gborelli]
 - Removed geoshapemap shapeedit layer and widget and put them
   in c.geo.mapwidget [gborelli]
+- Removed csv import feature. See https://github.com/collective/collective.geo.bundle/issues/6
+  [valentinaB]
 
 
 2.5 (2013-01-29)
