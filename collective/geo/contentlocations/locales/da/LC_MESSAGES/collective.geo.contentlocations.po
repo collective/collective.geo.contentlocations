@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-04 20:49+0000\n"
+"POT-Creation-Date: 2013-04-06 20:57+0000\n"
 "PO-Revision-Date: 2010-11-24 16:22+0100\n"
 "Last-Translator: Anton Stonor <anton@headnet.dk>\n"
 "Language-Team: Anton Stonor <anton@headnet.dk>\n"
@@ -97,12 +97,4 @@ msgstr "Her kan du angive, hvilken placering, dit indhold skal have på kortet. 
 #: ../browser/geoshapeform.py:42
 msgid "WKT expression not correct. Verify input."
 msgstr "WKT-data er ikke korrekt. Juster venligst."
-
-#: ../geomarker.py:34
-msgid "objects updated."
-msgstr "objekter uploadet."
-
-#: ../geomarker.py:40
-msgid "update(s) on object(s) failed"
-msgstr "upload af objekt(er) lykkedes ikke."
 

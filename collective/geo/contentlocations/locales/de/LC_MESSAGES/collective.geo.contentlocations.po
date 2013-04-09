@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-04 20:49+0000\n"
+"POT-Creation-Date: 2013-04-06 20:57+0000\n"
 "PO-Revision-Date: 2012-07-02 14:00+0000\n"
 "Last-Translator: Denis Krienbühl <denis.krienbuehl@gmail.com>\n"
 "Language-Team: <denis.krienbuehl@gmail.com>\n"
@@ -96,12 +96,4 @@ msgstr "Spezifizieren Sie die Geometrie für diesen Inhalt"
 #: ../browser/geoshapeform.py:42
 msgid "WKT expression not correct. Verify input."
 msgstr "WKT Ausdruck nicht korrekt. Bitte überprüfen Sie die Eingabe."
-
-#: ../geomarker.py:34
-msgid "objects updated."
-msgstr "Objekte aktualisiert."
-
-#: ../geomarker.py:40
-msgid "update(s) on object(s) failed"
-msgstr "Aktualisierung des Objekts/der Objekte fehlgeschlagen"
 

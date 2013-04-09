@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-04 20:49+0000\n"
+"POT-Creation-Date: 2013-04-06 20:57+0000\n"
 "PO-Revision-Date: 2013-04-04  21:28+0000\n"
 "Last-Translator: Valentina Bolognini <vale.asia@gmail.com>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -100,12 +100,4 @@ msgstr "Specifica il tipo di area per questo contenuto"
 #: ../browser/geoshapeform.py:42
 msgid "WKT expression not correct. Verify input."
 msgstr "Formato WKT non corretto, verifica il valore immesso"
-
-#: ../geomarker.py:34
-msgid "objects updated."
-msgstr "oggetti aggiornati"
-
-#: ../geomarker.py:40
-msgid "update(s) on object(s) failed"
-msgstr " oggetti aggiornati, falliti"
 

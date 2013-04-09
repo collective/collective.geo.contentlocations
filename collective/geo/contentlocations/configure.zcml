@@ -22,10 +22,6 @@
      for="collective.geo.contentlocations.events.IObjectStylesEvent" />
 
   <subscriber
-     handler=".events.updateGeoObjects"
-     for="collective.geo.settings.events.IGeoSettingsEvent" />
-
-  <subscriber
     handler=".events.reindexDocSubscriber"
     for="collective.geo.geographer.event.IObjectGeoreferencedEvent"
   />
@@ -47,24 +43,21 @@
       provides=".interfaces.IGeoManager"
       factory=".geomanager.GeoManager" />
 
-  <utility
-      factory=".vocabularies.coordsVocab"
-      name="coordsVocab"
-      provides="zope.schema.interfaces.IVocabularyFactory" />
-
-
-  <!-- Adapter to mark object with interface -->
   <adapter
       for="Products.ATContentTypes.interface.interfaces.IATContentType"
       factory=".geomarker.GeoMarker"
       provides=".interfaces.IGeoMarker"
       />
 
-  <!-- Event Subscriber to mark object with interface -->
-  <subscriber
-      for="Products.ATContentTypes.interface.interfaces.IATContentType
-           zope.lifecycleevent.IObjectCreatedEvent"
-      handler=".events.markGeoObject"
-      />
+
+  <utility
+      factory=".vocabularies.coordsVocab"
+      name="coordsVocab"
+      provides="zope.schema.interfaces.IVocabularyFactory" />
+
+  <!-- All contents are georeferenceable by default -->
+  <class class="Products.Archetypes.BaseObject.BaseObject">
+    <implements interface="collective.geo.geographer.interfaces.IGeoreferenceable" />
+  </class>
 
 </configure>

@@ -1,3 +1,4 @@
+import logging
 from zope.interface import implements, alsoProvides, noLongerProvides
 from zope.component import queryUtility
 from Products.CMFCore.utils import getToolByName
@@ -9,6 +10,7 @@ from collective.geo.contentlocations.interfaces import IGeoMarkerUtility
 
 from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 
+logger = logging.getLogger('collective.geo.contentlocations')
 
 def update_georeferenceable_objects(context, new_ct):
     g_marker = queryUtility(IGeoMarkerUtility)
@@ -135,3 +137,8 @@ class GeoMarkerUtility(object):
                 bad_objects.append(brain.getPath())
                 continue
         return i, bad_objects
+
+logger.info(
+    "GeoMarkerUtility is deprecated and it will "
+    "be removed in collective.geo.contentlocation 2.8"
+)

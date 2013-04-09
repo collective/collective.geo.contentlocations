@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-04 20:49+0000\n"
+"POT-Creation-Date: 2013-04-06 20:57+0000\n"
 "PO-Revision-Date: 2009-06-12  21:28+0000\n"
 "Last-Translator: Fabien Moret <martronic@martronic.ch>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -100,12 +100,4 @@ msgstr "Spécifiez le type de géométrie pour ce contenu"
 #: ../browser/geoshapeform.py:42
 msgid "WKT expression not correct. Verify input."
 msgstr "Format WKT incorrecte, vérifiez les valeurs entrées."
-
-#: ../geomarker.py:34
-msgid "objects updated."
-msgstr "objets mis à jour."
-
-#: ../geomarker.py:40
-msgid "update(s) on object(s) failed"
-msgstr "mise à jour des objet(s) échouée"
 

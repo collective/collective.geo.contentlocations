@@ -22,9 +22,8 @@ Now we create a document in user folder and we mark it as Georeferenceable
 
     >>> document_id = portal.invokeFactory('Document', 'document')
     >>> document = portal[document_id]
-    >>> from zope.interface import alsoProvides
-    >>> from collective.geo.geographer.interfaces import IGeoreferenceable
-    >>> alsoProvides(document, IGeoreferenceable)
+    >>> from collective.geo.settings.utils import geo_settings
+    >>> geo_settings().geo_content_types = ['Document']
     >>> transaction.commit()
 
 We have a specific tab for the georeferenceable objects -- Coordinates

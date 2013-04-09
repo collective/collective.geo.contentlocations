@@ -16,25 +16,23 @@ class IGeoManager(Interface):
     wkt = schema.Text(
         title=_(u"Shape in WKT format"),
         description=_(u"Insert below the shape coordinates in WKT format."),
-        required=False)
+        required=False
+    )
 
     def isGeoreferenceable(self):
         """Check if an object is isGeoreferenceable
         """
 
     def getCoordinates(self):
-        """Return the coordinates assigned to an object
+        """Return the coordinates  assigned to an object
         """
 
     def setCoordinates(self):
         """set coordinates to an object
         """
 
-
 class IGeoMarker(Interface):
-    """Utility to mark IGeoreferenceable portal types
-    """
-
+    pass
 
 class IGeoMarkerUtility(Interface):
     pass

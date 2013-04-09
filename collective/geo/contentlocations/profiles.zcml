@@ -1,4 +1,4 @@
-<configure 
+<configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.geo.contentlocations">
@@ -10,5 +10,13 @@
       description="Geographic location for Plone content"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
+
+  <!-- <genericsetup:upgradeStep
+      title="Upgrade"
+      description=""
+      source=""
+      destination=""
+      handler="collective.geo.contentlocations.upgrades."
+      profile="collective.geo.contentlocations:default" /> -->
 
 </configure>

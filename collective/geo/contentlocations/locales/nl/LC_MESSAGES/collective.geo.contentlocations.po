@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-04 20:49+0000\n"
+"POT-Creation-Date: 2013-04-06 20:57+0000\n"
 "PO-Revision-Date: 2010-11-24 16:22+0100\n"
 "Last-Translator: Rob Gietema <rob@fourdigits.nl>\n"
 "Language-Team: Rob Gietema <rob@fourdigits.nl>\n"
@@ -97,12 +97,4 @@ msgstr "Specifieer de geometrie voor deze content"
 #: ../browser/geoshapeform.py:42
 msgid "WKT expression not correct. Verify input."
 msgstr "WKT expressie niet correct. Controleer de invoer."
-
-#: ../geomarker.py:34
-msgid "objects updated."
-msgstr "objecten aangepast."
-
-#: ../geomarker.py:40
-msgid "update(s) on object(s) failed"
-msgstr "aanpassing(en) op object(en) mislukt"
 
