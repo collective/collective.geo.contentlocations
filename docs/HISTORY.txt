@@ -4,6 +4,8 @@ Changelog
 2.6 (unreleased)
 ----------------
 
+- Removed subscribers to mark/unmark georefereceable content types.
+  Now all Archetypes contents provide IGeoReferenceable interface. [valentinaB]
 - Changed method to display or hide Coordinates tab [valentinaB]
 - Moved ShapeMapWidget and ShapeEditLayer classes to c.geo.mapwidget
   [gborelli]
