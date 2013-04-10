@@ -4,6 +4,9 @@ Changelog
 2.6 (unreleased)
 ----------------
 
+- added contentlocations_helper view to hide/show coordinate tabs
+  [giorgio]
+- Fixed browserlayer.xml [gborelli]
 - Removed subscribers to mark/unmark georefereceable content types.
   Now all Archetypes contents provide IGeoReferenceable interface. [valentinaB]
 - Changed method to display or hide Coordinates tab [valentinaB]

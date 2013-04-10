@@ -3,22 +3,33 @@
            xmlns:browser="http://namespaces.zope.org/browser" >
 
   <include package="Products.CMFCore" file="permissions.zcml" />
+
   <browser:page
       name="manage-coordinates"
       for="collective.geo.geographer.interfaces.IGeoreferenceable"
       class=".geoshapeform.manageCoordinates"
+      layer="..interfaces.IContentlocationsLayer"
       permission = "cmf.ModifyPortalContent" />
 
-    <adapter
-      for ="*
-            zope.publisher.interfaces.http.IHTTPRequest
-            collective.geo.mapwidget.browser.controlpanel.GeoControlpanelForm"
-      factory = ".controlpanel.GeoControlpanelFormExtender"
-      name = 'geocontrolpanel-extender'/>
+  <adapter
+    for ="*
+          zope.publisher.interfaces.http.IHTTPRequest
+          collective.geo.mapwidget.browser.controlpanel.GeoControlpanelForm"
+    factory = ".controlpanel.GeoControlpanelFormExtender"
+    name = 'geocontrolpanel-extender'/>
 
-    <browser:resource
-       name="collectivegeo-loader.gif"
-       file="collectivegeo-loader.gif"
-      />
+  <browser:resource
+     name="collectivegeo-loader.gif"
+     file="collectivegeo-loader.gif"
+    />
+
+  <browser:page
+    name="contentlocations_helper"
+    for="*"
+    class=".helperview.HelperView"
+    layer="..interfaces.IContentlocationsLayer"
+    allowed_attributes="showCoordinatesTab"
+    permission="zope.Public"
+  />
 
 </configure>

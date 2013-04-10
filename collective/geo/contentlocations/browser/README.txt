@@ -22,13 +22,22 @@ Now we create a document in user folder and we mark it as Georeferenceable
 
     >>> document_id = portal.invokeFactory('Document', 'document')
     >>> document = portal[document_id]
+    >>> transaction.commit()
+
+we don't have a coordinates in the edit bar until we haven't chosen a content as georeferenceable in collective.geo control panel.
+
+    >>> document_url = document.absolute_url()
+    >>> browser.open(document_url)
+    >>> '<a href="%s/@@manage-coordinates">Coordinates</a>' % document_url in browser.contents
+    False
+
+we set Document as geo referenceable content type
     >>> from collective.geo.settings.utils import geo_settings
     >>> geo_settings().geo_content_types = ['Document']
     >>> transaction.commit()
 
-We have a specific tab for the georeferenceable objects -- Coordinates
+and now we have a link *Coordinates* in  the edit bar
 
-    >>> document_url = document.absolute_url()
     >>> browser.open(document_url)
     >>> '<a href="%s/@@manage-coordinates">Coordinates</a>' % document_url in browser.contents
     True

@@ -31,8 +31,10 @@ class IGeoManager(Interface):
         """set coordinates to an object
         """
 
+
 class IGeoMarker(Interface):
     pass
+
 
 class IGeoMarkerUtility(Interface):
     pass
