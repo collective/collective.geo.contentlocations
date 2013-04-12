@@ -12,37 +12,38 @@ from collective.geo.contentlocations import ContentLocationsMessageFactory as _
 
 logger = logging.getLogger('collective.geo.contentlocations')
 
-def update_georeferenceable_objects(context, new_ct):
-    g_marker = queryUtility(IGeoMarkerUtility)
-    if not g_marker:
-        return
+# TODO: remove
+# def update_georeferenceable_objects(context, new_ct):
+#     g_marker = queryUtility(IGeoMarkerUtility)
+#     if not g_marker:
+#         return
 
-    ct = getToolByName(context, 'portal_catalog')
-    query = {'object_provides':
-                'collective.geo.geographer.interfaces.IGeoreferenceable'}
-    pt = [item.portal_type for item in ct.searchResults(query)]
-    olds_pt = list(set(pt))
+#     ct = getToolByName(context, 'portal_catalog')
+#     query = {'object_provides':
+#                 'collective.geo.geographer.interfaces.IGeoreferenceable'}
+#     pt = [item.portal_type for item in ct.searchResults(query)]
+#     olds_pt = list(set(pt))
 
-    adds = []
-    for new in new_ct:
-        if new in olds_pt:
-            olds_pt.remove(new)
-        else:
-            adds.append(new)
-    if len(olds_pt) == 0 and len(adds) == 0:
-        return
+#     adds = []
+#     for new in new_ct:
+#         if new in olds_pt:
+#             olds_pt.remove(new)
+#         else:
+#             adds.append(new)
+#     if len(olds_pt) == 0 and len(adds) == 0:
+#         return
 
-    nb_items, bad_items = g_marker.update(context, adds, olds_pt)
-    updated = u'%d %s' % (nb_items, _(u'objects updated.'))
-    if not bad_items:
-        message = updated
-    else:
-        message = u'%s, %d %s: %s' % (updated,
-                                      len(bad_items),
-                                      _(u'update(s) on object(s) failed'),
-                                      ','.join(bad_items), )
-    pu = getToolByName(context, 'plone_utils')
-    pu.addPortalMessage(message)
+#     nb_items, bad_items = g_marker.update(context, adds, olds_pt)
+#     updated = u'%d %s' % (nb_items, _(u'objects updated.'))
+#     if not bad_items:
+#         message = updated
+#     else:
+#         message = u'%s, %d %s: %s' % (updated,
+#                                       len(bad_items),
+#                                       _(u'update(s) on object(s) failed'),
+#                                       ','.join(bad_items), )
+#     pu = getToolByName(context, 'plone_utils')
+#     pu.addPortalMessage(message)
 
 
 class GeoMarker(object):
@@ -130,7 +131,7 @@ class GeoMarkerUtility(object):
         for brain in brains:
             try:
                 process = getattr(IGeoMarker(brain.getObject()), meth, None)
-                if process != None:
+                if process is not None:
                     process()
                 i += 1
             except:

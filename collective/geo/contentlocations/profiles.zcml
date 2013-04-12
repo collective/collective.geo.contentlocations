@@ -11,12 +11,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
 
-  <!-- <genericsetup:upgradeStep
-      title="Upgrade"
+  <genericsetup:upgradeStep
+      title="Upgrade to 2.6"
       description=""
-      source=""
-      destination=""
-      handler="collective.geo.contentlocations.upgrades."
-      profile="collective.geo.contentlocations:default" /> -->
+      source="*"
+      destination="2.6"
+      handler=".upgrades.upgrade_to_26"
+      profile="collective.geo.contentlocations:default" />
 
 </configure>

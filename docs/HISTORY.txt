@@ -4,11 +4,15 @@ Changelog
 2.6 (unreleased)
 ----------------
 
-- added contentlocations_helper view to hide/show coordinate tabs
+- Removed unused geoshapeform.pt template [gborelli]
+- Added collective.z3cform.mapwidget dependency [gborelli]
+- Added contentlocations_helper view to hide/show coordinate tabs
   [giorgio]
 - Fixed browserlayer.xml [gborelli]
 - Removed subscribers to mark/unmark georefereceable content types.
-  Now all Archetypes contents provide IGeoReferenceable interface. [valentinaB]
+  Now all Archetypes contents provide IGeoReferenceable interface and
+  can be georeferenced. A field in cgeo control panel allow in which
+  content types display 'coordinates' tab [valentinaB]
 - Changed method to display or hide Coordinates tab [valentinaB]
 - Moved ShapeMapWidget and ShapeEditLayer classes to c.geo.mapwidget
   [gborelli]

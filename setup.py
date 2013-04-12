@@ -29,6 +29,7 @@ setup(name='collective.geo.contentlocations',
           'Products.CMFCore',
           'pygeoif > 0.2',
           'collective.geo.mapwidget',
+          'collective.z3cform.mapwidget',
           'collective.geo.geographer',
       ],
       extras_require={

@@ -8,6 +8,7 @@
   <include package="plone.z3cform" />
   <include package="collective.geo.geographer" />
   <include package="collective.geo.mapwidget" />
+  <include package="collective.z3cform.mapwidget" />
 
   <include package=".browser" />
 
@@ -43,19 +44,13 @@
       provides=".interfaces.IGeoManager"
       factory=".geomanager.GeoManager" />
 
-  <adapter
-      for="Products.ATContentTypes.interface.interfaces.IATContentType"
-      factory=".geomarker.GeoMarker"
-      provides=".interfaces.IGeoMarker"
-      />
-
 
   <utility
       factory=".vocabularies.coordsVocab"
       name="coordsVocab"
       provides="zope.schema.interfaces.IVocabularyFactory" />
 
-  <!-- All contents are georeferenceable by default -->
+  <!-- All AT contents are georeferenceable by default -->
   <class class="Products.Archetypes.BaseObject.BaseObject">
     <implements interface="collective.geo.geographer.interfaces.IGeoreferenceable" />
   </class>
