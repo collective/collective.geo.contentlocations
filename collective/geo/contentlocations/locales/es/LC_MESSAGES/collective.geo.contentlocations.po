@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-06 20:57+0000\n"
+"POT-Creation-Date: 2013-04-25 21:44+0000\n"
 "PO-Revision-Date: 2011-06-23 13:50-0400\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: Spanish <plone-conosur@lists.plone.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Domain: collective.geo.contentlocations\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
-#: ../browser/geoshapeform.py:106
+#: ../browser/geoshapeform.py:108
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -25,14 +25,8 @@ msgstr "Cancelar"
 msgid "Changes saved."
 msgstr "Cambios guardados."
 
-#. Default: "Choose a tool and draw the shape on the map"
-#: ../browser/geoshapeform.pt:82
-msgid "Choose a tool and draw the shape on the map"
-msgstr "Seleccionar la herramienta y dibujar la figura en el mapa"
-
 #. Default: "Coordinates"
-#: ../browser/geoshapeform.pt:79
-#: ../browser/geoshapeform.py:144
+#: ../browser/geoshapeform.py:151
 #: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "Coordenadas"
@@ -53,11 +47,7 @@ msgstr "Insertar la siguiente coordenadas de figuras en formato WKT."
 msgid "LineString"
 msgstr "Linea"
 
-#: ../browser/geoshapeform.pt:93
-msgid "Manual coordinates"
-msgstr ""
-
-#: ../browser/geoshapeform.py:145
+#: ../browser/geoshapeform.py:152
 msgid "Modify geographical data for this content"
 msgstr "Modificar los datos geográficos de este contenido"
 
@@ -69,7 +59,7 @@ msgstr "Sin cambios hechos."
 msgid "No coordinate has been set. Please, set coordinates on the map or fill the WKT field."
 msgstr ""
 
-#: ../browser/geoshapeform.py:43
+#: ../browser/geoshapeform.py:44
 msgid "No valid input given."
 msgstr "No es válida valor ingresado"
 
@@ -81,11 +71,11 @@ msgstr "Punto"
 msgid "Polygon"
 msgstr "Polígono"
 
-#: ../browser/geoshapeform.py:111
+#: ../browser/geoshapeform.py:114
 msgid "Remove georeference"
 msgstr ""
 
-#: ../browser/geoshapeform.py:72
+#: ../browser/geoshapeform.py:74
 msgid "Save"
 msgstr "Guardar"
 
@@ -93,11 +83,11 @@ msgstr "Guardar"
 msgid "Shape in WKT format"
 msgstr "Figura en formato WKT"
 
-#: ../browser/geoshapeform.py:30
+#: ../browser/geoshapeform.py:29
 msgid "Specify the geometry for this content"
 msgstr "Especificar la geometría de este contenido"
 
-#: ../browser/geoshapeform.py:42
+#: ../browser/geoshapeform.py:43
 msgid "WKT expression not correct. Verify input."
 msgstr "La expresión WKT no es correcta. Verifique la ingresado."
 

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-06 20:57+0000\n"
+"POT-Creation-Date: 2013-04-25 21:44+0000\n"
 "PO-Revision-Date: 2013-04-04  21:28+0000\n"
 "Last-Translator: Valentina Bolognini <vale.asia@gmail.com>\n"
 "Language-Team: Giorgio Borelli <giorgio@giorgioborelli.it>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Domain: collective.geo.contentlocations\n"
 "X-Is-Fallback-For: it-it it-ch it-sm it-hr it-si\n"
 
-#: ../browser/geoshapeform.py:106
+#: ../browser/geoshapeform.py:108
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -25,14 +25,8 @@ msgstr "Annulla"
 msgid "Changes saved."
 msgstr "Modifiche memorizzate."
 
-#. Default: "Choose a tool and draw the shape on the map"
-#: ../browser/geoshapeform.pt:82
-msgid "Choose a tool and draw the shape on the map"
-msgstr "Seleziona uno strumento e disegna direttamente sulla mappa"
-
 #. Default: "Coordinates"
-#: ../browser/geoshapeform.pt:79
-#: ../browser/geoshapeform.py:144
+#: ../browser/geoshapeform.py:151
 #: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "Coordinate"
@@ -53,11 +47,7 @@ msgstr "Inserisci qui sotto le coordinate in formato WKT"
 msgid "LineString"
 msgstr "Linea"
 
-#: ../browser/geoshapeform.pt:93
-msgid "Manual coordinates"
-msgstr "Inserisci le coordinate manualmente"
-
-#: ../browser/geoshapeform.py:145
+#: ../browser/geoshapeform.py:152
 msgid "Modify geographical data for this content"
 msgstr "Modifica i dati geografici per questo contenuto"
 
@@ -69,7 +59,7 @@ msgstr "Modifiche annullate"
 msgid "No coordinate has been set. Please, set coordinates on the map or fill the WKT field."
 msgstr "Nessuna coordinata inserita. Puoi inserire le coordinate sulla mappa o fornirle in formato WKT."
 
-#: ../browser/geoshapeform.py:43
+#: ../browser/geoshapeform.py:44
 msgid "No valid input given."
 msgstr "Dati non corretti"
 
@@ -81,11 +71,11 @@ msgstr "Punto"
 msgid "Polygon"
 msgstr "Poligono"
 
-#: ../browser/geoshapeform.py:111
+#: ../browser/geoshapeform.py:114
 msgid "Remove georeference"
 msgstr "Rimuovi coordinate"
 
-#: ../browser/geoshapeform.py:72
+#: ../browser/geoshapeform.py:74
 msgid "Save"
 msgstr "Salva"
 
@@ -93,11 +83,11 @@ msgstr "Salva"
 msgid "Shape in WKT format"
 msgstr "Coordinate in formato KWT"
 
-#: ../browser/geoshapeform.py:30
+#: ../browser/geoshapeform.py:29
 msgid "Specify the geometry for this content"
 msgstr "Specifica il tipo di area per questo contenuto"
 
-#: ../browser/geoshapeform.py:42
+#: ../browser/geoshapeform.py:43
 msgid "WKT expression not correct. Verify input."
 msgstr "Formato WKT non corretto, verifica il valore immesso"
 

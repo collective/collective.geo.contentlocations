@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-06 20:57+0000\n"
+"POT-Creation-Date: 2013-04-25 21:44+0000\n"
 "PO-Revision-Date: 2010-11-24 16:22+0100\n"
 "Last-Translator: Anton Stonor <anton@headnet.dk>\n"
 "Language-Team: Anton Stonor <anton@headnet.dk>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
 
-#: ../browser/geoshapeform.py:106
+#: ../browser/geoshapeform.py:108
 msgid "Cancel"
 msgstr "Fortryd"
 
@@ -22,14 +22,8 @@ msgstr "Fortryd"
 msgid "Changes saved."
 msgstr "Ændringer gemt."
 
-#. Default: "Choose a tool and draw the shape on the map"
-#: ../browser/geoshapeform.pt:82
-msgid "Choose a tool and draw the shape on the map"
-msgstr "Vælg et tegneredskab i højre hjørne af kortet og marker placeringen af dit indhold på kortet - enten som punkt, linje eller polygon."
-
 #. Default: "Coordinates"
-#: ../browser/geoshapeform.pt:79
-#: ../browser/geoshapeform.py:144
+#: ../browser/geoshapeform.py:151
 #: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "Kortdata"
@@ -50,11 +44,7 @@ msgstr "Her kan du indsætte koordinater (punkt, linje eller polygon) i WKT-form
 msgid "LineString"
 msgstr "Linje"
 
-#: ../browser/geoshapeform.pt:93
-msgid "Manual coordinates"
-msgstr ""
-
-#: ../browser/geoshapeform.py:145
+#: ../browser/geoshapeform.py:152
 msgid "Modify geographical data for this content"
 msgstr "Tilpasning de geografiske data for dette indhold"
 
@@ -66,7 +56,7 @@ msgstr "Ingen ændringer."
 msgid "No coordinate has been set. Please, set coordinates on the map or fill the WKT field."
 msgstr ""
 
-#: ../browser/geoshapeform.py:43
+#: ../browser/geoshapeform.py:44
 msgid "No valid input given."
 msgstr "Ugyldig data."
 
@@ -78,11 +68,11 @@ msgstr "Punkt"
 msgid "Polygon"
 msgstr "Polygon"
 
-#: ../browser/geoshapeform.py:111
+#: ../browser/geoshapeform.py:114
 msgid "Remove georeference"
 msgstr ""
 
-#: ../browser/geoshapeform.py:72
+#: ../browser/geoshapeform.py:74
 msgid "Save"
 msgstr "Gem"
 
@@ -90,11 +80,11 @@ msgstr "Gem"
 msgid "Shape in WKT format"
 msgstr "Koordinater i WKT-format"
 
-#: ../browser/geoshapeform.py:30
+#: ../browser/geoshapeform.py:29
 msgid "Specify the geometry for this content"
 msgstr "Her kan du angive, hvilken placering, dit indhold skal have på kortet. Du kan enten søge efter stedet, indtegne det på kortet, uploade en CSV-fil eller udfylde WKT-feltet. Du kan også tilpasse kort-layoutet."
 
-#: ../browser/geoshapeform.py:42
+#: ../browser/geoshapeform.py:43
 msgid "WKT expression not correct. Verify input."
 msgstr "WKT-data er ikke korrekt. Juster venligst."
 

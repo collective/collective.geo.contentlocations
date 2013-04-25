@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.geo.contentlocations\n"
-"POT-Creation-Date: 2013-04-06 20:57+0000\n"
+"POT-Creation-Date: 2013-04-25 21:44+0000\n"
 "PO-Revision-Date: 2012-01-01 22:10+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.geo.contentlocations\n"
 
-#: ../browser/geoshapeform.py:106
+#: ../browser/geoshapeform.py:108
 msgid "Cancel"
 msgstr "取消"
 
@@ -22,12 +22,7 @@ msgstr "取消"
 msgid "Changes saved."
 msgstr "變更儲存。"
 
-#: ../browser/geoshapeform.pt:82
-msgid "Choose a tool and draw the shape on the map"
-msgstr "選擇工具並在地圖上標示座標位置或形狀"
-
-#: ../browser/geoshapeform.pt:79
-#: ../browser/geoshapeform.py:144
+#: ../browser/geoshapeform.py:151
 #: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "座標"
@@ -48,11 +43,7 @@ msgstr "輸入 WKT 格式的座標資訊。"
 msgid "LineString"
 msgstr "線"
 
-#: ../browser/geoshapeform.pt:93
-msgid "Manual coordinates"
-msgstr ""
-
-#: ../browser/geoshapeform.py:145
+#: ../browser/geoshapeform.py:152
 msgid "Modify geographical data for this content"
 msgstr "修改這筆內容的地理資訊"
 
@@ -64,7 +55,7 @@ msgstr "沒有變更。"
 msgid "No coordinate has been set. Please, set coordinates on the map or fill the WKT field."
 msgstr ""
 
-#: ../browser/geoshapeform.py:43
+#: ../browser/geoshapeform.py:44
 msgid "No valid input given."
 msgstr "沒有正確的輸入值。"
 
@@ -76,11 +67,11 @@ msgstr "點"
 msgid "Polygon"
 msgstr "多邊形"
 
-#: ../browser/geoshapeform.py:111
+#: ../browser/geoshapeform.py:114
 msgid "Remove georeference"
 msgstr ""
 
-#: ../browser/geoshapeform.py:72
+#: ../browser/geoshapeform.py:74
 msgid "Save"
 msgstr "儲存"
 
@@ -88,11 +79,11 @@ msgstr "儲存"
 msgid "Shape in WKT format"
 msgstr "WKT 格式的資料"
 
-#: ../browser/geoshapeform.py:30
+#: ../browser/geoshapeform.py:29
 msgid "Specify the geometry for this content"
 msgstr "指定這筆內容的地理資訊。"
 
-#: ../browser/geoshapeform.py:42
+#: ../browser/geoshapeform.py:43
 msgid "WKT expression not correct. Verify input."
 msgstr "不是正確的 WKT 格式，請再次確認輸入的資料。"
 

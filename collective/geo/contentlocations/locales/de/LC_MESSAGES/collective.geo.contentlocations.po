@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2013-04-06 20:57+0000\n"
+"POT-Creation-Date: 2013-04-25 21:44+0000\n"
 "PO-Revision-Date: 2012-07-02 14:00+0000\n"
 "Last-Translator: Denis Krienbühl <denis.krienbuehl@gmail.com>\n"
 "Language-Team: <denis.krienbuehl@gmail.com>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Domain: collective.geo.contentlocations\n"
 "X-Is-Fallback-For: de-at de-ch de-li de-lu\n"
 
-#: ../browser/geoshapeform.py:106
+#: ../browser/geoshapeform.py:108
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -23,12 +23,7 @@ msgstr "Abbrechen"
 msgid "Changes saved."
 msgstr "Änderungen gespeichert."
 
-#: ../browser/geoshapeform.pt:82
-msgid "Choose a tool and draw the shape on the map"
-msgstr "Wählen Sie ein Werkzeug und zeichnen Sie die Markierung auf die Karte."
-
-#: ../browser/geoshapeform.pt:79
-#: ../browser/geoshapeform.py:144
+#: ../browser/geoshapeform.py:151
 #: ../profiles/default/actions.xml
 msgid "Coordinates"
 msgstr "Koordinaten"
@@ -49,11 +44,7 @@ msgstr "Fügen Sie die Markierungs-Koordinaten unten im WKT Format ein."
 msgid "LineString"
 msgstr "Linie"
 
-#: ../browser/geoshapeform.pt:93
-msgid "Manual coordinates"
-msgstr "Manuelle Koordinaten"
-
-#: ../browser/geoshapeform.py:145
+#: ../browser/geoshapeform.py:152
 msgid "Modify geographical data for this content"
 msgstr "Geographische Daten für diesen Inhalt ändern"
 
@@ -65,7 +56,7 @@ msgstr "Keine Änderungen."
 msgid "No coordinate has been set. Please, set coordinates on the map or fill the WKT field."
 msgstr ""
 
-#: ../browser/geoshapeform.py:43
+#: ../browser/geoshapeform.py:44
 msgid "No valid input given."
 msgstr "Kein gültiger Eingabewert."
 
@@ -77,11 +68,11 @@ msgstr "Punkt"
 msgid "Polygon"
 msgstr ""
 
-#: ../browser/geoshapeform.py:111
+#: ../browser/geoshapeform.py:114
 msgid "Remove georeference"
 msgstr "Georeferenzierung entfernen"
 
-#: ../browser/geoshapeform.py:72
+#: ../browser/geoshapeform.py:74
 msgid "Save"
 msgstr "Speichern"
 
@@ -89,11 +80,11 @@ msgstr "Speichern"
 msgid "Shape in WKT format"
 msgstr "Markierung im WKT Format"
 
-#: ../browser/geoshapeform.py:30
+#: ../browser/geoshapeform.py:29
 msgid "Specify the geometry for this content"
 msgstr "Spezifizieren Sie die Geometrie für diesen Inhalt"
 
-#: ../browser/geoshapeform.py:42
+#: ../browser/geoshapeform.py:43
 msgid "WKT expression not correct. Verify input."
 msgstr "WKT Ausdruck nicht korrekt. Bitte überprüfen Sie die Eingabe."
 
