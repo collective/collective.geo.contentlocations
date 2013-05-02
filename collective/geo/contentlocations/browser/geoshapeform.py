@@ -78,8 +78,10 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
             return
 
         # set content geo style
-        geostylesgroup = [gr for gr in self.groups
-            if gr.__class__.__name__ == 'GeoStylesForm']
+        geostylesgroup = [
+            gr for gr in self.groups
+            if gr.__class__.__name__ == 'GeoStylesForm'
+        ]
         if geostylesgroup:
             stylemanager = IGeoCustomFeatureStyle(self.context)
             fields = geostylesgroup[0].fields

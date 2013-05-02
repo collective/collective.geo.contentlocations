@@ -51,7 +51,7 @@ let's try it!
 
 Let's try to submit the form with a new LineString in the WKT-field
 
-    >>> browser.getControl('Shape in WKT format').value = u'LINESTRING '\
+    >>> browser.getControl(name='form.widgets.wkt').value = u'LINESTRING '\
     ...           '(153.02719116211 -27.352252938064,'\
     ...           '153.11370849609 -27.370547753645,'\
     ...           '153.08624267578 -27.403470801049,'\
@@ -84,7 +84,7 @@ We can also remove the coordinates by deleting data from Wkt textarea
     >>> geo.setCoordinates('Point', (0.111, 0.222))
     >>> transaction.commit()
     >>> browser.getLink('Coordinates').click()
-    >>> browser.getControl('Shape in WKT format').value = u''
+    >>> browser.getControl(name='form.widgets.wkt').value = u''
     >>> browser.getControl('Save').click()
     >>> 'Coordinates removed' in browser.contents
     True
@@ -107,7 +107,7 @@ Let's do it again, first clicking on "coordinates"
 
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> browser.getControl('Shape in WKT format')
+    >>> browser.getControl(name='form.widgets.wkt')
     <Control name='form.widgets.wkt' type='textarea'>
 
 clicking on cancel leads me to the default content view
@@ -122,7 +122,7 @@ Set map's custom style
 We can also set a few custom properties on a per-content basis as well
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> browser.getControl('Shape in WKT format').value = u'POINT (0.111 0.222)'
+    >>> browser.getControl(name='form.widgets.wkt').value = u'POINT (0.111 0.222)'
 
 
 Check to see if our custom style section is present, with our fields
