@@ -56,7 +56,7 @@ Create the url and open it
 
     >>> view_url = '%s/@@manage-coordinates' % document.absolute_url()
     >>> browser.open(view_url)
-    >>> '<div id="geoshapemap" ' in browser.contents
+    >>> '<div id="form-widgets-wkt-map" ' in browser.contents
     True
     >>> 'POINT (0.111' in browser.contents
     True
