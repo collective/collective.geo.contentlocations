@@ -1,16 +1,7 @@
-import pkg_resources
 from Products.Five.browser import BrowserView
-
-try:
-    pkg_resources.get_distribution('plone.dexterity')
-except pkg_resources.DistributionNotFound:
-    HAS_DEXTERITY = False
-else:
-    HAS_DEXTERITY = True
-    from plone.dexterity.interfaces import IDexterityContent
-
 from collective.geo.geographer.interfaces import IGeoreferenceable
 from collective.geo.settings.utils import geo_settings
+from .. import utils
 
 
 class HelperView(BrowserView):
@@ -22,9 +13,7 @@ class HelperView(BrowserView):
             self.context.portal_type in geo_contenttypes)
 
     def isDexterityContentType(self):
-        if HAS_DEXTERITY:
-            return IDexterityContent.providedBy(self.context)
-        return False
+        return utils.isDexterityContentType(self.context)
 
     def showCoordinatesTab(self):
         # Dexterity content types don't need Coordinates Tab

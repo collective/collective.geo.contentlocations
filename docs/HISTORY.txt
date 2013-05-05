@@ -4,6 +4,7 @@ Changelog
 2.6 (unreleased)
 ----------------
 
+- Prevent subscribers the execution for dexterity content types [gborelli]
 - Removed unused geoshapeform.pt template [gborelli]
 - Added collective.z3cform.mapwidget dependency [gborelli]
 - Added contentlocations_helper view to hide/show coordinate tabs
