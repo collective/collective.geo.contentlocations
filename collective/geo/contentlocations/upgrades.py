@@ -21,6 +21,7 @@ def upgrade_to_26(context):
 
     if remove_utility:
         util = sm.queryUtility(IGeoMarkerUtility)
-        sm.unregisterUtility(provided=IGeoMarkerUtility)
-        del util
-        assert sm.queryUtility(IGeoMarkerUtility) is None
+        if util:
+            sm.unregisterUtility(provided=IGeoMarkerUtility)
+            del util
+            assert sm.queryUtility(IGeoMarkerUtility) is None
