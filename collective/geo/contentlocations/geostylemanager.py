@@ -10,7 +10,7 @@ from plone.registry.interfaces import IRegistry
 from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
 from collective.geo.settings.interfaces import IGeoFeatureStyle
 from collective.geo.contentlocations.events import ObjectStylesEvent
-from collective.geo.contentlocations.config import GEO_STYLE_FIELDS
+from collective.geo.settings.config import GEO_STYLE_FIELDS
 
 
 KEY = 'collective.geo.contentlocations.style'
@@ -25,8 +25,9 @@ class GeoStyleManager(object):
     def __init__(self, context):
 
         self.context = context
-        self.defaultstyles = getUtility(IRegistry).forInterface(
-                                                    IGeoFeatureStyle)
+        self.defaultstyles = getUtility(
+            IRegistry).forInterface(
+                IGeoFeatureStyle)
 
         annotations = IAnnotations(context)
         self.geostyles = annotations.get(KEY, None)
@@ -37,7 +38,8 @@ class GeoStyleManager(object):
             #Set our custom styles to be the defaults for all fields
             for field in GEO_STYLE_FIELDS:
                 self.geostyles[field] = getattr(
-                                self.defaultstyles, field, None)
+                    self.defaultstyles, field, None
+                )
 
             #This field isn't present in the defaults so set it manually
             self.geostyles['use_custom_styles'] = False

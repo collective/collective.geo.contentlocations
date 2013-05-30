@@ -6,8 +6,8 @@ from collective.z3cform.colorpicker.colorpickeralpha import (
 )
 
 from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
+from collective.geo.settings.config import GEO_STYLE_FIELDS
 from .. import ContentLocationsMessageFactory as _
-from ..config import GEO_STYLE_FIELDS
 
 
 class GeoStylesForm(group.Group):
