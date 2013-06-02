@@ -24,26 +24,23 @@ Requirements
 
 Installation
 ============
-You can install collective.geo.contentlocations as part of a specific project's buildout, by having a buildout configuration such as::
 
-        [buildout]
-        ...
-        eggs =
-            collective.geo.contentlocations
-        ...
+This addon can be installed has any other addons, please follow official
+documentation_.
+
 
 Upgrading
 =========
 
-Version 2.6
+Version 3.0
 -----------
 
-If you are upgrading from an older version to 2.6, you may need to run
+If you are upgrading from an older version to 3.0, you may need to run
 upgrade steps. To do this, follow these steps:
 
 #. Browse to ``portal_setup`` in the ZMI of your site
 #. Click onto the ``Upgrades`` tab
-#. Select ``collective.geo.openlayers:default`` from the drop-down list and
+#. Select ``collective.geo.contentlocations:default`` from the drop-down list and
    click ``Choose Profile``
 #. Observe any available upgrades and click the ``Upgrade`` button if any
    are present.
@@ -64,4 +61,4 @@ Contributors
 .. _collective.geo.mapwidget: http://pypi.python.org/pypi/collective.geo.mapwidget
 .. _collective.geo.geographer: http://pypi.python.org/pypi/collective.geo.geographer
 .. _issue tracker: https://github.com/collective/collective.geo.bundle/issues
-
+.. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to

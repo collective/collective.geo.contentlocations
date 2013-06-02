@@ -4,7 +4,7 @@ from zope.component import getGlobalSiteManager
 default_profile = 'profile-collective.geo.contentlocations:default'
 
 
-def upgrade_to_26(context):
+def upgrade_to_30(context):
     """this upgrade step fixes browserlayer and Coordinates tab
     and remove all components related to IGeoMarker event
     """
