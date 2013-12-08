@@ -4,7 +4,8 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Changed IGeoCustomFeatureStyle adapter to be specific for Archetypes contents
+  [gborelli]
 
 
 3.0 (2013-10-29)
