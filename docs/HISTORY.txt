@@ -4,8 +4,10 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Moved collective_geo_styles indexer to c.geo.mapwidget
+- Moved collective_geo_styles catalog metadata and related indexer
+  to c.geo.mapwidget
   [gborelli]
+
 
 - Changed IGeoCustomFeatureStyle adapter to be specific for Archetypes contents
   [gborelli]
