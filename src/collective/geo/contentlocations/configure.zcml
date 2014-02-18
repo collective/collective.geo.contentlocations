@@ -14,10 +14,6 @@
 
   <include file="profiles.zcml" />
 
-  <adapter
-      factory='.indexer.collective_geo_styles'
-      name='collective_geo_styles' />
-
   <subscriber
      handler=".events.reindexStylesSubscriber"
      for="collective.geo.contentlocations.events.IObjectStylesEvent" />
