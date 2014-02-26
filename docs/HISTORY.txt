@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.1 (unreleased)
+3.1 (2014-02-26)
 ----------------
 
 - Made collective_geo_styles indexer archetypes specific
