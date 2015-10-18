@@ -21,15 +21,6 @@ class TestGeomanager(unittest.TestCase):
         def create_obj(context, pt):
             oid = 'test-%s' % pt.lower().replace(' ', '-')
             return context.invokeFactory(pt, oid)
-
-        behavior = 'collective.geo.behaviour.interfaces.ICoordinates'
-        for i in self.p_types:
-            fti = self.portal.portal_types.get(i)
-            behaviors = list(fti.behaviors)
-            behaviors.append(behavior)
-            behaviors = tuple(behaviors)
-            fti._updateProperty('behaviors', behaviors)
-
         self.obj_ids = [create_obj(self.portal, pt) for pt in self.p_types]
 
     def test_after_obj_creation(self):

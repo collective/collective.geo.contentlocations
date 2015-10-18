@@ -19,6 +19,8 @@ from collective.z3cform.mapwidget.widget import MapFieldWidget
 from .. import ContentLocationsMessageFactory as _
 from .geostylesform import GeoStylesForm
 from ..interfaces import IGeoManager
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 
 
 class GeoShapeForm(extensible.ExtensibleForm, form.Form):
@@ -47,17 +49,20 @@ class GeoShapeForm(extensible.ExtensibleForm, form.Form):
         super(GeoShapeForm, self).__init__(context, request)
         self.geomanager = IGeoManager(self.context)
 
-        portal_url = getToolByName(self.context, 'portal_url')
-        portal = portal_url.getPortalObject()
-        props_tool = getToolByName(portal, 'portal_properties')
-        site_props = getattr(props_tool, 'site_properties')
-        self.typesUseViewActionInListings = list(
-            site_props.getProperty('typesUseViewActionInListings')
-        )
+        # portal_url = getToolByName(self.context, 'portal_url')
+        # portal = portal_url.getPortalObject()
+        # props_tool = getToolByName(portal, 'portal_properties')
+        # site_props = getattr(props_tool, 'site_properties')
+        # self.typesUseViewActionInListings = list(
+        #     site_props.getProperty('typesUseViewActionInListings')
+        # )
+        registry = getUtility(IRegistry)
+        self.typesUseViewActionInListings = registry.get(
+            'plone.types_use_view_action_in_listings')
 
     @property
     def next_url(self):
-        #Need to send the user to the view url for certain content types.
+        # Need to send the user to the view url for certain content types.
         url = self.context.absolute_url()
         if self.context.portal_type in self.typesUseViewActionInListings:
             url += '/view'
