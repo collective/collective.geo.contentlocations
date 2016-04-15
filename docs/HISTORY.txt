@@ -4,8 +4,12 @@ Changelog
 3.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Installing ATContentTypes in tests as they are not installed in plone5
+  [pbauer]
+- Changed some doctest to make it work on plone5
+  [pbauer]
+- Using new plone_registry to read config instead of old site_properties
+  [pbauer]
 
 3.1 (2014-02-26)
 ----------------

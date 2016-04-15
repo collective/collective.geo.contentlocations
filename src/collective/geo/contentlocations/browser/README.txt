@@ -28,7 +28,7 @@ we don't have a coordinates in the edit bar until we haven't chosen a content as
 
     >>> document_url = document.absolute_url()
     >>> browser.open(document_url)
-    >>> '<a href="%s/@@manage-coordinates">Coordinates</a>' % document_url in browser.contents
+    >>> 'Coordinates' in browser.contents
     False
 
 we set Document as geo referenceable content type
@@ -39,14 +39,14 @@ we set Document as geo referenceable content type
 and now we have a link *Coordinates* in  the edit bar
 
     >>> browser.open(document_url)
-    >>> '<a href="%s/@@manage-coordinates">Coordinates</a>' % document_url in browser.contents
+    >>> 'Coordinates' in browser.contents
     True
 
 let's try it!
 
     >>> link = browser.getLink('Coordinates')
     >>> link.click()
-    >>> browser.url == '%s/@@manage-coordinates' % document_url
+    >>> browser.url.startswith('%s/@@manage-coordinates' % document_url)
     True
 
 Let's try to submit the form with a new LineString in the WKT-field

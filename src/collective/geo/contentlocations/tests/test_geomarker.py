@@ -21,7 +21,6 @@ class TestGeomanager(unittest.TestCase):
         def create_obj(context, pt):
             oid = 'test-%s' % pt.lower().replace(' ', '-')
             return context.invokeFactory(pt, oid)
-
         self.obj_ids = [create_obj(self.portal, pt) for pt in self.p_types]
 
     def test_after_obj_creation(self):

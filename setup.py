@@ -37,6 +37,7 @@ setup(name='collective.geo.contentlocations',
       extras_require={
           'test': [
               'plone.app.testing',
+              'collective.geo.behaviour',
           ]
       },
       entry_points="""
