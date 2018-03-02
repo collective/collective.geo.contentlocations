@@ -10,6 +10,14 @@
       description="Geographic location for Plone content"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Collective Geo Contentlocations (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstall Geographic location for Plone content"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot" />
+
 
   <genericsetup:upgradeStep
       title="Upgrade to 3.0"

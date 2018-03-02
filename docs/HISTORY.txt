@@ -4,6 +4,9 @@ Changelog
 3.2 (unreleased)
 ----------------
 
+- Add uninstall profile.
+  [thet]
+
 - Installing ATContentTypes in tests as they are not installed in plone5
   [pbauer]
 - Changed some doctest to make it work on plone5
