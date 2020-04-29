@@ -4,7 +4,8 @@ Changelog
 3.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Updated Spanish translation
+  [macagua]
 
 
 3.2 (2019-01-23)
