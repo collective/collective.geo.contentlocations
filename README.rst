@@ -22,6 +22,13 @@ Requirements
  * `collective.geo.geographer`_
 
 
+Documentation
+=============
+
+Full documentation for end users can be found in the "docs" folder.
+It is also available online at https://collectivegeo.readthedocs.io/
+
+
 Translations
 ============
 
@@ -74,6 +81,28 @@ upgrade steps. To do this, follow these steps:
    are present.
 
 
+Tests status
+============
+
+This add-on is tested using Travis CI. The current status of the add-on is:
+
+.. image:: https://img.shields.io/travis/collective/collective.geo.contentlocations/master.svg
+    :target: https://travis-ci.org/collective/collective.geo.contentlocations
+
+.. image:: http://img.shields.io/pypi/v/collective.geo.contentlocations.svg
+   :target: https://pypi.org/project/collective.geo.contentlocations
+
+
+Contribute
+==========
+
+Have an idea? Found a bug? Let us know by `opening a ticket`_.
+
+- Issue Tracker: https://github.com/collective/collective.geo.contentlocations/issues
+- Source Code: https://github.com/collective/collective.geo.contentlocations
+- Documentation: https://collectivegeo.readthedocs.io/
+
+
 Contributors
 ============
 
@@ -82,11 +111,17 @@ Contributors
 * Gerhard Weis - gweis
 * David Beitey - davidjb
 * Rob Gietema - robgietema
-* Leonardo J. Caballero G - macagua
+* Leonardo J. Caballero G. - macagua
 
 
-.. _Plone: http://plone.org
-.. _collective.geo.mapwidget: http://pypi.python.org/pypi/collective.geo.mapwidget
-.. _collective.geo.geographer: http://pypi.python.org/pypi/collective.geo.geographer
-.. _issue tracker: https://github.com/collective/collective.geo.bundle/issues
-.. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to
+License
+=======
+
+The project is licensed under the GPL.
+
+
+.. _Plone: https://plone.org/
+.. _collective.geo.mapwidget: https://pypi.org/project/collective.geo.mapwidget
+.. _collective.geo.geographer: https://pypi.org/project/collective.geo.geographer
+.. _`opening a ticket`: https://github.com/collective/collective.geo.bundle/issues
+.. _documentation: https://docs.plone.org/manage/installing/installing_addons.html
