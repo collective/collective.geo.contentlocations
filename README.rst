@@ -22,6 +22,34 @@ Requirements
  * `collective.geo.geographer`_
 
 
+Translations
+============
+
+This product has been translated into
+
+- Danish.
+
+- German.
+
+- Spanish.
+
+- French.
+
+- Italian.
+
+- Dutch.
+
+- Brazil Portuguese.
+
+- Chinese Simplified.
+
+- Traditional Chinese.
+
+You can contribute for any message missing or other new languages, join us at 
+`Plone Collective Team <https://www.transifex.com/plone/plone-collective/>`_ 
+into *Transifex.net* service with all world Plone translators community.
+
+
 Installation
 ============
 
