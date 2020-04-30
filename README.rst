@@ -5,12 +5,6 @@ collective.geo.contentlocations is a GUI for `collective.geo.geographer`_.
 
 It provides some simple forms to add geographical coordinates and associated settings to Plone content types.
 
-.. image:: https://secure.travis-ci.org/collective/collective.geo.contentlocations.png
-    :target: http://travis-ci.org/collective/collective.geo.contentlocations
-
-Found a bug? Please, use the `issue tracker`_.
-
-
 .. contents:: Table of contents
 
 
